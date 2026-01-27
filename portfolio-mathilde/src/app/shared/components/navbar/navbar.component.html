@@ -1,0 +1,72 @@
+<nav class="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-border-dark bg-white/80 dark:bg-[#111a22]/80 backdrop-blur-md">
+  <div class="max-w-[1200px] mx-auto px-4 md:px-8">
+    <div class="flex h-16 items-center justify-between">
+      <!-- Logo / Name -->
+      <a routerLink="/" class="flex items-center gap-3 group">
+        <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white transition-transform duration-300 group-hover:scale-110">
+          <span class="material-symbols-outlined text-xl">terminal</span>
+        </div>
+        <span class="text-lg font-bold tracking-tight transition-colors duration-200 group-hover:text-primary">{{ brandName }}</span>
+      </a>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center gap-8">
+        @for (item of navItems; track item.path) {
+          <a
+            [routerLink]="item.path"
+            routerLinkActive="text-primary font-bold"
+            [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+            class="text-sm font-medium link-hover transition-colors duration-200 hover:text-primary"
+          >
+            {{ item.label }}
+          </a>
+        }
+      </div>
+
+      <!-- CTA Button -->
+      <div class="hidden md:block">
+        <a
+          routerLink="/contact"
+          class="btn-hover inline-flex items-center justify-center h-10 px-5 rounded-lg bg-primary hover:bg-blue-600 text-white text-sm font-bold"
+        >
+          Contact
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        class="md:hidden p-2 text-slate-600 dark:text-gray-300"
+        (click)="toggleMobileMenu()"
+        aria-label="Menu mobile"
+      >
+        <span class="material-symbols-outlined">{{ isMobileMenuOpen ? 'close' : 'menu' }}</span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    @if (isMobileMenuOpen) {
+      <div class="md:hidden py-4 border-t border-gray-200 dark:border-border-dark">
+        <div class="flex flex-col gap-4">
+          @for (item of navItems; track item.path) {
+            <a
+              [routerLink]="item.path"
+              routerLinkActive="text-primary font-bold"
+              [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+              class="text-sm font-medium hover:text-primary transition-colors py-2"
+              (click)="closeMobileMenu()"
+            >
+              {{ item.label }}
+            </a>
+          }
+          <a
+            routerLink="/contact"
+            class="inline-flex items-center justify-center h-10 px-5 rounded-lg bg-primary text-white text-sm font-bold mt-2"
+            (click)="closeMobileMenu()"
+          >
+            Contact
+          </a>
+        </div>
+      </div>
+    }
+  </div>
+</nav>

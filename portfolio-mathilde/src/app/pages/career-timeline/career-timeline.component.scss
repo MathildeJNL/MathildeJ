@@ -1,0 +1,42 @@
+:host {
+  display: block;
+}
+
+// Timeline responsive adjustments
+@media (max-width: 768px) {
+  .md\:pr-1\/2,
+  .md\:pl-1\/2 {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+  }
+
+  .md\:mr-10,
+  .md\:ml-10 {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+// Animation for timeline items
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.space-y-12 > div {
+  animation: fadeInUp 0.5s ease-out;
+  animation-fill-mode: both;
+
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.1}s;
+    }
+  }
+}

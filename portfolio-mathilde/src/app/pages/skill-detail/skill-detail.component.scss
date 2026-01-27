@@ -1,0 +1,10 @@
+:host {
+  display: block;
+}
+
+// Truncate utility
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

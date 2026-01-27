@@ -1,0 +1,177 @@
+<!-- Hero Section -->
+<section class="relative pt-12 pb-16 md:pt-20 md:pb-24 px-4 md:px-8 overflow-hidden">
+  <!-- Background -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 -mt-40 w-[800px] h-[400px] rounded-full bg-gradient-to-r from-primary/10 via-purple-500/10 to-green-500/10 blur-3xl -z-10 pointer-events-none"></div>
+
+  <div class="max-w-[1000px] mx-auto text-center">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 w-fit mx-auto mb-6">
+      <span class="material-symbols-outlined text-primary text-sm">timeline</span>
+      <span class="text-primary text-xs font-bold uppercase tracking-wider">Parcours</span>
+    </div>
+
+    <h1 class="text-4xl md:text-5xl font-black leading-tight tracking-tight mb-6">
+      Timeline <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-500 to-green-500">Carrière</span>
+    </h1>
+
+    <p class="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
+      Retracez mon parcours professionnel, de ma formation initiale à mon rôle actuel de Lead SRE. Chaque étape a contribué à façonner mon expertise.
+    </p>
+  </div>
+</section>
+
+<!-- Stats Summary -->
+<section class="px-4 md:px-8 pb-8">
+  <div class="max-w-[1000px] mx-auto">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="p-5 rounded-xl bg-white dark:bg-card-dark border border-gray-100 dark:border-border-dark text-center">
+        <span class="material-symbols-outlined text-3xl text-primary mb-2">work</span>
+        <p class="text-2xl font-black text-slate-900 dark:text-white">5+</p>
+        <p class="text-sm text-slate-500">Années d'expérience</p>
+      </div>
+      <div class="p-5 rounded-xl bg-white dark:bg-card-dark border border-gray-100 dark:border-border-dark text-center">
+        <span class="material-symbols-outlined text-3xl text-green-500 mb-2">school</span>
+        <p class="text-2xl font-black text-slate-900 dark:text-white">Bac+5</p>
+        <p class="text-sm text-slate-500">Niveau d'études</p>
+      </div>
+      <div class="p-5 rounded-xl bg-white dark:bg-card-dark border border-gray-100 dark:border-border-dark text-center">
+        <span class="material-symbols-outlined text-3xl text-amber-500 mb-2">workspace_premium</span>
+        <p class="text-2xl font-black text-slate-900 dark:text-white">5</p>
+        <p class="text-sm text-slate-500">Certifications</p>
+      </div>
+      <div class="p-5 rounded-xl bg-white dark:bg-card-dark border border-gray-100 dark:border-border-dark text-center">
+        <span class="material-symbols-outlined text-3xl text-purple-500 mb-2">emoji_events</span>
+        <p class="text-2xl font-black text-slate-900 dark:text-white">3</p>
+        <p class="text-sm text-slate-500">Talks & conférences</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Filters -->
+<section class="px-4 md:px-8 pb-8">
+  <div class="max-w-[1000px] mx-auto">
+    <div class="flex flex-wrap justify-center gap-2">
+      @for (filter of filters; track filter.id) {
+        <button
+          (click)="setFilter(filter.id)"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all"
+          [ngClass]="{
+            'bg-primary text-white': activeFilter === filter.id,
+            'bg-gray-100 dark:bg-card-dark text-slate-600 dark:text-slate-400 hover:bg-gray-200 dark:hover:bg-[#203040]': activeFilter !== filter.id
+          }"
+        >
+          <span class="material-symbols-outlined text-lg">{{ filter.icon }}</span>
+          {{ filter.label }}
+        </button>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Timeline -->
+<section class="py-12 px-4 md:px-8 bg-white dark:bg-[#151f2b]">
+  <div class="max-w-[800px] mx-auto">
+    <div class="relative">
+      <!-- Vertical Line -->
+      <div class="absolute left-6 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-border-dark"></div>
+
+      <div class="space-y-12">
+        @for (event of filteredEvents; track event.id; let i = $index; let even = $even) {
+          <div class="relative" [ngClass]="{'md:pr-1/2': even, 'md:pl-1/2 md:ml-auto': !even}">
+            <!-- Timeline Dot -->
+            <div
+              class="absolute left-6 md:left-1/2 -translate-x-1/2 w-12 h-12 rounded-full flex items-center justify-center border-4 border-white dark:border-[#151f2b] z-10"
+              [ngClass]="event.bgClass"
+            >
+              <span class="material-symbols-outlined text-xl" [ngClass]="event.colorClass">{{ event.icon }}</span>
+            </div>
+
+            <!-- Content Card -->
+            <div
+              class="ml-20 md:ml-0 bg-gray-50 dark:bg-card-dark rounded-xl border border-gray-100 dark:border-border-dark p-6 hover:shadow-lg transition-shadow"
+              [ngClass]="{'md:mr-10': even, 'md:ml-10': !even}"
+            >
+              <!-- Header -->
+              <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
+                <div>
+                  <span class="px-2 py-0.5 rounded text-xs font-medium" [ngClass]="event.bgClass + ' ' + event.colorClass">
+                    {{ getTypeLabel(event.type) }}
+                  </span>
+                  @if (event.current) {
+                    <span class="ml-2 px-2 py-0.5 rounded bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-400 text-xs font-medium">
+                      Actuel
+                    </span>
+                  }
+                </div>
+                <span class="text-sm text-slate-500">{{ formatDateRange(event) }}</span>
+              </div>
+
+              <!-- Title -->
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-1">{{ event.title }}</h3>
+              <p class="text-primary font-medium mb-2">{{ event.organization }}</p>
+              <p class="text-sm text-slate-500 mb-4 flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">location_on</span>
+                {{ event.location }}
+              </p>
+
+              <!-- Description -->
+              <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">{{ event.description }}</p>
+
+              <!-- Highlights -->
+              <div class="space-y-2 mb-4">
+                @for (highlight of event.highlights; track highlight) {
+                  <div class="flex items-start gap-2">
+                    <span class="material-symbols-outlined text-sm mt-0.5" [ngClass]="event.colorClass">check</span>
+                    <span class="text-sm text-slate-700 dark:text-slate-300">{{ highlight }}</span>
+                  </div>
+                }
+              </div>
+
+              <!-- Technologies -->
+              @if (event.technologies && event.technologies.length > 0) {
+                <div class="flex flex-wrap gap-2 pt-4 border-t border-gray-200 dark:border-border-dark">
+                  @for (tech of event.technologies; track tech) {
+                    <span class="px-2 py-1 bg-gray-200 dark:bg-background-dark text-xs rounded text-slate-600 dark:text-slate-400">
+                      {{ tech }}
+                    </span>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Timeline End -->
+      <div class="absolute left-6 md:left-1/2 -translate-x-1/2 bottom-0 w-4 h-4 rounded-full bg-primary border-4 border-white dark:border-[#151f2b]"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-16 px-4 md:px-8">
+  <div class="max-w-[800px] mx-auto text-center">
+    <div class="p-8 rounded-2xl bg-gradient-to-r from-primary/10 via-purple-500/10 to-green-500/10 border border-primary/20">
+      <h2 class="text-2xl font-bold mb-4">Intéressé par mon profil ?</h2>
+      <p class="text-slate-600 dark:text-slate-400 mb-6">
+        Découvrez mes compétences en détail ou contactez-moi pour discuter d'opportunités.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a
+          routerLink="/skills"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-blue-600 text-white font-bold rounded-lg transition-colors"
+        >
+          <span class="material-symbols-outlined">insights</span>
+          Voir mes compétences
+        </a>
+        <a
+          routerLink="/contact"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-card-dark border border-gray-200 dark:border-border-dark hover:bg-gray-50 dark:hover:bg-[#203040] text-slate-900 dark:text-white font-bold rounded-lg transition-colors"
+        >
+          <span class="material-symbols-outlined">mail</span>
+          Me contacter
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

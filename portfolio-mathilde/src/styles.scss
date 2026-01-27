@@ -1,0 +1,166 @@
+/* Global Styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth scroll for entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #101922;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #233648;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #137fec;
+}
+
+/* ==========================================
+   ANIMATIONS DISCRÈTES
+   ========================================== */
+
+/* Animated gradient background for hero */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.bg-gradient-animate {
+  background: linear-gradient(-45deg, #101922, #192633, rgba(19, 127, 236, 0.1), #101922);
+  background-size: 400% 400%;
+  animation: gradient-shift 20s ease infinite;
+}
+
+/* Pulse for availability badge */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ==========================================
+   HOVER EFFECTS DISCRETS
+   ========================================== */
+
+/* Card hover - légère élévation */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Icon hover - léger scale et couleur */
+.icon-hover {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.icon-hover:hover {
+  transform: scale(1.15);
+  color: #137fec;
+}
+
+/* Button hover - shine effect discret */
+.btn-hover {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transition: left 0.4s ease;
+}
+
+.btn-hover:hover::after {
+  left: 100%;
+}
+
+.btn-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(19, 127, 236, 0.3);
+}
+
+/* Link hover - underline animé */
+.link-hover {
+  position: relative;
+}
+
+.link-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #137fec;
+  transition: width 0.3s ease;
+}
+
+.link-hover:hover::after {
+  width: 100%;
+}
+
+/* Tag hover */
+.tag-hover {
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.tag-hover:hover {
+  background-color: #137fec;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Image container hover - léger zoom */
+.img-hover {
+  overflow: hidden;
+}
+
+.img-hover img,
+.img-hover > div {
+  transition: transform 0.4s ease;
+}
+
+.img-hover:hover img,
+.img-hover:hover > div {
+  transform: scale(1.03);
+}
+
+/* Material Icons adjustment */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

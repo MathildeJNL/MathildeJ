@@ -1,0 +1,328 @@
+@if (project) {
+  <!-- Hero Section -->
+  <section class="relative pt-12 pb-8 md:pt-20 md:pb-12 px-4 md:px-8 overflow-hidden">
+    <!-- Background -->
+    <div class="absolute top-0 right-0 -mr-40 -mt-40 w-[600px] h-[600px] rounded-full bg-primary/10 blur-3xl -z-10 pointer-events-none"></div>
+
+    <div class="max-w-[1000px] mx-auto">
+      <!-- Breadcrumb -->
+      <nav class="mb-8">
+        <ol class="flex items-center gap-2 text-sm">
+          <li><a routerLink="/projects" class="text-slate-500 hover:text-primary transition-colors">Projets</a></li>
+          <li><span class="text-slate-400">/</span></li>
+          <li class="text-slate-900 dark:text-white font-medium truncate max-w-[200px]">{{ project.title }}</li>
+        </ol>
+      </nav>
+
+      <!-- Hero Image -->
+      <div
+        class="w-full h-64 md:h-80 rounded-2xl bg-cover bg-center mb-8 relative overflow-hidden"
+        [style.background-image]="'url(' + project.imageUrl + ')'"
+      >
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+
+        <!-- Status Badge -->
+        <div class="absolute top-4 right-4">
+          <span class="px-3 py-1 rounded-full text-sm font-medium" [ngClass]="getStatusColor(project.status)">
+            {{ project.status }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Title & Meta -->
+      <div class="flex flex-col md:flex-row gap-6 justify-between items-start">
+        <div class="flex-1">
+          <h1 class="text-3xl md:text-4xl font-black leading-tight tracking-tight mb-2">
+            {{ project.title }}
+          </h1>
+          <p class="text-lg text-primary font-medium mb-4">{{ project.subtitle }}</p>
+          <p class="text-slate-600 dark:text-slate-400 max-w-2xl">{{ project.description }}</p>
+
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-2 mt-4">
+            @for (tag of project.tags; track tag) {
+              <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full font-medium">{{ tag }}</span>
+            }
+          </div>
+        </div>
+
+        <!-- Quick Info -->
+        <div class="shrink-0 bg-white dark:bg-card-dark rounded-xl border border-gray-100 dark:border-border-dark p-5 w-full md:w-64">
+          <div class="space-y-3">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-slate-400">calendar_today</span>
+              <div>
+                <p class="text-xs text-slate-500">Année</p>
+                <p class="font-medium text-slate-900 dark:text-white">{{ project.year }}</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-slate-400">schedule</span>
+              <div>
+                <p class="text-xs text-slate-500">Durée</p>
+                <p class="font-medium text-slate-900 dark:text-white">{{ project.duration }}</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-slate-400">person</span>
+              <div>
+                <p class="text-xs text-slate-500">Rôle</p>
+                <p class="font-medium text-slate-900 dark:text-white">{{ project.role }}</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-slate-400">group</span>
+              <div>
+                <p class="text-xs text-slate-500">Équipe</p>
+                <p class="font-medium text-slate-900 dark:text-white">{{ project.teamSize }}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Links -->
+          @if (project.links.github || project.links.live || project.links.documentation) {
+            <div class="flex gap-2 mt-5 pt-5 border-t border-gray-100 dark:border-border-dark">
+              @if (project.links.github) {
+                <a
+                  [href]="project.links.github"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 bg-gray-100 dark:bg-background-dark rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-[#203040] transition-colors"
+                >
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+                  </svg>
+                  Code
+                </a>
+              }
+              @if (project.links.live) {
+                <a
+                  [href]="project.links.live"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors"
+                >
+                  <span class="material-symbols-outlined text-lg">open_in_new</span>
+                  Live
+                </a>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Metrics -->
+  <section class="py-8 px-4 md:px-8 bg-white dark:bg-[#151f2b]">
+    <div class="max-w-[1000px] mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        @for (metric of project.metrics; track metric.label) {
+          <div class="p-5 rounded-xl bg-gray-50 dark:bg-card-dark border border-gray-100 dark:border-border-dark text-center">
+            <span class="material-symbols-outlined text-3xl text-primary mb-2">{{ metric.icon }}</span>
+            <p class="text-2xl md:text-3xl font-black text-slate-900 dark:text-white">{{ metric.value }}</p>
+            <p class="text-sm text-slate-500">{{ metric.label }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Tabs Navigation -->
+  <section class="px-4 md:px-8 bg-white dark:bg-[#151f2b] border-b border-gray-100 dark:border-border-dark sticky top-16 z-10">
+    <div class="max-w-[1000px] mx-auto">
+      <div class="flex gap-1 overflow-x-auto">
+        @for (tab of tabs; track tab.id) {
+          <button
+            (click)="setTab(tab.id)"
+            class="inline-flex items-center gap-2 px-5 py-4 font-medium text-sm transition-all border-b-2 whitespace-nowrap"
+            [ngClass]="{
+              'border-primary text-primary': activeTab === tab.id,
+              'border-transparent text-slate-500 hover:text-slate-700 dark:hover:text-slate-300': activeTab !== tab.id
+            }"
+          >
+            <span class="material-symbols-outlined text-lg">{{ tab.icon }}</span>
+            {{ tab.label }}
+          </button>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Tab Content -->
+  <section class="py-12 px-4 md:px-8">
+    <div class="max-w-[1000px] mx-auto">
+      <!-- Overview Tab -->
+      @if (activeTab === 'overview') {
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div class="lg:col-span-2 space-y-8">
+            <!-- Description -->
+            <div class="bg-white dark:bg-card-dark rounded-xl border border-gray-100 dark:border-border-dark p-6">
+              <h2 class="text-xl font-bold mb-4">À propos du projet</h2>
+              <p class="text-slate-600 dark:text-slate-400 leading-relaxed">{{ project.longDescription }}</p>
+            </div>
+
+            <!-- Challenges -->
+            <div class="bg-white dark:bg-card-dark rounded-xl border border-gray-100 dark:border-border-dark p-6">
+              <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-amber-500">warning</span>
+                Défis rencontrés
+              </h2>
+              <div class="space-y-4">
+                @for (challenge of project.challenges; track challenge.title) {
+                  <div class="p-4 rounded-lg bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20">
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-1">{{ challenge.title }}</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">{{ challenge.description }}</p>
+                  </div>
+                }
+              </div>
+            </div>
+
+            <!-- Solutions -->
+            <div class="bg-white dark:bg-card-dark rounded-xl border border-gray-100 dark:border-border-dark p-6">
+              <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-green-500">lightbulb</span>
+                Solutions apportées
+              </h2>
+              <ul class="space-y-3">
+                @for (solution of project.solutions; track solution) {
+                  <li class="flex items-start gap-3">
+                    <span class="material-symbols-outlined text-green-500 text-lg shrink-0 mt-0.5">check_circle</span>
+                    <span class="text-slate-600 dark:text-slate-400">{{ solution }}</span>
+                  </li>
+                }
+              </ul>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <div class="space-y-6">
+            <!-- Testimonial -->
+            @if (project.testimonial) {
+              <div class="bg-gradient-to-br from-primary/10 to-purple-500/10 rounded-xl border border-primary/20 p-6">
+                <span class="material-symbols-outlined text-4xl text-primary/50 mb-2">format_quote</span>
+                <p class="text-slate-700 dark:text-slate-300 italic mb-4">"{{ project.testimonial.quote }}"</p>
+                <div>
+                  <p class="font-bold text-slate-900 dark:text-white">{{ project.testimonial.author }}</p>
+                  <p class="text-sm text-slate-500">{{ project.testimonial.role }}</p>
+                </div>
+              </div>
+            }
+
+            <!-- Gallery -->
+            @if (project.galleryImages.length > 0) {
+              <div class="bg-white dark:bg-card-dark rounded-xl border border-gray-100 dark:border-border-dark p-6">
+                <h3 class="font-bold mb-4">Galerie</h3>
+                <div class="grid grid-cols-2 gap-2">
+                  @for (image of project.galleryImages.slice(0, 4); track $index) {
+                    <div
+                      class="aspect-video rounded-lg bg-cover bg-center"
+                      [style.background-image]="'url(' + image + ')'"
+                    ></div>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+
+      <!-- Technical Tab -->
+      @if (activeTab === 'technical') {
+        <div class="space-y-8">
+          <!-- Technologies -->
+          <div class="bg-white dark:bg-card-dark rounded-xl border border-gray-100 dark:border-border-dark p-6">
+            <h2 class="text-xl font-bold mb-6">Stack Technique</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              @for (tech of project.technologies; track tech.name) {
+                <div class="p-4 rounded-lg bg-gray-50 dark:bg-background-dark border border-gray-100 dark:border-border-dark">
+                  <div class="flex items-center gap-3 mb-2">
+                    <span class="px-2 py-0.5 bg-primary/10 text-primary text-xs rounded font-medium">{{ tech.category }}</span>
+                  </div>
+                  <h3 class="font-bold text-slate-900 dark:text-white">{{ tech.name }}</h3>
+                  <p class="text-sm text-slate-500 mt-1">{{ tech.description }}</p>
+                </div>
+              }
+            </div>
+          </div>
+
+          <!-- Architecture -->
+          <div class="bg-white dark:bg-card-dark rounded-xl border border-gray-100 dark:border-border-dark p-6">
+            <h2 class="text-xl font-bold mb-4">Architecture</h2>
+            <div class="aspect-video rounded-lg bg-gray-100 dark:bg-background-dark flex items-center justify-center">
+              <div class="text-center">
+                <span class="material-symbols-outlined text-4xl text-slate-300 mb-2">architecture</span>
+                <p class="text-slate-500">Diagramme d'architecture</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Timeline Tab -->
+      @if (activeTab === 'timeline') {
+        <div class="bg-white dark:bg-card-dark rounded-xl border border-gray-100 dark:border-border-dark p-6">
+          <h2 class="text-xl font-bold mb-8">Timeline du projet</h2>
+          <div class="relative">
+            <!-- Vertical Line -->
+            <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-border-dark"></div>
+
+            <div class="space-y-8">
+              @for (milestone of project.milestones; track milestone.date; let i = $index; let last = $last) {
+                <div class="relative pl-12">
+                  <!-- Dot -->
+                  <div
+                    class="absolute left-2 w-5 h-5 rounded-full border-4 border-white dark:border-card-dark"
+                    [ngClass]="last ? 'bg-primary' : 'bg-gray-300 dark:bg-border-dark'"
+                  ></div>
+
+                  <div class="bg-gray-50 dark:bg-background-dark rounded-lg p-4">
+                    <p class="text-sm text-primary font-medium mb-1">{{ milestone.date }}</p>
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-1">{{ milestone.title }}</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">{{ milestone.description }}</p>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Navigation -->
+  <section class="py-8 px-4 md:px-8 bg-white dark:bg-[#151f2b]">
+    <div class="max-w-[1000px] mx-auto flex justify-between">
+      <a
+        routerLink="/projects"
+        class="inline-flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors"
+      >
+        <span class="material-symbols-outlined">arrow_back</span>
+        Tous les projets
+      </a>
+      <a
+        routerLink="/contact"
+        class="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-blue-600 text-white font-bold rounded-lg transition-colors"
+      >
+        Discuter d'un projet similaire
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </a>
+    </div>
+  </section>
+} @else {
+  <!-- Not Found -->
+  <section class="py-32 px-4 text-center">
+    <div class="max-w-md mx-auto">
+      <span class="material-symbols-outlined text-6xl text-slate-300 mb-4">search_off</span>
+      <h1 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Projet non trouvé</h1>
+      <p class="text-slate-500 mb-6">Le projet demandé n'existe pas.</p>
+      <a
+        routerLink="/projects"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-blue-600 text-white font-bold rounded-lg transition-colors"
+      >
+        <span class="material-symbols-outlined">arrow_back</span>
+        Retour aux projets
+      </a>
+    </div>
+  </section>
+}
