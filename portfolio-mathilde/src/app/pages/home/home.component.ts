@@ -43,62 +43,59 @@ interface Project {
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  // Hero Section
   isOpenToWork = true;
   name = 'Mathilde';
-  title = 'Développeuse Full-Stack & Site Reliability Engineering (SRE).';
-  tagline = 'Je construis des systèmes résilients et évolutifs avec une touche humaine. Créer le pont entre infrastructure complexe et expérience développeur.';
-  systemUptime = '99.99%';
+  title = 'Développeuse Full-Stack.';
+  tagline = 'Développeuse junior, passionnée par la création d\'applications modernes, fiables et élégantes.';
 
   profileImageUrl = 'assets/images/mj_pp.png';
 
   techStack: TechStack[] = [
-    { icon: 'dns', title: 'Infrastructure' },
-    { icon: 'cloud', title: 'Cloud' },
-    { icon: 'security', title: 'Sécurité' },
-    { icon: 'monitoring', title: 'Monitoring' }
+    { icon: 'web', title: 'Frontend' },
+    { icon: 'database', title: 'Backend' },
+    { icon: 'storage', title: 'Base de données' },
+    { icon: 'travel_explore', title: 'SEO' }
   ];
 
-  // Values Section
   values: Value[] = [
     {
-      icon: 'code',
-      title: 'Expertise Technique',
-      description: 'Expertise approfondie en architecture backend, infrastructure cloud et systèmes distribués. J\'écris du code propre et maintenable.',
-      colorClass: 'text-primary',
-      bgClass: 'bg-blue-100 dark:bg-primary/20',
-      hoverBorderClass: 'hover:border-primary/50'
-    },
-    {
       icon: 'favorite',
-      title: 'Humaine',
-      description: 'Priorisant l\'empathie, la communication claire et la collaboration. Je mentore les juniors et favorise une culture de sécurité psychologique.',
+      title: 'Bienveillance',
+      description: "Guidée par l'empathie et l'écoute, je place l'humain au cœur de mes échanges et de mes projets.",
       colorClass: 'text-pink-500',
       bgClass: 'bg-pink-100 dark:bg-pink-500/20',
       hoverBorderClass: 'hover:border-pink-500/50'
     },
     {
-      icon: 'verified_user',
-      title: 'Responsable',
-      description: 'Engagée pour la fiabilité, la disponibilité et les pratiques durables. Je prends la responsabilité des incidents et apprends des échecs.',
-      colorClass: 'text-green-500',
-      bgClass: 'bg-green-100 dark:bg-green-500/20',
-      hoverBorderClass: 'hover:border-green-500/50'
+      icon: 'groups',
+      title: 'Esprit d’équipe',
+      description: "Collaborative et communicante, j’aime construire ensemble, partager et apprendre au contact des autres.",
+      colorClass: 'text-blue-500',
+      bgClass: 'bg-blue-100 dark:bg-blue-500/20',
+      hoverBorderClass: 'hover:border-blue-500/50'
+    },
+    {
+      icon: 'auto_awesome',
+      title: 'Adaptabilité',
+      description: "Polyvalente et curieuse, je m’adapte rapidement aux projets, aux outils et aux nouveaux défis.",
+      colorClass: 'text-purple-500',
+      bgClass: 'bg-purple-100 dark:bg-purple-500/20',
+      hoverBorderClass: 'hover:border-purple-500/50'
     }
   ];
 
   // About Section
   aboutParagraphs: string[] = [
-    'Je suis une développeuse Full-Stack spécialisée en Site Reliability Engineering (SRE) avec plus de 5 ans d\'expérience pour assurer que les systèmes soient évolutifs, fiables et efficaces.',
+    'Je suis développeuse Full-Stack junior, dôtée de trois années d\'alternance en développement auprès de Wordline. ',
     'Mon objectif de carrière est de démocratiser l\'architecture haute disponibilité pour les startups, rendant la fiabilité de niveau entreprise accessible aux petites équipes.'
   ];
 
   currentProject = {
-    name: 'ReliableUI',
-    description: 'un dashboard open-source pour visualiser la santé des microservices en temps réel.'
+    name: 'Valkea',
+    description: 'une application de suivi de la santé de vos animaux de compagnie, avec des alertes personnalisées pour les soins et les rendez-vous vétérinaires.',
   };
 
-  softSkills: string[] = ['Empathie', 'Orientée service', 'Autonome', 'Problem Solver'];
+  softSkills: string[] = ['Empathique', 'Collaborative', 'Autonome', 'Polyvalente'];
 
   interests: Interest[] = [
     { icon: 'pool', label: 'Natation' },
@@ -108,12 +105,12 @@ export class HomeComponent {
 
   // Facts Section
   facts: Fact[] = [
-    { icon: 'terminal', iconColor: 'text-primary', text: 'Je préfère le CLI au GUI.' },
-    { icon: 'pets', iconColor: 'text-purple-500', text: 'Fière propriétaire de 2 chats.' },
-    { icon: 'coffee', iconColor: 'text-amber-500', text: 'Alimentée par l\'Espresso.' },
-    { icon: 'flight', iconColor: 'text-blue-400', text: '20+ pays visités.' },
-    { icon: 'psychology', iconColor: 'text-green-500', text: 'Toujours en train d\'apprendre Rust.' },
-    { icon: 'headphones', iconColor: 'text-red-500', text: 'Accro aux podcasts.' }
+    { icon: 'terminal', iconColor: 'text-primary', text: 'Je suis tombée dans le dev comme un cheveu sur la soupe.' },
+    { icon: 'pets', iconColor: 'text-purple-500', text: 'Fière humaine d\'un husky têtu mais adorable.' },
+    { icon: 'coffee', iconColor: 'text-amber-500', text: 'Alimentée par l\'Espresso... et le chocolat chaud.' },
+    { icon: 'exercise', iconColor: 'text-blue-400', text: 'Build physique multi-classe : nageuse, crossfiteuse et combattante.' },
+    { icon: 'psychology', iconColor: 'text-green-500', text: 'Je développe mes compétences au quotidien, sans pression.' },
+    { icon: 'headphones', iconColor: 'text-red-500', text: 'Ma playlist passe du métal au piano sans prévenir.' }
   ];
 
   // Projects Preview
