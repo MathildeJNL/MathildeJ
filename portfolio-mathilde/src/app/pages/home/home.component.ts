@@ -86,8 +86,8 @@ export class HomeComponent {
 
   // About Section
   aboutParagraphs: string[] = [
-    'Je suis développeuse Full-Stack junior, dôtée de trois années d\'alternance en développement auprès de Wordline. ',
-    'Mon objectif de carrière est de démocratiser l\'architecture haute disponibilité pour les startups, rendant la fiabilité de niveau entreprise accessible aux petites équipes.'
+    'Je suis développeuse Web junior, dôtée de trois années d\'alternance en développement auprès de Worldline. ',
+    'Mon objectif de carrière est de devenir une développeuse polyvalente, capable de contribuer à toutes les étapes du développement logiciel, du frontend au backend.'
   ];
 
   currentProject = {
