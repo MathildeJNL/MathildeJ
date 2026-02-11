@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 
 interface TimelineEvent {
   id: string;
-  type: 'job' | 'education' | 'certification' | 'achievement';
+  type: 'job' | 'education';
   title: string;
   organization: string;
   location: string;
@@ -32,163 +32,219 @@ export class CareerTimelineComponent {
   filters = [
     { id: 'all', label: 'Tout', icon: 'timeline' },
     { id: 'job', label: 'Expérience', icon: 'work' },
-    { id: 'education', label: 'Formation', icon: 'school' },
-    { id: 'certification', label: 'Certifications', icon: 'workspace_premium' },
-    { id: 'achievement', label: 'Accomplissements', icon: 'emoji_events' }
+    { id: 'education', label: 'Formation', icon: 'school' }
   ];
 
   timelineEvents: TimelineEvent[] = [
     {
       id: '1',
       type: 'job',
-      title: 'Lead Site Reliability Engineer',
-      organization: 'TechCorp',
-      location: 'Paris, France',
-      startDate: '2022-03',
+      title: 'Développeuse Web en alternance',
+      organization: 'Worldline',
+      location: 'France',
+      startDate: '2024-10',
       endDate: null,
       current: true,
-      description: 'Direction de l\'équipe SRE (5 personnes) responsable de la fiabilité et de la scalabilité de la plateforme.',
+      description: 'Développement d\'applications web full-stack dans le cadre d\'un Mastère Expert en Ingénierie du Logiciel.',
       highlights: [
-        'Migration de 50+ microservices vers Kubernetes',
-        'Réduction du MTTR de 4h à 30min',
-        'Mise en place d\'une culture SRE avec SLO/SLI',
-        'Automatisation de 80% des tâches opérationnelles'
+        'Développement front-end avec Angular et TypeScript',
+        'Développement back-end avec Java et Spring Boot',
+        'Travail en équipe avec GitLab et méthodologies agiles',
+        'Communication et collaboration en mode projet'
       ],
-      technologies: ['Kubernetes', 'AWS', 'Terraform', 'Go', 'Prometheus'],
+      technologies: ['Angular', 'TypeScript', 'Bootstrap', 'Java', 'GitLab'],
       icon: 'work',
       colorClass: 'text-primary',
       bgClass: 'bg-blue-100 dark:bg-primary/20'
     },
     {
       id: '2',
-      type: 'certification',
-      title: 'AWS Solutions Architect Professional',
-      organization: 'Amazon Web Services',
-      location: 'En ligne',
-      startDate: '2023-06',
-      endDate: '2023-06',
-      current: false,
-      description: 'Certification avancée validant l\'expertise en conception d\'architectures cloud complexes sur AWS.',
-      highlights: [
-        'Score: 892/1000',
-        'Spécialisation multi-compte et organisations',
-        'Architecture haute disponibilité'
-      ],
-      icon: 'workspace_premium',
-      colorClass: 'text-amber-500',
-      bgClass: 'bg-amber-100 dark:bg-amber-500/20'
-    },
-    {
-      id: '3',
-      type: 'job',
-      title: 'Senior DevOps Engineer',
-      organization: 'StartupFlow',
-      location: 'Paris, France',
-      startDate: '2020-01',
-      endDate: '2022-02',
-      current: false,
-      description: 'Responsable de l\'infrastructure cloud et des pipelines CI/CD pour une startup en hypercroissance.',
-      highlights: [
-        'Construction from scratch de l\'infrastructure AWS',
-        'Mise en place de GitOps avec ArgoCD',
-        'Réduction des coûts cloud de 35%',
-        'Onboarding de 10 développeurs sur les pratiques DevOps'
-      ],
-      technologies: ['AWS', 'Docker', 'GitLab CI', 'Python', 'Ansible'],
-      icon: 'work',
-      colorClass: 'text-primary',
-      bgClass: 'bg-blue-100 dark:bg-primary/20'
-    },
-    {
-      id: '4',
-      type: 'certification',
-      title: 'Certified Kubernetes Administrator',
-      organization: 'CNCF',
-      location: 'En ligne',
-      startDate: '2022-04',
-      endDate: '2022-04',
-      current: false,
-      description: 'Certification pratique démontrant la maîtrise de l\'administration de clusters Kubernetes.',
-      highlights: [
-        'Examen pratique de 2h',
-        'Networking, security, troubleshooting'
-      ],
-      icon: 'workspace_premium',
-      colorClass: 'text-amber-500',
-      bgClass: 'bg-amber-100 dark:bg-amber-500/20'
-    },
-    {
-      id: '5',
-      type: 'achievement',
-      title: 'Speaker KubeCon Europe',
-      organization: 'CNCF',
-      location: 'Amsterdam, Pays-Bas',
-      startDate: '2023-04',
-      endDate: '2023-04',
-      current: false,
-      description: 'Présentation sur "Scaling Observability: From 10 to 1000 Microservices" devant 500+ participants.',
-      highlights: [
-        '500+ participants',
-        'Talk noté 4.8/5',
-        'Publication du talk sur YouTube'
-      ],
-      icon: 'emoji_events',
-      colorClass: 'text-purple-500',
-      bgClass: 'bg-purple-100 dark:bg-purple-500/20'
-    },
-    {
-      id: '6',
-      type: 'job',
-      title: 'Backend Developer',
-      organization: 'WebAgency',
-      location: 'Lyon, France',
-      startDate: '2018-06',
-      endDate: '2019-12',
-      current: false,
-      description: 'Développement d\'APIs et services backend pour des clients variés (e-commerce, SaaS, fintech).',
-      highlights: [
-        'Développement d\'APIs RESTful en Python/Django',
-        'Intégration de systèmes de paiement',
-        'Découverte de l\'infrastructure cloud'
-      ],
-      technologies: ['Python', 'Django', 'PostgreSQL', 'Redis', 'Docker'],
-      icon: 'work',
-      colorClass: 'text-primary',
-      bgClass: 'bg-blue-100 dark:bg-primary/20'
-    },
-    {
-      id: '7',
       type: 'education',
-      title: 'Master Informatique - Spécialisation Cloud',
-      organization: 'Université Paris-Saclay',
-      location: 'Paris, France',
-      startDate: '2016-09',
-      endDate: '2018-06',
-      current: false,
-      description: 'Formation approfondie en systèmes distribués, cloud computing et architecture logicielle.',
+      title: 'Mastère Expert en Ingénierie du Logiciel',
+      organization: 'ISCOD',
+      location: 'France',
+      startDate: '2024-10',
+      endDate: '2026-09',
+      current: true,
+      description: 'Formation en alternance couvrant l\'architecture logicielle, le développement full-stack, DevOps et la gestion de projet.',
       highlights: [
-        'Major de promotion',
-        'Mémoire sur l\'auto-scaling prédictif',
-        'Stage de fin d\'études chez AWS'
+        'Architecture logicielle et conception UML',
+        'Développement Java/Spring Boot et Angular/TypeScript',
+        'DevOps avec Docker, Kubernetes et déploiement continu',
+        'Management d\'équipes et méthodes agiles Scrum'
       ],
       icon: 'school',
       colorClass: 'text-green-500',
       bgClass: 'bg-green-100 dark:bg-green-500/20'
     },
     {
+      id: '3',
+      type: 'job',
+      title: 'Apprentie Ingénieur SRE',
+      organization: 'Worldline',
+      location: 'France',
+      startDate: '2023-09',
+      endDate: '2024-09',
+      current: false,
+      description: 'Mission SRE (Site Reliability Engineering) avec automatisation et monitoring des systèmes.',
+      highlights: [
+        'Automatisation avec Python et Bash',
+        'Documentation technique avec Confluence',
+        'Développement d\'outils internes avec Angular',
+        'Collaboration avec les équipes de développement'
+      ],
+      technologies: ['Python', 'Bash', 'Confluence', 'Angular'],
+      icon: 'work',
+      colorClass: 'text-primary',
+      bgClass: 'bg-blue-100 dark:bg-primary/20'
+    },
+    {
+      id: '4',
+      type: 'education',
+      title: 'Bachelor Concepteur Développeur d\'Applications',
+      organization: 'CESI',
+      location: 'France',
+      startDate: '2023-09',
+      endDate: '2024-09',
+      current: false,
+      description: 'Formation intensive d\'un an en développement logiciel, de la conception au déploiement.',
+      highlights: [
+        'Programmation orientée objet avec Java',
+        'Modélisation UML et architecture logicielle',
+        'Tests et sécurité des applications',
+        'Déploiement continu et pratiques DevOps'
+      ],
+      icon: 'school',
+      colorClass: 'text-green-500',
+      bgClass: 'bg-green-100 dark:bg-green-500/20'
+    },
+    {
+      id: '5',
+      type: 'education',
+      title: 'Formation Développeur Java',
+      organization: 'Wild Code School',
+      location: 'France',
+      startDate: '2023-05',
+      endDate: '2023-07',
+      current: false,
+      description: 'Formation intensive de 3 mois au métier de développeur Java full-stack.',
+      highlights: [
+        'Front-end : HTML/CSS, JavaScript, Angular',
+        'Back-end : Java, Spring, SQL, API REST',
+        'Versioning avec Git et GitHub',
+        'Méthodes agiles et Scrum'
+      ],
+      technologies: ['Java', 'Spring', 'Angular', 'JavaScript', 'SQL'],
+      icon: 'school',
+      colorClass: 'text-green-500',
+      bgClass: 'bg-green-100 dark:bg-green-500/20'
+    },
+    {
+      id: '6',
+      type: 'education',
+      title: 'Développeur Web - Titre RNCP Niveau 5',
+      organization: 'OpenClassrooms',
+      location: 'France',
+      startDate: '2021-11',
+      endDate: '2022-08',
+      current: false,
+      description: 'Formation diplômante en développement web (équivalent Bac+2).',
+      highlights: [
+        'Développement front-end et back-end',
+        'Création de sites web dynamiques',
+        'Obtention du titre RNCP'
+      ],
+      icon: 'school',
+      colorClass: 'text-green-500',
+      bgClass: 'bg-green-100 dark:bg-green-500/20'
+    },
+    {
+      id: '7',
+      type: 'job',
+      title: 'Apprentie Préparatrice en Pharmacie',
+      organization: 'Pharmacie',
+      location: 'Olivet, Centre-Val de Loire',
+      startDate: '2018-09',
+      endDate: '2021-08',
+      current: false,
+      description: 'Préparation et délivrance de médicaments, conseil aux patients pendant 3 ans en alternance.',
+      highlights: [
+        'Délivrance de médicaments et conseils patients',
+        'Gestion des stocks et commandes',
+        'Obtention du Brevet Professionnel'
+      ],
+      icon: 'work',
+      colorClass: 'text-primary',
+      bgClass: 'bg-blue-100 dark:bg-primary/20'
+    },
+    {
       id: '8',
       type: 'education',
-      title: 'Licence Informatique',
-      organization: 'Université Claude Bernard Lyon 1',
-      location: 'Lyon, France',
-      startDate: '2013-09',
-      endDate: '2016-06',
+      title: 'Brevet Professionnel Préparateur en Pharmacie',
+      organization: 'CFA Pharmacie d\'Orléans',
+      location: 'Orléans, France',
+      startDate: '2018-09',
+      endDate: '2021-08',
       current: false,
-      description: 'Fondamentaux de l\'informatique : algorithmique, programmation, bases de données, réseaux.',
+      description: 'Formation en alternance de 3 ans en préparation pharmaceutique.',
       highlights: [
-        'Mention Très Bien',
-        'Projet tutoré en développement web',
-        'Participation au hackathon universitaire'
+        'Formation théorique et pratique',
+        'Diplôme obtenu avec succès'
+      ],
+      icon: 'school',
+      colorClass: 'text-green-500',
+      bgClass: 'bg-green-100 dark:bg-green-500/20'
+    },
+    {
+      id: '9',
+      type: 'job',
+      title: 'Apprentie Réceptionniste',
+      organization: 'Hôtel Ibis Styles Mulsanne',
+      location: 'Mulsanne, Pays de la Loire',
+      startDate: '2017-09',
+      endDate: '2018-08',
+      current: false,
+      description: 'Accueil des clients et gestion des réservations en hôtellerie pendant 1 an.',
+      highlights: [
+        'Accueil et relation client',
+        'Gestion des réservations',
+        'Obtention de la Mention Complémentaire'
+      ],
+      icon: 'work',
+      colorClass: 'text-primary',
+      bgClass: 'bg-blue-100 dark:bg-primary/20'
+    },
+    {
+      id: '10',
+      type: 'education',
+      title: 'MC Accueil et Réception',
+      organization: 'CFA de Tours',
+      location: 'Tours, France',
+      startDate: '2017-09',
+      endDate: '2018-08',
+      current: false,
+      description: 'Mention Complémentaire en accueil et réception hôtelière.',
+      highlights: [
+        'Formation en alternance',
+        'Diplôme obtenu avec succès'
+      ],
+      icon: 'school',
+      colorClass: 'text-green-500',
+      bgClass: 'bg-green-100 dark:bg-green-500/20'
+    },
+    {
+      id: '11',
+      type: 'education',
+      title: 'Bac Pro Commercialisation et Service en Restauration',
+      organization: 'Lycée des Métiers de l\'Hôtellerie et du Tourisme du Val de Loire',
+      location: 'France',
+      startDate: '2014-09',
+      endDate: '2017-06',
+      current: false,
+      description: 'Formation en commercialisation et service en restauration.',
+      highlights: [
+        'Service en salle et relation client',
+        'Diplôme obtenu avec succès'
       ],
       icon: 'school',
       colorClass: 'text-green-500',
@@ -227,9 +283,7 @@ export class CareerTimelineComponent {
   getTypeLabel(type: string): string {
     const labels: Record<string, string> = {
       'job': 'Expérience',
-      'education': 'Formation',
-      'certification': 'Certification',
-      'achievement': 'Accomplissement'
+      'education': 'Formation'
     };
     return labels[type] || type;
   }
