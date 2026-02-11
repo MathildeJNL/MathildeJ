@@ -67,20 +67,14 @@ export class ContactComponent {
     {
       icon: 'github',
       name: 'GitHub',
-      url: 'https://github.com/MathildeJ',
+      url: 'https://github.com/MathildeJNL',
       colorClass: 'hover:text-gray-900 dark:hover:text-white'
     },
     {
       icon: 'linkedin',
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/mathildej',
+      url: 'https://www.linkedin.com/in/mathilde-jnl/',
       colorClass: 'hover:text-blue-600'
-    },
-    {
-      icon: 'twitter',
-      name: 'Twitter/X',
-      url: 'https://twitter.com/mathildej_dev',
-      colorClass: 'hover:text-blue-400'
     }
   ];
 

@@ -21,9 +21,8 @@ export class FooterComponent {
   currentYear = new Date().getFullYear();
 
   socialLinks: SocialLink[] = [
-    { name: 'GitHub', url: 'https://github.com', icon: 'github' },
-    { name: 'LinkedIn', url: 'https://linkedin.com', icon: 'linkedin' },
-    { name: 'Twitter', url: 'https://twitter.com', icon: 'twitter' }
+    { name: 'GitHub', url: 'https://github.com/MathildeJNL', icon: 'github' },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/mathilde-jnl/', icon: 'linkedin' }
   ];
 
   scrollToTop(): void {
