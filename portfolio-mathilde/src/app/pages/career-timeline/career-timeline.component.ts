@@ -17,6 +17,18 @@ interface TimelineEvent {
   icon: string;
   colorClass: string;
   bgClass: string;
+  linkedTo?: string;
+}
+
+interface TimelineItem {
+  id: string;
+  type: 'alternance' | 'standalone';
+  startDate: string;
+  endDate: string | null;
+  current: boolean;
+  education?: TimelineEvent;
+  job?: TimelineEvent;
+  event?: TimelineEvent;
 }
 
 @Component({
@@ -41,7 +53,7 @@ export class CareerTimelineComponent {
       type: 'job',
       title: 'Développeuse Web en alternance',
       organization: 'Worldline',
-      location: 'France',
+      location: 'Blois, Centre-Val de Loire',
       startDate: '2024-10',
       endDate: null,
       current: true,
@@ -55,7 +67,8 @@ export class CareerTimelineComponent {
       technologies: ['Angular', 'TypeScript', 'Bootstrap', 'Java', 'GitLab'],
       icon: 'work',
       colorClass: 'text-primary',
-      bgClass: 'bg-blue-100 dark:bg-primary/20'
+      bgClass: 'bg-blue-100 dark:bg-blue-900',
+      linkedTo: '2'
     },
     {
       id: '2',
@@ -75,14 +88,15 @@ export class CareerTimelineComponent {
       ],
       icon: 'school',
       colorClass: 'text-green-500',
-      bgClass: 'bg-green-100 dark:bg-green-500/20'
+      bgClass: 'bg-green-100 dark:bg-green-900',
+      linkedTo: '1'
     },
     {
       id: '3',
       type: 'job',
       title: 'Apprentie Ingénieur SRE',
       organization: 'Worldline',
-      location: 'France',
+      location: 'Blois, Centre-Val de Loire',
       startDate: '2023-09',
       endDate: '2024-09',
       current: false,
@@ -96,14 +110,15 @@ export class CareerTimelineComponent {
       technologies: ['Python', 'Bash', 'Confluence', 'Angular'],
       icon: 'work',
       colorClass: 'text-primary',
-      bgClass: 'bg-blue-100 dark:bg-primary/20'
+      bgClass: 'bg-blue-100 dark:bg-blue-900',
+      linkedTo: '4'
     },
     {
       id: '4',
       type: 'education',
       title: 'Bachelor Concepteur Développeur d\'Applications',
       organization: 'CESI',
-      location: 'France',
+      location: 'Orléans, Centre-Val de Loire',
       startDate: '2023-09',
       endDate: '2024-09',
       current: false,
@@ -116,7 +131,8 @@ export class CareerTimelineComponent {
       ],
       icon: 'school',
       colorClass: 'text-green-500',
-      bgClass: 'bg-green-100 dark:bg-green-500/20'
+      bgClass: 'bg-green-100 dark:bg-green-900',
+      linkedTo: '3'
     },
     {
       id: '5',
@@ -137,7 +153,7 @@ export class CareerTimelineComponent {
       technologies: ['Java', 'Spring', 'Angular', 'JavaScript', 'SQL'],
       icon: 'school',
       colorClass: 'text-green-500',
-      bgClass: 'bg-green-100 dark:bg-green-500/20'
+      bgClass: 'bg-green-100 dark:bg-green-900'
     },
     {
       id: '6',
@@ -156,13 +172,13 @@ export class CareerTimelineComponent {
       ],
       icon: 'school',
       colorClass: 'text-green-500',
-      bgClass: 'bg-green-100 dark:bg-green-500/20'
+      bgClass: 'bg-green-100 dark:bg-green-900'
     },
     {
       id: '7',
       type: 'job',
       title: 'Apprentie Préparatrice en Pharmacie',
-      organization: 'Pharmacie',
+      organization: 'Pharmacie Lefèvre',
       location: 'Olivet, Centre-Val de Loire',
       startDate: '2018-09',
       endDate: '2021-08',
@@ -175,7 +191,8 @@ export class CareerTimelineComponent {
       ],
       icon: 'work',
       colorClass: 'text-primary',
-      bgClass: 'bg-blue-100 dark:bg-primary/20'
+      bgClass: 'bg-blue-100 dark:bg-blue-900',
+      linkedTo: '8'
     },
     {
       id: '8',
@@ -193,7 +210,8 @@ export class CareerTimelineComponent {
       ],
       icon: 'school',
       colorClass: 'text-green-500',
-      bgClass: 'bg-green-100 dark:bg-green-500/20'
+      bgClass: 'bg-green-100 dark:bg-green-900',
+      linkedTo: '7'
     },
     {
       id: '9',
@@ -212,7 +230,8 @@ export class CareerTimelineComponent {
       ],
       icon: 'work',
       colorClass: 'text-primary',
-      bgClass: 'bg-blue-100 dark:bg-primary/20'
+      bgClass: 'bg-blue-100 dark:bg-blue-900',
+      linkedTo: '10'
     },
     {
       id: '10',
@@ -230,14 +249,15 @@ export class CareerTimelineComponent {
       ],
       icon: 'school',
       colorClass: 'text-green-500',
-      bgClass: 'bg-green-100 dark:bg-green-500/20'
+      bgClass: 'bg-green-100 dark:bg-green-900',
+      linkedTo: '9'
     },
     {
       id: '11',
       type: 'education',
       title: 'Bac Pro Commercialisation et Service en Restauration',
       organization: 'Lycée des Métiers de l\'Hôtellerie et du Tourisme du Val de Loire',
-      location: 'France',
+      location: 'Blois, Centre-Val de Loire',
       startDate: '2014-09',
       endDate: '2017-06',
       current: false,
@@ -248,7 +268,7 @@ export class CareerTimelineComponent {
       ],
       icon: 'school',
       colorClass: 'text-green-500',
-      bgClass: 'bg-green-100 dark:bg-green-500/20'
+      bgClass: 'bg-green-100 dark:bg-green-900'
     }
   ];
 
@@ -257,6 +277,69 @@ export class CareerTimelineComponent {
       return this.timelineEvents;
     }
     return this.timelineEvents.filter(e => e.type === this.activeFilter);
+  }
+
+  // Getter pour regrouper les alternances et les éléments individuels
+  get groupedTimelineItems(): TimelineItem[] {
+    const processed = new Set<string>();
+    const items: TimelineItem[] = [];
+
+    // Filtrer d'abord selon le filtre actif
+    const eventsToProcess = this.filteredEvents;
+
+    for (const event of eventsToProcess) {
+      if (processed.has(event.id)) continue;
+
+      if (event.linkedTo) {
+        const linkedEvent = this.timelineEvents.find(e => e.id === event.linkedTo);
+
+        // Vérifier si l'événement lié est aussi dans les événements filtrés
+        const linkedInFiltered = eventsToProcess.find(e => e.id === event.linkedTo);
+
+        if (linkedEvent && linkedInFiltered && !processed.has(linkedEvent.id)) {
+          // Créer un bloc alternance
+          const education = event.type === 'education' ? event : linkedEvent;
+          const job = event.type === 'job' ? event : linkedEvent;
+
+          items.push({
+            id: `alternance-${event.id}-${linkedEvent.id}`,
+            type: 'alternance',
+            startDate: event.startDate,
+            endDate: event.endDate,
+            current: event.current || linkedEvent.current,
+            education,
+            job
+          });
+
+          processed.add(event.id);
+          processed.add(linkedEvent.id);
+        } else {
+          // L'événement lié n'est pas dans le filtre, afficher seul
+          items.push({
+            id: `standalone-${event.id}`,
+            type: 'standalone',
+            startDate: event.startDate,
+            endDate: event.endDate,
+            current: event.current,
+            event
+          });
+          processed.add(event.id);
+        }
+      } else {
+        // Élément individuel sans liaison
+        items.push({
+          id: `standalone-${event.id}`,
+          type: 'standalone',
+          startDate: event.startDate,
+          endDate: event.endDate,
+          current: event.current,
+          event
+        });
+        processed.add(event.id);
+      }
+    }
+
+    return items;
   }
 
   setFilter(filter: string): void {
