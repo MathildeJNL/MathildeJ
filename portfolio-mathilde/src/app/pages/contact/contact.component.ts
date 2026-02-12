@@ -49,14 +49,14 @@ export class ContactComponent {
     {
       icon: 'location_on',
       title: 'Localisation',
-      value: 'Paris, France',
+      value: 'Centre-Val de Loire, France',
       colorClass: 'text-red-500',
       bgClass: 'bg-red-100 dark:bg-red-500/20'
     },
     {
       icon: 'schedule',
       title: 'Disponibilité',
-      value: 'Lun - Ven, 9h - 18h (CET)',
+      value: 'Lun - Ven, 9h - 17h (CET)',
       colorClass: 'text-green-500',
       bgClass: 'bg-green-100 dark:bg-green-500/20'
     }
@@ -81,23 +81,18 @@ export class ContactComponent {
   // FAQ
   faqItems: FaqItem[] = [
     {
-      question: 'Quel est votre délai de réponse typique ?',
-      answer: 'Je réponds généralement dans les 24-48 heures ouvrées. Pour les urgences, n\'hésitez pas à le mentionner dans votre message.',
+      question: 'Comment continuez-vous à apprendre ?',
+      answer: 'Je me forme en continu grâce à des projets personnels, des ressources en ligne (documentation, cours, articles techniques) et des challenges pour renforcer mes bases. L\'apprentissage fait partie intégrante de ma pratique quotidienne.',
       isOpen: false
     },
     {
-      question: 'Êtes-vous disponible pour des missions freelance ?',
-      answer: 'Oui, je suis ouverte aux missions freelance, notamment en architecture cloud, SRE et développement backend. N\'hésitez pas à décrire votre projet.',
+      question: 'Pouvez-vous travailler en remote ou en hybride ?',
+      answer: 'Oui, je suis tout à fait à l\'aise en remote. Je peux également travailler en hybride selon la localisation et l\'organisation de l\'équipe.',
       isOpen: false
     },
     {
-      question: 'Travaillez-vous en remote ?',
-      answer: 'Absolument ! J\'ai l\'habitude de travailler en full-remote avec des équipes distribuées internationalement. Je suis également flexible pour des missions hybrides en région parisienne.',
-      isOpen: false
-    },
-    {
-      question: 'Quels types de projets vous intéressent ?',
-      answer: 'Je suis passionnée par les projets impliquant l\'infrastructure cloud, les systèmes distribués, le DevOps/SRE et le développement d\'outils internes. Les startups tech et scale-ups sont mon terrain de jeu préféré.',
+      question: 'Quels sont vos horaires de travail habituels ?',
+      answer: 'Je travaille principalement en journée, du lundi au vendredi, généralement entre 9h et 17h. Je privilégie un rythme stable tout en restant flexible selon les besoins du projet, tant que cela est anticipé.',
       isOpen: false
     }
   ];
@@ -107,7 +102,6 @@ export class ContactComponent {
     'Opportunité professionnelle',
     'Projet freelance',
     'Collaboration',
-    'Mentorat',
     'Question technique',
     'Autre'
   ];
