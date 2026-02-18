@@ -68,7 +68,35 @@
             </div>
           }
 
+          @if (submitError) {
+            <div class="mb-6 p-4 rounded-lg bg-red-100 dark:bg-red-500/20 border border-red-200 dark:border-red-500/30 flex items-center gap-3">
+              <span class="material-symbols-outlined text-red-600 dark:text-red-400">error</span>
+              <p class="text-red-700 dark:text-red-300 font-medium">
+                Une erreur est survenue. Veuillez réessayer ou me contacter directement par email.
+              </p>
+            </div>
+          }
+
+          @if (rateLimitError) {
+            <div class="mb-6 p-4 rounded-lg bg-yellow-100 dark:bg-yellow-500/20 border border-yellow-200 dark:border-yellow-500/30 flex items-center gap-3">
+              <span class="material-symbols-outlined text-yellow-600 dark:text-yellow-400">schedule</span>
+              <p class="text-yellow-700 dark:text-yellow-300 font-medium">
+                Vous avez atteint la limite de messages. Veuillez réessayer dans une heure ou me contacter directement par email.
+              </p>
+            </div>
+          }
+
           <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6">
+            <!-- Honeypot field - invisible pour les humains, piège à bots -->
+            <div class="absolute -left-[9999px]" aria-hidden="true">
+              <input
+                type="text"
+                formControlName="website"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </div>
+
             <!-- Name & Email Row -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
