@@ -32,96 +32,87 @@ export class ProjectsGalleryComponent {
 
   categories = [
     { id: 'all', label: 'Tous', icon: 'apps' },
-    { id: 'infrastructure', label: 'Infrastructure', icon: 'dns' },
     { id: 'backend', label: 'Backend', icon: 'database' },
-    { id: 'devops', label: 'DevOps', icon: 'settings' },
-    { id: 'security', label: 'Sécurité', icon: 'security' },
     { id: 'frontend', label: 'Frontend', icon: 'web' }
   ];
 
   projects: Project[] = [
     {
-      id: 'cloud-migration',
-      title: 'Cloud Migration Orchestrator',
-      description: 'Automatisation complète de la migration de 50+ microservices vers Kubernetes, réduisant le downtime de 90% et les coûts d\'infrastructure de 40%.',
-      imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBnVrUP1M1feGsjuJWGASr8sGWfEomH0_ErzAG2O7GhneV5YBxqbTwCPrtt-6VyFu1iTYdpW1RLBjJWgMFpAA4I0mgZjvbQzqwgJlR8T_mue6yE2PACvmPtkqhnnY75QTFrwNA8-93gmf28qJR1Ak--VRnIKmGj69mpOWdB00HQcrW2rVQXKYGwIksJ7d-wIycb5YYCwveScbDNptBpm1C6IAaaMiNnwg4U6Mnf5BEarwWIi-1XaAdq1S_SoE8WTXk_cVFkYMzjapEL',
-      tags: ['Go', 'Terraform', 'AWS', 'Kubernetes'],
-      category: 'infrastructure',
-      year: 2024,
-      featured: true,
-      metrics: [
-        { label: 'Microservices', value: '50+' },
-        { label: 'Downtime réduit', value: '90%' }
-      ]
-    },
-    {
-      id: 'zero-trust',
-      title: 'Zero-Trust Access Gateway',
-      description: 'Implémentation d\'une couche d\'accès sécurisée pour les outils internes, remplaçant les VPN legacy avec une architecture Zero-Trust moderne.',
-      imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCKn1_A6miu5HblbvQzH4ysb8qDEjE5Yif3D-cIGtWLrL31EFTlRlnRVKh0gR-TZOWxs9_3-JZUIETgVqiVb4aHJMZ9dnDeJp86bVjAdMzBRWk1npzK3v8jRBt1NMXdDgn7TQ25AtihhwlGytNsZ5sQQYAULSD3wGx_pSQdOrMW9xbVbHCmMbTpV179QeybeMsa07BHzW9DjZ56rRrMgVUwpPCRQh9X7CtiimWU4d7NPYoJ7RhtPlKQxNiI_PQu83yma0RvPmVYNWAs',
-      tags: ['Rust', 'gRPC', 'Security', 'OAuth'],
-      category: 'security',
-      year: 2024,
-      featured: true,
-      metrics: [
-        { label: 'Latence', value: '<10ms' },
-        { label: 'Utilisateurs', value: '500+' }
-      ]
-    },
-    {
-      id: 'observability-platform',
-      title: 'Plateforme d\'Observabilité',
-      description: 'Stack de monitoring unifié combinant métriques, logs et traces pour une visibilité complète sur l\'infrastructure et les applications.',
-      imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBSQz99iRzh8z3R4nCJ2mHLCJaXVOlf7LH4j8mKWsVEG4kcJF0mYqtHvJAOGRj2I9GJrjWKS9Z6OQFHaGGgRqLXcXUe8N9yrBwBWI2ksV1DXYVvpFJiKEw-Jq9OYXxzGFNRwKYT2Z4LQVVNqg',
-      tags: ['Prometheus', 'Grafana', 'Loki', 'Tempo'],
-      category: 'devops',
-      year: 2023,
-      featured: false,
-      metrics: [
-        { label: 'Métriques/sec', value: '1M+' },
-        { label: 'Retention', value: '90 jours' }
-      ]
-    },
-    {
-      id: 'api-gateway',
-      title: 'API Gateway Haute Performance',
-      description: 'Gateway centralisée pour microservices avec rate limiting, authentification, et routing intelligent.',
-      imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA5vXIzCuqYLT8Rv7X3Vy8TjXSGV8fVnlF7_KrqpI0TL2NlZH7rnpXvwMsI2NvgXKYzrqPPXpBqJlZ5N3YoL8qF4Z1nKEBY4Z2G7VjJ',
-      tags: ['Go', 'Redis', 'gRPC', 'REST'],
-      category: 'backend',
-      year: 2023,
-      featured: false,
-      metrics: [
-        { label: 'Requêtes/sec', value: '100K+' },
-        { label: 'P99 Latency', value: '5ms' }
-      ]
-    },
-    {
-      id: 'ci-cd-platform',
-      title: 'Plateforme CI/CD Self-Service',
-      description: 'Plateforme de déploiement permettant aux équipes de créer et gérer leurs pipelines de manière autonome.',
-      imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDvJ9Fy5vJL5MqX9BQRv8s3LnVHV1WoYB7qIpKF3RvL8tT7J9nHXpBwZKVF2NpXrYQqL5xG8mPnVN9H6oJI4Z2M7KBXY3wF',
-      tags: ['GitLab CI', 'ArgoCD', 'Kubernetes', 'Helm'],
-      category: 'devops',
-      year: 2023,
-      featured: true,
-      metrics: [
-        { label: 'Déploiements/jour', value: '200+' },
-        { label: 'Teams', value: '15' }
-      ]
-    },
-    {
-      id: 'reliable-ui',
-      title: 'ReliableUI Dashboard',
-      description: 'Dashboard open-source pour visualiser la santé des microservices en temps réel avec alerting intelligent.',
-      imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCb8qZP5V7KvXYF3nBL9M7RoWpHT5vJ2qI8sNfK6LgX4rYH1mZW3tUoEJN5K8qF9pXvL7yG2nMbVJ6I3oRH',
-      tags: ['React', 'TypeScript', 'D3.js', 'WebSocket'],
+      id: 'openclassrooms-2',
+      title: 'Transformer une maquette en site web avec HTML & CSS',
+      description: 'Intégration d\'une maquette de site responsive en utilisant HTML et CSS.',
+      imageUrl: 'assets/images/projects/booki.png',
+      tags: ['HTML', 'CSS', 'Responsive'],
       category: 'frontend',
-      year: 2024,
+      year: 2021,
       featured: false,
       metrics: [
-        { label: 'Stars GitHub', value: '2.5K' },
-        { label: 'Contributors', value: '25' }
+        { label: 'Formation', value: 'OpenClassrooms' }
+      ]
+    },
+    {
+      id: 'openclassrooms-3',
+      title: 'Dynamiser une page web avec des animations CSS',
+      description: 'Création d\'animations CSS avancées, approche mobile-first et utilisation d\'un système de versioning.',
+      imageUrl: 'assets/images/projects/ohmyfood_.png',
+      tags: ['CSS', 'Animations', 'Git', 'Mobile-first'],
+      category: 'frontend',
+      year: 2022,
+      featured: false,
+      metrics: [
+        { label: 'Formation', value: 'OpenClassrooms' }
+      ]
+    },
+    {
+      id: 'openclassrooms-4',
+      title: 'Optimiser un site web existant',
+      description: 'Amélioration du SEO, de l\'accessibilité et optimisation globale des performances du site.',
+      imageUrl: 'assets/images/projects/chouette-agence.png',
+      tags: ['SEO', 'Accessibilité', 'Performance'],
+      category: 'frontend',
+      year: 2022,
+      featured: false,
+      metrics: [
+        { label: 'Formation', value: 'OpenClassrooms' }
+      ]
+    },
+    {
+      id: 'openclassrooms-5',
+      title: 'Construire un site de e-commerce en Javascript',
+      description: 'Développement d\'un site e-commerce en manipulant une API et le DOM, et mise en place d\'un plan de test.',
+      imageUrl: 'assets/images/projects/kanap.png',
+      tags: ['JavaScript', 'API', 'DOM', 'Tests'],
+      category: 'frontend',
+      year: 2022,
+      featured: false,
+      metrics: [
+        { label: 'Formation', value: 'OpenClassrooms' }
+      ]
+    },
+    {
+      id: 'openclassrooms-6',
+      title: 'Construire une API sécurisée pour une application d\'avis gastronomique',
+      description: 'Création d\'une API REST sécurisée avec NodeJS et MongoDB.',
+      imageUrl: 'assets/images/projects/piiquante.png',
+      tags: ['NodeJS', 'MongoDB', 'Sécurité', 'API'],
+      category: 'backend',
+      year: 2022,
+      featured: false,
+      metrics: [
+        { label: 'Formation', value: 'OpenClassrooms' }
+      ]
+    },
+    {
+      id: 'openclassrooms-7',
+      title: 'Créez un réseau social d\'entreprise',
+      description: 'Développement d\'un réseau social interne avec VueJS (CRUD) et Base de données SQL.',
+      imageUrl: 'assets/images/projects/groupomania.png',
+      tags: ['VueJS', 'SQL', 'CRUD'],
+      category: 'frontend',
+      year: 2022,
+      featured: true,
+      metrics: [
+        { label: 'Formation', value: 'OpenClassrooms' }
       ]
     }
   ];

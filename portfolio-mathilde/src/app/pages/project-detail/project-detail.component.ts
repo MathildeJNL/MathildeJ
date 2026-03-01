@@ -77,129 +77,272 @@ export class ProjectDetailComponent implements OnInit {
 
   private projectsData: Project[] = [
     {
-      id: 'cloud-migration',
-      title: 'Cloud Migration Orchestrator',
-      subtitle: 'Migration automatisée vers Kubernetes',
-      description: 'Automatisation complète de la migration de 50+ microservices vers Kubernetes.',
-      longDescription: 'Ce projet a consisté à concevoir et implémenter un orchestrateur de migration cloud permettant de transférer automatiquement plus de 50 microservices d\'une infrastructure on-premise vers un cluster Kubernetes managé sur AWS EKS. L\'objectif principal était de réduire drastiquement le downtime lors des migrations tout en maintenant la cohérence des données.',
-      imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBnVrUP1M1feGsjuJWGASr8sGWfEomH0_ErzAG2O7GhneV5YBxqbTwCPrtt-6VyFu1iTYdpW1RLBjJWgMFpAA4I0mgZjvbQzqwgJlR8T_mue6yE2PACvmPtkqhnnY75QTFrwNA8-93gmf28qJR1Ak--VRnIKmGj69mpOWdB00HQcrW2rVQXKYGwIksJ7d-wIycb5YYCwveScbDNptBpm1C6IAaaMiNnwg4U6Mnf5BEarwWIi-1XaAdq1S_SoE8WTXk_cVFkYMzjapEL',
-      galleryImages: [
-        'https://lh3.googleusercontent.com/aida-public/AB6AXuBnVrUP1M1feGsjuJWGASr8sGWfEomH0_ErzAG2O7GhneV5YBxqbTwCPrtt',
-        'https://lh3.googleusercontent.com/aida-public/AB6AXuCKn1_A6miu5HblbvQzH4ysb8qDEjE5Yif3D-cIGtWLrL31EFTlRlnRVKh0',
-        'https://lh3.googleusercontent.com/aida-public/AB6AXuBSQz99iRzh8z3R4nCJ2mHLCJaXVOlf7LH4j8mKWsVEG4kcJF0mYqtHvJAO'
-      ],
-      tags: ['Go', 'Terraform', 'AWS', 'Kubernetes', 'Docker', 'ArgoCD'],
-      category: 'infrastructure',
-      year: 2024,
-      duration: '8 mois',
-      role: 'Lead SRE / Architecte',
-      teamSize: '5 personnes',
-      status: 'Production',
+      id: 'openclassrooms-2',
+      title: 'Transformer une maquette en site web avec HTML & CSS',
+      subtitle: 'Projet Formation OpenClassrooms',
+      description: 'Intégration d\'une maquette de site responsive en utilisant HTML et CSS.',
+      longDescription: 'Ce projet a consisté à intégrer la maquette du site "Reservia" en respectant au maximum le design fourni. Il a fallu s\'assurer que le site soit responsive, c\'est-à-dire adaptable sur tous les supports (mobile, tablette et desktop), en utilisant les bonnes pratiques HTML5 et CSS3 ainsi que l\'approche Mobile-First.',
+      imageUrl: 'assets/images/projects/booki.png',
+      galleryImages: [],
+      tags: ['HTML', 'CSS', 'Responsive'],
+      category: 'frontend',
+      year: 2021,
+      duration: '1 mois',
+      role: 'Développeur Front-end',
+      teamSize: 'Individuel',
+      status: 'Terminé',
       metrics: [
-        { label: 'Microservices migrés', value: '50+', icon: 'dns' },
-        { label: 'Réduction downtime', value: '90%', icon: 'trending_down' },
-        { label: 'Économies infra', value: '40%', icon: 'savings' },
-        { label: 'Temps déploiement', value: '-60%', icon: 'speed' }
+        { label: 'Technos', value: 'HTML/CSS', icon: 'code' }
       ],
       challenges: [
         {
-          title: 'Données stateful',
-          description: 'Migration des bases de données sans perte de données ni interruption de service prolongée.'
+          title: 'Intégration',
+          description: 'Respect du pixel perfect en partant d\'outils de maquettage.'
         },
         {
-          title: 'Dépendances inter-services',
-          description: 'Gestion des dépendances complexes entre microservices pendant la phase de transition.'
-        },
-        {
-          title: 'Rollback automatique',
-          description: 'Mise en place d\'un système de rollback automatique en cas d\'échec de migration.'
+          title: 'Responsive',
+          description: 'Assurer une apparence propre quel que soit le format d\'écran.'
         }
       ],
       solutions: [
-        'Implémentation d\'un pattern Blue-Green Deployment pour les migrations sans downtime',
-        'Utilisation de Terraform pour l\'Infrastructure as Code avec state management centralisé',
-        'Mise en place d\'ArgoCD pour le GitOps et les déploiements continus',
-        'Création d\'un CLI custom en Go pour orchestrer les migrations de manière déclarative'
+        'Écriture de code HTML sémantique pour la structure',
+        'Utilisation de CSS Flexbox et des Media Queries pour le positionnement'
       ],
       technologies: [
-        { name: 'Go', category: 'Backend', description: 'Développement du CLI et des controllers Kubernetes' },
-        { name: 'Terraform', category: 'IaC', description: 'Provisioning de l\'infrastructure AWS' },
-        { name: 'Kubernetes', category: 'Orchestration', description: 'Plateforme cible de déploiement' },
-        { name: 'ArgoCD', category: 'GitOps', description: 'Déploiement continu et synchronisation' },
-        { name: 'AWS EKS', category: 'Cloud', description: 'Cluster Kubernetes managé' },
-        { name: 'Prometheus', category: 'Monitoring', description: 'Métriques et alerting' }
+        { name: 'HTML5', category: 'Frontend', description: 'Langage de balisage structurel' },
+        { name: 'CSS3', category: 'Frontend', description: 'Langage de style en cascade' }
       ],
       milestones: [
-        { date: 'Janvier 2024', title: 'Kickoff & Architecture', description: 'Définition de l\'architecture cible et planning' },
-        { date: 'Mars 2024', title: 'MVP Orchestrateur', description: 'Première version fonctionnelle du CLI' },
-        { date: 'Mai 2024', title: 'Migration Pilote', description: 'Migration des 10 premiers services' },
-        { date: 'Juillet 2024', title: 'Migration Complète', description: 'Tous les services migrés vers EKS' },
-        { date: 'Août 2024', title: 'Optimisation', description: 'Fine-tuning et documentation' }
+        { date: 'Décembre 2021', title: 'Réalisation', description: 'Création et mise en ligne du projet' }
       ],
       links: {
-        github: 'https://github.com/mathildej/cloud-migration-orchestrator',
-        documentation: 'https://docs.example.com/migration'
-      },
-      testimonial: {
-        quote: 'La migration s\'est déroulée de manière transparente pour nos utilisateurs. L\'équipe SRE a fait un travail remarquable.',
-        author: 'Jean Dupont',
-        role: 'VP Engineering'
+        github: 'https://github.com/MathildeJNL/MathildeJeannolle_2_07122021'
       }
     },
     {
-      id: 'zero-trust',
-      title: 'Zero-Trust Access Gateway',
-      subtitle: 'Architecture sécurisée sans VPN',
-      description: 'Implémentation d\'une couche d\'accès sécurisée remplaçant les VPN legacy.',
-      longDescription: 'Ce projet visait à moderniser l\'accès aux ressources internes en remplaçant l\'infrastructure VPN traditionnelle par une solution Zero-Trust. Cette approche permet un contrôle d\'accès granulaire basé sur l\'identité, le contexte et la posture de sécurité du device.',
-      imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCKn1_A6miu5HblbvQzH4ysb8qDEjE5Yif3D-cIGtWLrL31EFTlRlnRVKh0gR-TZOWxs9_3-JZUIETgVqiVb4aHJMZ9dnDeJp86bVjAdMzBRWk1npzK3v8jRBt1NMXdDgn7TQ25AtihhwlGytNsZ5sQQYAULSD3wGx_pSQdOrMW9xbVbHCmMbTpV179QeybeMsa07BHzW9DjZ56rRrMgVUwpPCRQh9X7CtiimWU4d7NPYoJ7RhtPlKQxNiI_PQu83yma0RvPmVYNWAs',
+      id: 'openclassrooms-3',
+      title: 'Dynamiser une page web avec des animations CSS',
+      subtitle: 'Projet Formation OpenClassrooms',
+      description: 'Création d\'animations CSS avancées, approche mobile-first et utilisation d\'un système de versioning.',
+      longDescription: 'Ce projet consistait à implémenter la version web de "Ohmyfood", un site de réservation de restaurants. L\'objectif était d\'enrichir l\'interface avec des animations CSS avancées telles que des spinners de chargement, l\'apparition progressive d\'éléments et des effets au survol, le tout avec un code maintenable et pré-traité via SASS.',
+      imageUrl: 'assets/images/projects/ohmyfood_.png',
       galleryImages: [],
-      tags: ['Rust', 'gRPC', 'Security', 'OAuth', 'mTLS'],
-      category: 'security',
-      year: 2024,
-      duration: '6 mois',
-      role: 'Security Engineer',
-      teamSize: '3 personnes',
-      status: 'Production',
+      tags: ['CSS', 'Animations', 'Git', 'Mobile-first'],
+      category: 'frontend',
+      year: 2022,
+      duration: '1 mois',
+      role: 'Développeur Front-end',
+      teamSize: 'Individuel',
+      status: 'Terminé',
       metrics: [
-        { label: 'Latence ajoutée', value: '<10ms', icon: 'speed' },
-        { label: 'Utilisateurs', value: '500+', icon: 'group' },
-        { label: 'Apps protégées', value: '30+', icon: 'shield' },
-        { label: 'Incidents sécurité', value: '0', icon: 'verified_user' }
+        { label: 'Technos', value: 'Sass / CSS', icon: 'palette' }
       ],
       challenges: [
         {
-          title: 'Performance',
-          description: 'Maintenir une latence minimale malgré les vérifications de sécurité supplémentaires.'
+          title: 'Animations fluides',
+          description: 'Mettre en place des keyframes fluides sans utiliser de Javascript.'
         },
         {
-          title: 'Intégration IdP',
-          description: 'Support de multiples identity providers (Okta, Azure AD, Google).'
+          title: 'Versioning',
+          description: 'S\'habituer à historiser le projet avec Git / GitHub.'
         }
       ],
       solutions: [
-        'Développement en Rust pour des performances optimales',
-        'Mise en cache des décisions d\'autorisation',
-        'Architecture edge-based avec points de présence distribués'
+        'Utilisation du préprocesseur SASS (variables, mixins) pour un CSS optimisé',
+        'Réalisation des effets via CSS3 (transform, transition, animation)'
       ],
       technologies: [
-        { name: 'Rust', category: 'Backend', description: 'Proxy haute performance' },
-        { name: 'gRPC', category: 'Communication', description: 'Communication inter-services' },
-        { name: 'OAuth 2.0/OIDC', category: 'Auth', description: 'Protocoles d\'authentification' },
-        { name: 'mTLS', category: 'Security', description: 'Authentification mutuelle' }
+        { name: 'CSS / SASS', category: 'Frontend', description: 'Mise en forme et animations' },
+        { name: 'Git', category: 'Outils', description: 'Contrôle de version' }
       ],
       milestones: [
-        { date: 'Février 2024', title: 'Design & PoC', description: 'Validation du concept' },
-        { date: 'Avril 2024', title: 'Core Development', description: 'Développement du proxy Rust' },
-        { date: 'Juin 2024', title: 'Rollout', description: 'Déploiement progressif' }
+        { date: 'Janvier 2022', title: 'Réalisation', description: 'Intégration HTML/SCSS et configuration Git' }
       ],
       links: {
-        github: 'https://github.com/mathildej/zero-trust-gateway'
+        github: 'https://github.com/MathildeJNL/MathildeJeannolle_3_08012022'
+      }
+    },
+    {
+      id: 'openclassrooms-4',
+      title: 'Optimiser un site web existant',
+      subtitle: 'Projet Formation OpenClassrooms',
+      description: 'Amélioration du SEO, de l\'accessibilité et optimisation globale des performances du site.',
+      longDescription: 'Sur la base d\'un site existant ("La Panthère"), la mission de ce projet était de détecter les points faibles en matière de SEO, d\'accessibilité et de performance, de produire un rapport d\'audit, puis d\'implémenter les correctifs nécessaires pour atteindre de hauts scores sur les outils de mesure.',
+      imageUrl: 'assets/images/projects/chouette-agence.png',
+      galleryImages: [],
+      tags: ['SEO', 'Accessibilité', 'Performance'],
+      category: 'frontend',
+      year: 2022,
+      duration: '1 mois',
+      role: 'Consultante SEO / Frontend',
+      teamSize: 'Individuel',
+      status: 'Terminé',
+      metrics: [
+        { label: 'Audit', value: 'Google Lighthouse', icon: 'analytics' }
+      ],
+      challenges: [
+        {
+          title: 'Identification des problèmes',
+          description: 'Réaliser un audit complet avec Lighthouse et Wave pour trouver les axes d\'amélioration.'
+        },
+        {
+          title: 'Poids du site',
+          description: 'Optimiser drastiquement le poids des images.'
+        }
+      ],
+      solutions: [
+        'Compression des images, correction de sémantique W3C et ajout de balises meta (OG, Twitter)',
+        'Mise à jour du code et amélioration du contraste couleur pour l\'accessibilité'
+      ],
+      technologies: [
+        { name: 'HTML / CSS', category: 'Frontend', description: 'Ajustement structure et style' },
+        { name: 'Lighthouse', category: 'Outils', description: 'Analyse SEO, Core Web Vitals' }
+      ],
+      milestones: [
+        { date: 'Février 2022', title: 'Réalisation', description: 'Audit et implémentation SEO' }
+      ],
+      links: {
+        github: 'https://github.com/MathildeJNL/MathildeJeannolle_4_120222'
+      }
+    },
+    {
+      id: 'openclassrooms-5',
+      title: 'Construire un site de e-commerce en Javascript',
+      subtitle: 'Projet Formation OpenClassrooms',
+      description: 'Développement d\'un site e-commerce en manipulant une API et le DOM, et mise en place d\'un plan de test.',
+      longDescription: 'Le projet "Kanap" demandait la création d\'une vitrine e-commerce dynamique en interagissant avec l\'API d\'un backend au moyen de l\'API Fetch. Il fallait générer le DOM de façon dynamique, valider le panier côté client et renvoyer les données pour confirmation de commande.',
+      imageUrl: 'assets/images/projects/kanap.png',
+      galleryImages: [],
+      tags: ['JavaScript', 'API', 'DOM', 'Tests'],
+      category: 'frontend',
+      year: 2022,
+      duration: '1,5 mois',
+      role: 'Développeur Javascript',
+      teamSize: 'Individuel',
+      status: 'Terminé',
+      metrics: [
+        { label: 'Language', value: 'Vanilla JS', icon: 'javascript' }
+      ],
+      challenges: [
+        {
+          title: 'Appels API',
+          description: 'Consommer une API REST en asynchrone (Promises/Async/Await).'
+        },
+        {
+          title: 'Manipulation DOM',
+          description: 'Afficher des listes de produits générées dynamiquement en JS.'
+        }
+      ],
+      solutions: [
+        'Architecture du code modulaire et séparation des responsabilités',
+        'Utilisation du LocalStorage pour persister le panier d\'achat'
+      ],
+      technologies: [
+        { name: 'JavaScript Vanilla', category: 'Frontend', description: 'Langage de logique client' },
+        { name: 'API Fetch', category: 'Réseau', description: 'Requêtes HTTP asynchrones' },
+        { name: 'LocalStorage', category: 'Stockage', description: 'Sauvegarde des données client' }
+      ],
+      milestones: [
+        { date: 'Mars 2022', title: 'Réalisation', description: 'Développement complet de la boutique et du panier' }
+      ],
+      links: {
+        github: 'https://github.com/MathildeJNL/MathildeJeannolle_5_14032022'
+      }
+    },
+    {
+      id: 'openclassrooms-6',
+      title: 'Construire une API sécurisée pour une application d\'avis gastronomique',
+      subtitle: 'Projet Formation OpenClassrooms',
+      description: 'Création d\'une API REST sécurisée avec NodeJS et MongoDB.',
+      longDescription: 'Pour le projet "Piiquante", l\'objectif était de concevoir le backend entier d\'une application web d\'avis de sauces pimentées. L\'API devait permettre aux utilisateurs de s\'inscrire, de se connecter, d\'ajouter ou de modifier leurs propres sauces, et de "liker" ou "disliker" les sauces des autres.',
+      imageUrl: 'assets/images/projects/piiquante.png',
+      galleryImages: [],
+      tags: ['NodeJS', 'MongoDB', 'Sécurité', 'API'],
+      category: 'backend',
+      year: 2022,
+      duration: '1,5 mois',
+      role: 'Développeur Backend',
+      teamSize: 'Individuel',
+      status: 'Terminé',
+      metrics: [
+        { label: 'Serveur', value: 'Node/Express', icon: 'dns' },
+        { label: 'DB', value: 'NoSQL', icon: 'database' }
+      ],
+      challenges: [
+        {
+          title: 'Sécurité',
+          description: 'Mettre en place des pratiques sécurisées (hachage de mot de passe, tokens JWT, protection contre les injections).'
+        },
+        {
+          title: 'Mongoose',
+          description: 'Modéliser et interagir avec une base NoSQL MongoDB depuis Node.'
+        }
+      ],
+      solutions: [
+        'Implémentation de bcrypt pour le hachage sécurisé des mots de passe',
+        'Délivrance et vérification de requêtes via JsonWebToken (JWT)',
+        'Structuration d\'un CRUD via le framework Express'
+      ],
+      technologies: [
+        { name: 'Node.js', category: 'Backend', description: 'Environnement d\'exécution serveur' },
+        { name: 'Express', category: 'Backend', description: 'Framework pour l\'API et le routage' },
+        { name: 'MongoDB', category: 'Base de données', description: 'Stockage NoSQL des sauces et utilisateurs' },
+        { name: 'Mongoose', category: 'Base de données', description: 'ODM pour modéliser les données MongoDB' }
+      ],
+      milestones: [
+        { date: 'Juillet 2022', title: 'Réalisation', description: 'Déploiement du serveur sécurisé avec base connectée' }
+      ],
+      links: {
+        github: 'https://github.com/MathildeJNL/MathildeJeannolle_6_01072022'
+      }
+    },
+    {
+      id: 'openclassrooms-7',
+      title: 'Créez un réseau social d\'entreprise',
+      subtitle: 'Projet Formation OpenClassrooms',
+      description: 'Développement d\'un réseau social interne avec VueJS (CRUD) et Base de données SQL.',
+      longDescription: 'Ce projet final "Groupomania" englobait le frontend et le backend. L\'intitulé demandait de créer un réseau social interne pour les employés d\'une entreprise, leur permettant de s\'authentifier, publier des articles, interagir et modérer le contenu.',
+      imageUrl: 'assets/images/projects/groupomania.png',
+      galleryImages: [],
+      tags: ['VueJS', 'SQL', 'CRUD'],
+      category: 'frontend',
+      year: 2022,
+      duration: '1,5 mois',
+      role: 'Développeur Full-Stack',
+      teamSize: 'Individuel',
+      status: 'Terminé',
+      metrics: [
+        { label: 'Stack', value: 'Vue / SQL', icon: 'layers' }
+      ],
+      challenges: [
+        {
+          title: 'Full Stack',
+          description: 'Gérer de bout en bout l\'application: de la base de données à l\'intégration frontend.'
+        },
+        {
+          title: 'Structure de données Relationnelle',
+          description: 'Gérer les relations de bases de données en SQL pour les auteurs et les publications.'
+        }
+      ],
+      solutions: [
+        'Utilisation du framework Vue.js pour créer l\'interface utilisateur réactive',
+        'Création d\'une architecture Node.js / Express couplée à une base MySQL/Sequelize'
+      ],
+      technologies: [
+        { name: 'Vue.js', category: 'Frontend', description: 'Framework JavaScript progressif' },
+        { name: 'Node.js/Express', category: 'Backend', description: 'API REST d\'entreprise' },
+        { name: 'MySQL', category: 'Base de données', description: 'SGBD Relationnel' }
+      ],
+      milestones: [
+        { date: 'Juillet 2022', title: 'Réalisation', description: 'Livrable Fullstack du projet Groupomania' }
+      ],
+      links: {
+        github: 'https://github.com/MathildeJNL/MathildeJeannolle_7_22072022'
       }
     }
   ];
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
