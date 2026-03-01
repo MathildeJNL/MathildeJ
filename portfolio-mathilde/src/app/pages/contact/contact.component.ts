@@ -51,7 +51,7 @@ export class ContactComponent {
     {
       icon: 'mail',
       title: 'Email',
-      value: 'mathilde&#64;example.dev',
+      value: 'mathilde.dev.web@gmail.com',
       link: 'mailto:mathilde.dev.web@gmail.com',
       colorClass: 'text-primary',
       bgClass: 'bg-blue-100 dark:bg-primary/20'
