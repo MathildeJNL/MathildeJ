@@ -1,5 +1,5 @@
 # Dependencies
-/node_modules
+node_modules
 /.pnp
 .pnp.js
 
@@ -10,7 +10,7 @@
 /bazel-out
 
 # Node
-/node_modules
+node_modules
 npm-debug.log
 yarn-error.log
 
@@ -32,7 +32,7 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
+/.angular/
 .sass-cache/
 /connect.lock
 /coverage
@@ -98,3 +98,9 @@ jspm_packages/
 
 # Tailwind
 .tailwindcss/
+
+# Ignore toute configuration et cache de .angular
+/.angular/
+/dist/
+/docs/
+
