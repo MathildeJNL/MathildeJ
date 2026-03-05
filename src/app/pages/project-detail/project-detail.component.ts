@@ -34,7 +34,7 @@ interface Project {
   imageUrl: string;
   galleryImages: string[];
   tags: string[];
-  category: string;
+  categories: string[];
   year: number;
   duration: string;
   role: string;
@@ -85,7 +85,7 @@ export class ProjectDetailComponent implements OnInit {
       imageUrl: 'assets/images/projects/booki.png',
       galleryImages: [],
       tags: ['HTML', 'CSS', 'Responsive'],
-      category: 'frontend',
+      categories: ['frontend'],
       year: 2021,
       duration: '1 mois',
       role: 'Développeur Front-end',
@@ -128,7 +128,7 @@ export class ProjectDetailComponent implements OnInit {
       imageUrl: 'assets/images/projects/ohmyfood_.png',
       galleryImages: [],
       tags: ['CSS', 'Animations', 'Git', 'Mobile-first'],
-      category: 'frontend',
+      categories: ['frontend'],
       year: 2022,
       duration: '1 mois',
       role: 'Développeur Front-end',
@@ -171,7 +171,7 @@ export class ProjectDetailComponent implements OnInit {
       imageUrl: 'assets/images/projects/chouette-agence.png',
       galleryImages: [],
       tags: ['SEO', 'Accessibilité', 'Performance'],
-      category: 'frontend',
+      categories: ['frontend'],
       year: 2022,
       duration: '1 mois',
       role: 'Consultante SEO / Frontend',
@@ -214,7 +214,7 @@ export class ProjectDetailComponent implements OnInit {
       imageUrl: 'assets/images/projects/kanap.png',
       galleryImages: [],
       tags: ['JavaScript', 'API', 'DOM', 'Tests'],
-      category: 'frontend',
+      categories: ['frontend', 'backend'],
       year: 2022,
       duration: '1,5 mois',
       role: 'Développeur Javascript',
@@ -258,7 +258,7 @@ export class ProjectDetailComponent implements OnInit {
       imageUrl: 'assets/images/projects/piiquante.png',
       galleryImages: [],
       tags: ['NodeJS', 'MongoDB', 'Sécurité', 'API'],
-      category: 'backend',
+      categories: ['backend', 'frontend'],
       year: 2022,
       duration: '1,5 mois',
       role: 'Développeur Backend',
@@ -305,7 +305,7 @@ export class ProjectDetailComponent implements OnInit {
       imageUrl: 'assets/images/projects/groupomania.png',
       galleryImages: [],
       tags: ['VueJS', 'SQL', 'CRUD'],
-      category: 'frontend',
+      categories: ['frontend', 'backend'],
       year: 2022,
       duration: '1,5 mois',
       role: 'Développeur Full-Stack',

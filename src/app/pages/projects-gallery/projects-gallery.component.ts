@@ -9,7 +9,7 @@ interface Project {
   description: string;
   imageUrl: string;
   tags: string[];
-  category: string;
+  categories: string[];
   year: number;
   featured: boolean;
   metrics?: {
@@ -43,7 +43,7 @@ export class ProjectsGalleryComponent {
       description: 'Intégration d\'une maquette de site responsive en utilisant HTML et CSS.',
       imageUrl: 'assets/images/projects/booki.png',
       tags: ['HTML', 'CSS', 'Responsive'],
-      category: 'frontend',
+      categories: ['frontend'],
       year: 2021,
       featured: false,
       metrics: [
@@ -56,7 +56,7 @@ export class ProjectsGalleryComponent {
       description: 'Création d\'animations CSS avancées, approche mobile-first et utilisation d\'un système de versioning.',
       imageUrl: 'assets/images/projects/ohmyfood_.png',
       tags: ['CSS', 'Animations', 'Git', 'Mobile-first'],
-      category: 'frontend',
+      categories: ['frontend'],
       year: 2022,
       featured: false,
       metrics: [
@@ -69,7 +69,7 @@ export class ProjectsGalleryComponent {
       description: 'Amélioration du SEO, de l\'accessibilité et optimisation globale des performances du site.',
       imageUrl: 'assets/images/projects/chouette-agence.png',
       tags: ['SEO', 'Accessibilité', 'Performance'],
-      category: 'frontend',
+      categories: ['frontend'],
       year: 2022,
       featured: false,
       metrics: [
@@ -82,7 +82,7 @@ export class ProjectsGalleryComponent {
       description: 'Développement d\'un site e-commerce en manipulant une API et le DOM, et mise en place d\'un plan de test.',
       imageUrl: 'assets/images/projects/kanap.png',
       tags: ['JavaScript', 'API', 'DOM', 'Tests'],
-      category: 'frontend',
+      categories: ['frontend', 'backend'],
       year: 2022,
       featured: false,
       metrics: [
@@ -95,7 +95,7 @@ export class ProjectsGalleryComponent {
       description: 'Création d\'une API REST sécurisée avec NodeJS et MongoDB.',
       imageUrl: 'assets/images/projects/piiquante.png',
       tags: ['NodeJS', 'MongoDB', 'Sécurité', 'API'],
-      category: 'backend',
+      categories: ['backend', 'frontend'],
       year: 2022,
       featured: false,
       metrics: [
@@ -108,7 +108,7 @@ export class ProjectsGalleryComponent {
       description: 'Développement d\'un réseau social interne avec VueJS (CRUD) et Base de données SQL.',
       imageUrl: 'assets/images/projects/groupomania.png',
       tags: ['VueJS', 'SQL', 'CRUD'],
-      category: 'frontend',
+      categories: ['frontend', 'backend'],
       year: 2022,
       featured: true,
       metrics: [
@@ -122,7 +122,7 @@ export class ProjectsGalleryComponent {
 
     // Filter by category
     if (this.activeCategory !== 'all') {
-      filtered = filtered.filter(p => p.category === this.activeCategory);
+      filtered = filtered.filter(p => p.categories.includes(this.activeCategory));
     }
 
     // Filter by search query

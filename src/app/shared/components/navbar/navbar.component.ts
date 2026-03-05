@@ -45,15 +45,11 @@ export class NavbarComponent {
       label: 'Projets',
       path: '/projects',
       children: [
-        { label: 'Infrastructure', path: '/projects?category=infrastructure', icon: 'dns' },
         { label: 'Backend', path: '/projects?category=backend', icon: 'database' },
-        { label: 'DevOps', path: '/projects?category=devops', icon: 'settings' },
-        { label: 'Sécurité', path: '/projects?category=security', icon: 'security' },
         { label: 'Frontend', path: '/projects?category=frontend', icon: 'web' }
       ]
     },
-    { label: 'Parcours', path: '/timeline' },
-    { label: 'Contact', path: '/contact' }
+    { label: 'Parcours', path: '/timeline' }
   ];
 
   toggleMobileMenu(): void {

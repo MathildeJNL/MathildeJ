@@ -21,7 +21,7 @@
 </section>
 
 <!-- Search & Filters -->
-<section class="px-4 md:px-8 pb-8">
+<section class="px-4 md:px-8 pt-8 pb-8">
   <div class="max-w-[1200px] mx-auto">
     <div class="flex flex-col md:flex-row gap-4 justify-between items-start md:items-center">
       <!-- Search -->
@@ -163,7 +163,7 @@
               <!-- Category Badge -->
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1 px-2 py-1 bg-black/50 backdrop-blur-sm text-white text-xs rounded-full">
-                  <span class="material-symbols-outlined text-sm">{{ getCategoryIcon(project.category) }}</span>
+                  <span class="material-symbols-outlined text-sm">{{ getCategoryIcon(project.categories[0]) }}</span>
                   {{ project.year }}
                 </span>
               </div>
