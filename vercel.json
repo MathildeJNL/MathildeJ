@@ -1,0 +1,7 @@
+{
+  "buildCommand": "npm run build:vercel",
+  "outputDirectory": "dist/portfolio-angular/browser",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
