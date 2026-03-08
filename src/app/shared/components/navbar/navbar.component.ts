@@ -33,12 +33,12 @@ export class NavbarComponent {
       label: 'Compétences',
       path: '/skills',
       children: [
-        { label: 'Backend & APIs', path: '/skills/backend', icon: 'database' },
-        { label: 'Cloud & Infrastructure', path: '/skills/cloud-infra', icon: 'cloud' },
-        { label: 'DevOps & SRE', path: '/skills/devops-sre', icon: 'settings' },
         { label: 'Frontend', path: '/skills/frontend', icon: 'web' },
+        { label: 'Backend & APIs', path: '/skills/backend', icon: 'database' },
         { label: 'Bases de données', path: '/skills/databases', icon: 'storage' },
-        { label: 'Sécurité', path: '/skills/security', icon: 'security' }
+        { label: 'Outils & Workflow', path: '/skills/tools', icon: 'build' },
+        { label: 'Design & Intégration', path: '/skills/design', icon: 'palette' },
+        { label: 'Soft Skills', path: '/skills/soft-skills', icon: 'psychology' }
       ]
     },
     {

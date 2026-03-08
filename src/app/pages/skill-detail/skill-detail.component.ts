@@ -53,176 +53,177 @@ export class SkillDetailComponent implements OnInit {
   // All skill data
   private skillsData: SkillCategory[] = [
     {
-      id: 'backend',
-      name: 'Backend & APIs',
-      icon: 'database',
-      description: 'Développement serveur, APIs RESTful et GraphQL, microservices',
-      longDescription: 'Expert en développement backend avec une forte expérience dans la conception d\'architectures distribuées, la création d\'APIs performantes et scalables, et la mise en place de systèmes de microservices robustes.',
-      level: 90,
-      yearsExperience: 5,
-      colorClass: 'text-blue-500',
-      bgClass: 'bg-blue-100 dark:bg-blue-500/20',
-      gradientClass: 'from-blue-500 to-cyan-500',
-      skills: [
-        { name: 'Python', level: 95, experience: '5 ans', description: 'Django, FastAPI, Flask, scripting avancé' },
-        { name: 'Go', level: 85, experience: '3 ans', description: 'Microservices haute performance, CLI tools' },
-        { name: 'Node.js', level: 80, experience: '4 ans', description: 'Express, NestJS, serverless functions' },
-        { name: 'Rust', level: 60, experience: '1 an', description: 'Systems programming, WebAssembly' }
-      ],
-      keyStrengths: ['Architecture microservices', 'API Design', 'Performance optimization', 'Clean Code'],
-      tools: ['gRPC', 'GraphQL', 'REST', 'Message Queues', 'WebSockets'],
-      relatedProjects: [
-        { id: 'cloud-migration', title: 'Cloud Migration Orchestrator', description: 'Migration de 50+ microservices' },
-        { id: 'api-gateway', title: 'API Gateway', description: 'Gateway unifiée pour microservices' }
-      ],
-      resources: [
-        { title: 'Clean Architecture', type: 'Livre', url: '#' },
-        { title: 'Designing Data-Intensive Applications', type: 'Livre', url: '#' }
-      ]
-    },
-    {
-      id: 'cloud-infra',
-      name: 'Cloud & Infrastructure',
-      icon: 'cloud',
-      description: 'AWS, GCP, Azure, Terraform, Kubernetes',
-      longDescription: 'Expertise approfondie dans la conception et la gestion d\'infrastructures cloud modernes, avec une forte expérience en Infrastructure as Code et orchestration de conteneurs.',
-      level: 92,
-      yearsExperience: 5,
-      colorClass: 'text-cyan-500',
-      bgClass: 'bg-cyan-100 dark:bg-cyan-500/20',
-      gradientClass: 'from-cyan-500 to-blue-500',
-      skills: [
-        { name: 'AWS', level: 95, experience: '5 ans', description: 'EC2, EKS, Lambda, RDS, S3, CloudFormation' },
-        { name: 'Kubernetes', level: 90, experience: '4 ans', description: 'Helm, Operators, Service Mesh' },
-        { name: 'Terraform', level: 88, experience: '3 ans', description: 'Modules, State management, Multi-cloud' },
-        { name: 'GCP', level: 75, experience: '2 ans', description: 'GKE, Cloud Run, BigQuery' }
-      ],
-      keyStrengths: ['Infrastructure as Code', 'Multi-cloud', 'Cost optimization', 'High availability'],
-      tools: ['Terraform', 'Pulumi', 'CloudFormation', 'Helm', 'Ansible'],
-      relatedProjects: [
-        { id: 'cloud-migration', title: 'Cloud Migration Orchestrator', description: 'Migration vers Kubernetes' },
-        { id: 'infra-as-code', title: 'IaC Platform', description: 'Plateforme Terraform modulaire' }
-      ],
-      resources: [
-        { title: 'Kubernetes Up & Running', type: 'Livre', url: '#' },
-        { title: 'AWS Certified Solutions Architect', type: 'Certification', url: '#' }
-      ]
-    },
-    {
-      id: 'devops-sre',
-      name: 'DevOps & SRE',
-      icon: 'settings',
-      description: 'CI/CD, Monitoring, Incident Response, Observabilité',
-      longDescription: 'Spécialiste SRE avec une vision holistique de la fiabilité des systèmes, de l\'automatisation des déploiements et de la culture DevOps.',
-      level: 88,
-      yearsExperience: 5,
-      colorClass: 'text-green-500',
-      bgClass: 'bg-green-100 dark:bg-green-500/20',
-      gradientClass: 'from-green-500 to-emerald-500',
-      skills: [
-        { name: 'CI/CD', level: 92, experience: '5 ans', description: 'GitHub Actions, GitLab CI, Jenkins, ArgoCD' },
-        { name: 'Prometheus/Grafana', level: 88, experience: '4 ans', description: 'Alerting, dashboards, PromQL' },
-        { name: 'Docker', level: 95, experience: '5 ans', description: 'Multi-stage builds, optimization' },
-        { name: 'Linux Admin', level: 85, experience: '6 ans', description: 'Systemd, networking, security' }
-      ],
-      keyStrengths: ['Incident management', 'SLO/SLI design', 'Automation', 'Observability'],
-      tools: ['DataDog', 'PagerDuty', 'ELK Stack', 'Jaeger', 'OpenTelemetry'],
-      relatedProjects: [
-        { id: 'monitoring-platform', title: 'Observability Platform', description: 'Stack de monitoring unifié' },
-        { id: 'incident-response', title: 'Incident Automation', description: 'Automatisation incident response' }
-      ],
-      resources: [
-        { title: 'Site Reliability Engineering', type: 'Livre', url: '#' },
-        { title: 'The Phoenix Project', type: 'Livre', url: '#' }
-      ]
-    },
-    {
       id: 'frontend',
       name: 'Frontend',
       icon: 'web',
-      description: 'React, Vue.js, TypeScript, Tailwind CSS',
-      longDescription: 'Compétences frontend solides avec un focus sur la création d\'interfaces modernes, accessibles et performantes.',
-      level: 75,
-      yearsExperience: 3,
+      description: 'HTML5/CSS3, JavaScript, Angular, TypeScript, Vue.js',
+      longDescription: 'Ma compétence principale, construite depuis la formation OpenClassrooms et renforcée chez Worldline. Je crée des interfaces modernes, réactives et accessibles, en prenant soin du rendu sur tous les supports (mobile-first, responsive).',
+      level: 82,
+      yearsExperience: 4,
       colorClass: 'text-purple-500',
       bgClass: 'bg-purple-100 dark:bg-purple-500/20',
       gradientClass: 'from-purple-500 to-pink-500',
       skills: [
-        { name: 'React', level: 80, experience: '3 ans', description: 'Hooks, Context, Next.js' },
-        { name: 'TypeScript', level: 85, experience: '3 ans', description: 'Types avancés, generics' },
-        { name: 'Vue.js', level: 70, experience: '2 ans', description: 'Composition API, Nuxt' },
-        { name: 'Tailwind CSS', level: 90, experience: '2 ans', description: 'Custom themes, plugins' }
+        { name: 'HTML5 / CSS3', level: 90, experience: '4 ans', description: 'Intégration de maquettes, animations, mobile-first' },
+        { name: 'JavaScript', level: 80, experience: '3 ans', description: 'Manipulation du DOM, fetch API, programmation orientée objet' },
+        { name: 'Angular', level: 75, experience: '2 ans', description: 'Components, services, routing, RxJS — utilisé chez Worldline et dans ce portfolio' },
+        { name: 'TypeScript', level: 72, experience: '2 ans', description: 'Typage statique, interfaces, generics — utilisé avec Angular' },
+        { name: 'Vue.js', level: 65, experience: '1 an', description: 'Composition API, CRUD, réseau social (projet OpenClassrooms)' }
       ],
-      keyStrengths: ['Responsive design', 'Accessibility', 'Performance', 'Component architecture'],
-      tools: ['Vite', 'Webpack', 'Storybook', 'Jest', 'Cypress'],
+      keyStrengths: ['Responsive Design', 'Intégration de maquettes', 'Accessibilité', 'Mobile-first'],
+      tools: ['VS Code', 'npm', 'Angular CLI', 'Git', 'Chrome DevTools'],
       relatedProjects: [
-        { id: 'dashboard', title: 'ReliableUI Dashboard', description: 'Dashboard temps réel' },
-        { id: 'design-system', title: 'Design System', description: 'Bibliothèque de composants' }
+        { id: 'openclassrooms-2', title: 'Booki - Maquette HTML/CSS', description: 'Intégration responsive depuis une maquette Figma' },
+        { id: 'openclassrooms-3', title: 'Ohmyfood - Animations CSS', description: 'Animations avancées et approche mobile-first' },
+        { id: 'openclassrooms-7', title: 'Groupomania - Réseau social', description: 'Interface Vue.js avec CRUD complet' }
       ],
       resources: [
-        { title: 'React Patterns', type: 'Documentation', url: '#' },
-        { title: 'TypeScript Handbook', type: 'Documentation', url: '#' }
+        { title: 'MDN Web Docs', type: 'Documentation', url: 'https://developer.mozilla.org' },
+        { title: 'Angular Documentation', type: 'Documentation', url: 'https://angular.dev' }
+      ]
+    },
+    {
+      id: 'backend',
+      name: 'Backend & APIs',
+      icon: 'database',
+      description: 'Java, Spring Boot, Node.js, Express, REST API',
+      longDescription: 'Compétences backend acquises durant la formation OpenClassrooms (Node.js/Express) et approfondies à Wild Code School et chez Worldline (Java/Spring Boot). Je suis à l\'aise pour créer des APIs REST sécurisées et des applications serveur.',
+      level: 68,
+      yearsExperience: 2,
+      colorClass: 'text-blue-500',
+      bgClass: 'bg-blue-100 dark:bg-blue-500/20',
+      gradientClass: 'from-blue-500 to-cyan-500',
+      skills: [
+        { name: 'Node.js / Express', level: 72, experience: '2 ans', description: 'API REST, middleware, gestion des routes et authentification JWT' },
+        { name: 'Java / Spring Boot', level: 65, experience: '2 ans', description: 'Formation Wild Code School + apprentissage chez Worldline (Mastère)' },
+        { name: 'REST API', level: 72, experience: '2 ans', description: 'Conception et consommation d\'APIs RESTful, gestion des erreurs HTTP' },
+        { name: 'Python', level: 60, experience: '1 an', description: 'Scripts d\'automatisation lors de la mission SRE chez Worldline' }
+      ],
+      keyStrengths: ['Architecture REST', 'Sécurité des APIs', 'Authentification JWT', 'Gestion des erreurs'],
+      tools: ['Postman', 'npm', 'Maven', 'IntelliJ IDEA', 'VS Code'],
+      relatedProjects: [
+        { id: 'openclassrooms-6', title: 'Piiquante - API sécurisée', description: 'API REST Node.js/Express avec authentification et upload de fichiers' },
+        { id: 'openclassrooms-5', title: 'Kanap - E-commerce JS', description: 'Consommation d\'une API REST avec vanilla JavaScript' }
+      ],
+      resources: [
+        { title: 'Node.js Documentation', type: 'Documentation', url: 'https://nodejs.org/docs' },
+        { title: 'Spring Boot Guides', type: 'Documentation', url: 'https://spring.io/guides' }
       ]
     },
     {
       id: 'databases',
       name: 'Bases de données',
       icon: 'storage',
-      description: 'PostgreSQL, MongoDB, Redis, Elasticsearch',
-      longDescription: 'Expertise en conception de schémas de données, optimisation de requêtes et gestion de bases de données à grande échelle.',
-      level: 85,
-      yearsExperience: 5,
+      description: 'SQL, MySQL, MongoDB',
+      longDescription: 'Apprentissage des bases de données relationnelles (SQL/MySQL) et NoSQL (MongoDB) à travers les projets OpenClassrooms et la formation Wild Code School. Je sais concevoir des schémas simples et réaliser des requêtes CRUD.',
+      level: 65,
+      yearsExperience: 2,
       colorClass: 'text-amber-500',
       bgClass: 'bg-amber-100 dark:bg-amber-500/20',
       gradientClass: 'from-amber-500 to-orange-500',
       skills: [
-        { name: 'PostgreSQL', level: 90, experience: '5 ans', description: 'Performance tuning, replication, partitioning' },
-        { name: 'MongoDB', level: 80, experience: '3 ans', description: 'Aggregation, sharding, indexing' },
-        { name: 'Redis', level: 85, experience: '4 ans', description: 'Caching, pub/sub, data structures' },
-        { name: 'Elasticsearch', level: 75, experience: '2 ans', description: 'Full-text search, analytics' }
+        { name: 'SQL / MySQL', level: 70, experience: '2 ans', description: 'Requêtes CRUD, jointures, conception de schémas (projet Groupomania)' },
+        { name: 'MongoDB', level: 65, experience: '2 ans', description: 'Base NoSQL, schémas dynamiques, utilisé avec Node.js (projet Piiquante)' }
       ],
-      keyStrengths: ['Data modeling', 'Query optimization', 'Replication', 'Backup strategies'],
-      tools: ['pgAdmin', 'MongoDB Compass', 'Redis Insight', 'Kibana'],
+      keyStrengths: ['Modélisation des données', 'Requêtes CRUD', 'Intégration avec API REST', 'NoSQL vs SQL'],
+      tools: ['MySQL Workbench', 'MongoDB Compass', 'TablePlus'],
       relatedProjects: [
-        { id: 'data-platform', title: 'Data Platform', description: 'Architecture données distribuée' },
-        { id: 'search-engine', title: 'Search Engine', description: 'Moteur de recherche interne' }
+        { id: 'openclassrooms-6', title: 'Piiquante - API + MongoDB', description: 'Stockage des produits et images avec MongoDB' },
+        { id: 'openclassrooms-7', title: 'Groupomania - Réseau social SQL', description: 'Base de données relationnelle pour le réseau social' }
       ],
       resources: [
-        { title: 'PostgreSQL Administration', type: 'Cours', url: '#' },
-        { title: 'Database Internals', type: 'Livre', url: '#' }
+        { title: 'MongoDB Documentation', type: 'Documentation', url: 'https://www.mongodb.com/docs' },
+        { title: 'SQL Tutorial - W3Schools', type: 'Tutoriel', url: 'https://www.w3schools.com/sql' }
       ]
     },
     {
-      id: 'security',
-      name: 'Sécurité',
-      icon: 'security',
-      description: 'Zero-Trust, IAM, Audit, Compliance',
-      longDescription: 'Approche security-first avec une expertise en architecture Zero-Trust, gestion des identités et conformité réglementaire.',
-      level: 82,
-      yearsExperience: 4,
-      colorClass: 'text-red-500',
-      bgClass: 'bg-red-100 dark:bg-red-500/20',
-      gradientClass: 'from-red-500 to-rose-500',
+      id: 'tools',
+      name: 'Outils & Workflow',
+      icon: 'build',
+      description: 'Git, GitLab, Méthodes Agiles, Docker, Bash',
+      longDescription: 'Habituée à travailler en équipe avec Git/GitLab dans un contexte professionnel chez Worldline. J\'utilise les méthodes Agiles/Scrum au quotidien et j\'automatise des tâches via Bash. Docker est en cours d\'apprentissage dans le cadre du Mastère.',
+      level: 75,
+      yearsExperience: 3,
+      colorClass: 'text-green-500',
+      bgClass: 'bg-green-100 dark:bg-green-500/20',
+      gradientClass: 'from-green-500 to-emerald-500',
       skills: [
-        { name: 'OAuth/OIDC', level: 88, experience: '4 ans', description: 'Identity providers, SSO, MFA' },
-        { name: 'Security Audits', level: 80, experience: '3 ans', description: 'Vulnerability assessment, pen testing' },
-        { name: 'Vault', level: 85, experience: '3 ans', description: 'Secrets management, PKI' },
-        { name: 'SOC2 Compliance', level: 75, experience: '2 ans', description: 'Policies, controls, audits' }
+        { name: 'Git / GitHub / GitLab', level: 85, experience: '4 ans', description: 'Versionning, branches, merge requests, code review — utilisé depuis OpenClassrooms jusqu\'à Worldline' },
+        { name: 'Méthodes Agiles / Scrum', level: 78, experience: '3 ans', description: 'Sprints, daily stand-up, rétrospectives — pratique quotidienne chez Worldline' },
+        { name: 'Docker', level: 60, experience: '1 an', description: 'Conteneurisation d\'applications, en cours d\'approfondissement dans le Mastère' },
+        { name: 'Bash / Linux', level: 60, experience: '1 an', description: 'Scripts d\'automatisation lors de la mission SRE chez Worldline' }
       ],
-      keyStrengths: ['Zero-trust architecture', 'Identity management', 'Secrets rotation', 'Compliance'],
-      tools: ['Vault', 'Auth0', 'Okta', 'OWASP ZAP', 'Snyk'],
+      keyStrengths: ['Collaboration en équipe', 'Versioning propre', 'Automatisation', 'Méthodes Agiles'],
+      tools: ['Git', 'GitLab', 'GitHub', 'Jira', 'Confluence'],
       relatedProjects: [
-        { id: 'zero-trust', title: 'Zero-Trust Gateway', description: 'Remplacement VPN legacy' },
-        { id: 'secrets-management', title: 'Secrets Platform', description: 'Gestion centralisée des secrets' }
+        { id: 'openclassrooms-3', title: 'Ohmyfood - Versioning Git', description: 'Premiers commits et branches avec Git' },
+        { id: 'openclassrooms-7', title: 'Groupomania - Projet complet', description: 'Gestion de version et documentation du projet' }
       ],
       resources: [
-        { title: 'OWASP Top 10', type: 'Documentation', url: '#' },
-        { title: 'Zero Trust Networks', type: 'Livre', url: '#' }
+        { title: 'Git Documentation', type: 'Documentation', url: 'https://git-scm.com/doc' },
+        { title: 'Docker Get Started', type: 'Documentation', url: 'https://docs.docker.com/get-started' }
+      ]
+    },
+    {
+      id: 'design',
+      name: 'Design & Intégration',
+      icon: 'palette',
+      description: 'Responsive Design, Bootstrap, Tailwind CSS, SEO',
+      longDescription: 'Sensible à l\'expérience utilisateur et au rendu visuel, je soigne l\'intégration des maquettes et le responsive de mes interfaces. J\'ai optimisé le SEO et l\'accessibilité d\'un site réel lors de la formation OpenClassrooms.',
+      level: 78,
+      yearsExperience: 4,
+      colorClass: 'text-pink-500',
+      bgClass: 'bg-pink-100 dark:bg-pink-500/20',
+      gradientClass: 'from-pink-500 to-rose-500',
+      skills: [
+        { name: 'Responsive Design', level: 85, experience: '4 ans', description: 'Media queries, flexbox, grid, approche mobile-first' },
+        { name: 'Tailwind CSS', level: 78, experience: '1 an', description: 'Utility-first CSS — utilisé dans ce portfolio Angular' },
+        { name: 'Bootstrap', level: 75, experience: '2 ans', description: 'Composants UI, grille responsive — utilisé chez Worldline' },
+        { name: 'SEO & Accessibilité', level: 70, experience: '2 ans', description: 'Balises sémantiques, ARIA, optimisation des performances (Lighthouse)' }
+      ],
+      keyStrengths: ['Intégration pixel-perfect', 'Mobile-first', 'Accessibilité WCAG', 'Performance web'],
+      tools: ['Figma', 'Lighthouse', 'Chrome DevTools', 'WAVE (accessibilité)'],
+      relatedProjects: [
+        { id: 'openclassrooms-2', title: 'Booki - Intégration maquette', description: 'Reproduction fidèle d\'une maquette Figma en HTML/CSS' },
+        { id: 'openclassrooms-4', title: 'Chouette Agence - SEO', description: 'Audit et optimisation SEO, accessibilité et performances' }
+      ],
+      resources: [
+        { title: 'Tailwind CSS Docs', type: 'Documentation', url: 'https://tailwindcss.com/docs' },
+        { title: 'Google Lighthouse', type: 'Outil', url: 'https://developer.chrome.com/docs/lighthouse' }
+      ]
+    },
+    {
+      id: 'soft-skills',
+      name: 'Soft Skills',
+      icon: 'psychology',
+      description: 'Communication, empathie, travail en équipe, adaptabilité',
+      longDescription: 'Des compétences humaines solides, construites tout au long de parcours atypiques : 3 ans d\'alternance en pharmacie (relation patient, conseil, rigueur), 1 an à la réception hôtelière, puis une reconversion complète vers le développement web. Ces expériences ont forgé une vraie capacité à communiquer, écouter et s\'adapter à des environnements très différents.',
+      level: 90,
+      yearsExperience: 7,
+      colorClass: 'text-teal-500',
+      bgClass: 'bg-teal-100 dark:bg-teal-500/20',
+      gradientClass: 'from-teal-500 to-cyan-500',
+      skills: [
+        { name: 'Communication', level: 92, experience: '6 ans', description: 'Relation client en hôtellerie, conseil patient en pharmacie, communication projet chez Worldline' },
+        { name: 'Travail en équipe', level: 90, experience: '5 ans', description: 'Collaboration quotidienne chez Worldline (code review, pair programming)' },
+        { name: 'Empathie & écoute', level: 95, experience: '6 ans', description: 'Développée au contact des patients et clients : comprendre les besoins, rassurer, conseiller' },
+        { name: 'Adaptabilité', level: 90, experience: '7 ans', description: 'Reconversion professionnelle, passage de l\'hôtellerie à la pharmacie puis au développement web' },
+        { name: 'Autonomie', level: 85, experience: '3 ans', description: 'Gestion de projets en solo (formation OpenClassrooms) et missions techniques chez Worldline' },
+        { name: 'Rigueur', level: 85, experience: '5 ans', description: 'Exigée dans la préparation de médicaments, retrouvée dans la qualité du code et les tests' }
+      ],
+      keyStrengths: ['Relation humaine', 'Écoute active', 'Gestion du stress', 'Pédagogie'],
+      tools: ['Confluence', 'Slack', 'Microsoft Teams'],
+      relatedProjects: [
+        { id: 'openclassrooms-7', title: 'Groupomania - Réseau social', description: 'Projet de bout en bout géré en autonomie' },
+        { id: 'openclassrooms-4', title: 'Chouette Agence - SEO', description: 'Audit, recommandations et rédaction de rapport' }
+      ],
+      resources: [
+        { title: 'Soft Skills, vous avez dit : soft skills', type: 'Page web', url: 'https://www.cmvrh.developpement-durable.gouv.fr/soft-skills-vous-avez-dit-soft-skills-a4390.html' }
       ]
     }
   ];
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {

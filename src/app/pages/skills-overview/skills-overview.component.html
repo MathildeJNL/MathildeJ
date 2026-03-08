@@ -1,30 +1,35 @@
 <!-- Hero Section -->
 <section class="relative pt-12 pb-16 md:pt-20 md:pb-24 px-4 md:px-8 overflow-hidden">
   <!-- Background -->
-  <div class="absolute top-0 left-1/2 -translate-x-1/2 -mt-40 w-[800px] h-[400px] rounded-full bg-gradient-to-r from-primary/10 to-purple-500/10 blur-3xl -z-10 pointer-events-none"></div>
+  <div
+    class="absolute top-0 left-1/2 -translate-x-1/2 -mt-40 w-[800px] h-[400px] rounded-full bg-gradient-to-r from-primary/10 to-purple-500/10 blur-3xl -z-10 pointer-events-none">
+  </div>
 
   <div class="max-w-[1200px] mx-auto text-center">
-    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 w-fit mx-auto mb-6">
+    <div
+      class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 w-fit mx-auto mb-6">
       <span class="material-symbols-outlined text-primary text-sm">insights</span>
       <span class="text-primary text-xs font-bold uppercase tracking-wider">Expertise</span>
     </div>
 
     <h1 class="text-4xl md:text-5xl font-black leading-tight tracking-tight mb-6">
-      Compétences & <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500">Analytics</span>
+      Compétences & <span
+        class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500">Analytics</span>
     </h1>
 
     <p class="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto mb-12">
-      Une vue d'ensemble de mes compétences techniques, certifications et domaines d'expertise. Cliquez sur une catégorie pour voir le détail.
+      Une vue d'ensemble de mes compétences techniques, certifications et domaines d'expertise. Cliquez sur une
+      catégorie pour voir le détail.
     </p>
 
     <!-- Stats -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
       @for (stat of stats; track stat.label) {
-        <div class="p-6 rounded-xl bg-white dark:bg-card-dark border border-gray-100 dark:border-border-dark">
-          <span class="material-symbols-outlined text-3xl mb-2" [ngClass]="stat.colorClass">{{ stat.icon }}</span>
-          <p class="text-3xl font-black text-slate-900 dark:text-white">{{ stat.value }}</p>
-          <p class="text-sm text-slate-500 dark:text-slate-400">{{ stat.label }}</p>
-        </div>
+      <div class="p-6 rounded-xl bg-white dark:bg-card-dark border border-gray-100 dark:border-border-dark">
+        <span class="material-symbols-outlined text-3xl mb-2" [ngClass]="stat.colorClass">{{ stat.icon }}</span>
+        <p class="text-3xl font-black text-slate-900 dark:text-white">{{ stat.value }}</p>
+        <p class="text-sm text-slate-500 dark:text-slate-400">{{ stat.label }}</p>
+      </div>
       }
     </div>
   </div>
@@ -35,16 +40,12 @@
   <div class="max-w-[1200px] mx-auto">
     <div class="flex flex-wrap justify-center gap-2">
       @for (filter of filters; track filter) {
-        <button
-          (click)="setFilter(filter)"
-          class="px-4 py-2 rounded-full text-sm font-medium transition-all"
-          [ngClass]="{
+      <button (click)="setFilter(filter)" class="px-4 py-2 rounded-full text-sm font-medium transition-all" [ngClass]="{
             'bg-primary text-white': activeFilter === filter,
             'bg-gray-100 dark:bg-card-dark text-slate-600 dark:text-slate-400 hover:bg-gray-200 dark:hover:bg-[#203040]': activeFilter !== filter
-          }"
-        >
-          {{ getFilterLabel(filter) }}
-        </button>
+          }">
+        {{ getFilterLabel(filter) }}
+      </button>
       }
     </div>
   </div>
@@ -55,60 +56,54 @@
   <div class="max-w-[1200px] mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       @for (category of filteredCategories; track category.id) {
-        <a
-          [routerLink]="['/skills', category.id]"
-          class="group p-6 rounded-xl bg-gray-50 dark:bg-card-dark border transition-all hover:shadow-xl cursor-pointer"
-          [ngClass]="category.borderClass"
-        >
-          <!-- Header -->
-          <div class="flex items-start justify-between mb-4">
-            <div
-              class="w-12 h-12 rounded-lg flex items-center justify-center"
-              [ngClass]="[category.bgClass, category.colorClass]"
-            >
-              <span class="material-symbols-outlined text-2xl">{{ category.icon }}</span>
-            </div>
-            <div class="text-right">
-              <span class="text-2xl font-black" [ngClass]="category.colorClass">{{ category.level }}%</span>
-              <p class="text-xs text-slate-500">Maîtrise</p>
-            </div>
+      <a [routerLink]="['/skills', category.id]"
+        class="group p-6 rounded-xl bg-gray-50 dark:bg-card-dark border transition-all hover:shadow-xl cursor-pointer"
+        [ngClass]="category.borderClass">
+        <!-- Header -->
+        <div class="flex items-start justify-between mb-4">
+          <div class="w-12 h-12 rounded-lg flex items-center justify-center"
+            [ngClass]="[category.bgClass, category.colorClass]">
+            <span class="material-symbols-outlined text-2xl">{{ category.icon }}</span>
           </div>
-
-          <!-- Title & Description -->
-          <h3 class="text-lg font-bold mb-2 group-hover:text-primary transition-colors">{{ category.name }}</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">{{ category.description }}</p>
-
-          <!-- Progress Bar -->
-          <div class="w-full h-2 bg-gray-200 dark:bg-background-dark rounded-full overflow-hidden mb-4">
-            <div
-              class="h-full rounded-full transition-all duration-500"
-              [ngClass]="category.colorClass.replace('text-', 'bg-')"
-              [style.width.%]="category.level"
-            ></div>
+          <div class="text-right">
+            <span class="text-2xl font-black" [ngClass]="category.colorClass">{{ category.level }}%</span>
+            <p class="text-xs text-slate-500">Maîtrise</p>
           </div>
+        </div>
 
-          <!-- Skills Preview -->
-          <div class="flex flex-wrap gap-2">
-            @for (skill of category.skills.slice(0, 3); track skill.name) {
-              <span class="px-2 py-1 bg-gray-200 dark:bg-background-dark text-xs rounded text-slate-600 dark:text-slate-400">
-                {{ skill.name }}
-              </span>
-            }
-            @if (category.skills.length > 3) {
-              <span class="px-2 py-1 bg-primary/10 text-xs rounded text-primary font-medium">
-                +{{ category.skills.length - 3 }}
-              </span>
-            }
-          </div>
+        <!-- Title & Description -->
+        <h3 class="text-lg font-bold mb-2 group-hover:text-primary transition-colors">{{ category.name }}</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">{{ category.description }}</p>
 
-          <!-- View More -->
-          <div class="mt-4 pt-4 border-t border-gray-200 dark:border-border-dark flex items-center justify-between">
-            <span class="text-sm text-slate-500">Voir le détail</span>
-            <span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-              arrow_forward
-            </span>
-          </div>
-        </a>
+        <!-- Progress Bar -->
+        <div class="w-full h-2 bg-gray-200 dark:bg-background-dark rounded-full overflow-hidden mb-4">
+          <div class="h-full rounded-full transition-all duration-500" [ngClass]="category.barClass"
+            [style.width.%]="category.level"></div>
+        </div>
+
+        <!-- Skills Preview -->
+        <div class="flex flex-wrap gap-2">
+          @for (skill of category.skills.slice(0, 3); track skill.name) {
+          <span
+            class="px-2 py-1 bg-gray-200 dark:bg-background-dark text-xs rounded text-slate-600 dark:text-slate-400">
+            {{ skill.name }}
+          </span>
+          }
+          @if (category.skills.length > 3) {
+          <span class="px-2 py-1 bg-primary/10 text-xs rounded text-primary font-medium">
+            +{{ category.skills.length - 3 }}
+          </span>
+          }
+        </div>
+
+        <!-- View More -->
+        <div class="mt-4 pt-4 border-t border-gray-200 dark:border-border-dark flex items-center justify-between">
+          <span class="text-sm text-slate-500">Voir le détail</span>
+          <span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+            arrow_forward
+          </span>
+        </div>
+      </a>
       }
     </div>
   </div>
@@ -126,21 +121,20 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       @for (cert of certifications; track cert.name) {
-        <div class="p-6 rounded-xl bg-white dark:bg-card-dark border border-gray-100 dark:border-border-dark hover:shadow-lg transition-shadow">
-          <div class="flex items-start gap-4">
-            <div
-              class="w-12 h-12 rounded-lg flex items-center justify-center shrink-0"
-              [ngClass]="[cert.bgClass, cert.colorClass]"
-            >
-              <span class="material-symbols-outlined text-2xl">{{ cert.icon }}</span>
-            </div>
-            <div class="flex-1 min-w-0">
-              <h3 class="font-bold text-slate-900 dark:text-white mb-1 line-clamp-2">{{ cert.name }}</h3>
-              <p class="text-sm text-slate-500 dark:text-slate-400">{{ cert.issuer }}</p>
-              <p class="text-xs text-slate-400 mt-1">{{ cert.date }}</p>
-            </div>
+      <div
+        class="p-6 rounded-xl bg-white dark:bg-card-dark border border-gray-100 dark:border-border-dark hover:shadow-lg transition-shadow">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-lg flex items-center justify-center shrink-0"
+            [ngClass]="[cert.bgClass, cert.colorClass]">
+            <span class="material-symbols-outlined text-2xl">{{ cert.icon }}</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-bold text-slate-900 dark:text-white mb-1 line-clamp-2">{{ cert.name }}</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400">{{ cert.issuer }}</p>
+            <p class="text-xs text-slate-400 mt-1">{{ cert.date }}</p>
           </div>
         </div>
+      </div>
       }
     </div>
   </div>
@@ -158,19 +152,17 @@
 
     <div class="space-y-6">
       @for (item of currentlyLearning; track item.name) {
-        <div class="p-6 rounded-xl bg-gray-50 dark:bg-card-dark border border-gray-100 dark:border-border-dark">
-          <div class="flex justify-between items-center mb-3">
-            <h3 class="font-bold text-slate-900 dark:text-white">{{ item.name }}</h3>
-            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded font-medium">{{ item.status }}</span>
-          </div>
-          <div class="w-full h-2 bg-gray-200 dark:bg-background-dark rounded-full overflow-hidden">
-            <div
-              class="h-full bg-gradient-to-r from-primary to-cyan-500 rounded-full transition-all duration-500"
-              [style.width.%]="item.progress"
-            ></div>
-          </div>
-          <p class="text-sm text-slate-500 mt-2">{{ item.progress }}% complété</p>
+      <div class="p-6 rounded-xl bg-gray-50 dark:bg-card-dark border border-gray-100 dark:border-border-dark">
+        <div class="flex justify-between items-center mb-3">
+          <h3 class="font-bold text-slate-900 dark:text-white">{{ item.name }}</h3>
+          <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded font-medium">{{ item.status }}</span>
         </div>
+        <div class="w-full h-2 bg-gray-200 dark:bg-background-dark rounded-full overflow-hidden">
+          <div class="h-full bg-gradient-to-r from-primary to-cyan-500 rounded-full transition-all duration-500"
+            [style.width.%]="item.progress"></div>
+        </div>
+        <p class="text-sm text-slate-500 mt-2">{{ item.progress }}% complété</p>
+      </div>
       }
     </div>
   </div>
@@ -185,17 +177,13 @@
         Découvrez mes projets concrets ou contactez-moi pour discuter de vos besoins.
       </p>
       <div class="flex flex-wrap justify-center gap-4">
-        <a
-          routerLink="/projects"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-blue-600 text-white font-bold rounded-lg transition-colors"
-        >
+        <a routerLink="/projects"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-blue-600 text-white font-bold rounded-lg transition-colors">
           <span class="material-symbols-outlined">folder_open</span>
           Voir mes projets
         </a>
-        <a
-          routerLink="/contact"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-card-dark border border-gray-200 dark:border-border-dark hover:bg-gray-50 dark:hover:bg-[#203040] text-slate-900 dark:text-white font-bold rounded-lg transition-colors"
-        >
+        <a routerLink="/contact"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-card-dark border border-gray-200 dark:border-border-dark hover:bg-gray-50 dark:hover:bg-[#203040] text-slate-900 dark:text-white font-bold rounded-lg transition-colors">
           <span class="material-symbols-outlined">mail</span>
           Me contacter
         </a>

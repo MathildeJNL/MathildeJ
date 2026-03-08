@@ -95,7 +95,7 @@ export class HomeComponent {
     description: 'une application de suivi de la santé de vos animaux de compagnie, avec des alertes personnalisées pour les soins et les rendez-vous vétérinaires.',
   };
 
-  softSkills: string[] = ['Empathique', 'Collaborative', 'Autonome', 'Polyvalente'];
+  softSkills: string[] = ['Empathique', 'Collaborative', 'Communicante', 'Autonome', 'Polyvalente', 'À l\'écoute', 'Rigoureuse', 'Curieuse'];
 
   interests: Interest[] = [
     { icon: 'pool', label: 'Natation' },

@@ -12,6 +12,7 @@ interface SkillCategory {
   colorClass: string;
   bgClass: string;
   borderClass: string;
+  barClass: string;
 }
 
 interface Skill {
@@ -45,108 +46,115 @@ interface LearningItem {
 export class SkillsOverviewComponent {
   // Stats
   stats = [
-    { icon: 'code', value: '15+', label: 'Technologies maîtrisées', colorClass: 'text-primary' },
-    { icon: 'workspace_premium', value: '5', label: 'Certifications', colorClass: 'text-amber-500' },
-    { icon: 'trending_up', value: '5+', label: 'Années d\'expérience', colorClass: 'text-green-500' },
-    { icon: 'school', value: '∞', label: 'Apprentissage continu', colorClass: 'text-purple-500' }
+    { icon: 'code', value: '10+', label: 'Technologies maîtrisées', colorClass: 'text-primary' },
+    { icon: 'workspace_premium', value: '5+', label: 'Diplômes obtenus', colorClass: 'text-amber-500' },
+    { icon: 'trending_up', value: '7 ans', label: 'En alternance (dont 3 en dev)', colorClass: 'text-green-500' },
+    { icon: 'school', value: 'Bac+5', label: 'Mastère en cours', colorClass: 'text-purple-500' }
   ];
 
   // Skill Categories
   skillCategories: SkillCategory[] = [
     {
-      id: 'backend',
-      name: 'Backend & APIs',
-      icon: 'database',
-      description: 'Développement serveur, APIs RESTful et GraphQL, microservices',
-      level: 90,
-      colorClass: 'text-blue-500',
-      bgClass: 'bg-blue-100 dark:bg-blue-500/20',
-      borderClass: 'border-blue-500/30 hover:border-blue-500',
-      skills: [
-        { name: 'Python', level: 95, experience: '5 ans' },
-        { name: 'Go', level: 85, experience: '3 ans' },
-        { name: 'Node.js', level: 80, experience: '4 ans' },
-        { name: 'Rust', level: 60, experience: '1 an' }
-      ]
-    },
-    {
-      id: 'cloud-infra',
-      name: 'Cloud & Infrastructure',
-      icon: 'cloud',
-      description: 'AWS, GCP, Azure, Terraform, Kubernetes',
-      level: 92,
-      colorClass: 'text-cyan-500',
-      bgClass: 'bg-cyan-100 dark:bg-cyan-500/20',
-      borderClass: 'border-cyan-500/30 hover:border-cyan-500',
-      skills: [
-        { name: 'AWS', level: 95, experience: '5 ans' },
-        { name: 'Kubernetes', level: 90, experience: '4 ans' },
-        { name: 'Terraform', level: 88, experience: '3 ans' },
-        { name: 'GCP', level: 75, experience: '2 ans' }
-      ]
-    },
-    {
-      id: 'devops-sre',
-      name: 'DevOps & SRE',
-      icon: 'settings',
-      description: 'CI/CD, Monitoring, Incident Response, Observabilité',
-      level: 88,
-      colorClass: 'text-green-500',
-      bgClass: 'bg-green-100 dark:bg-green-500/20',
-      borderClass: 'border-green-500/30 hover:border-green-500',
-      skills: [
-        { name: 'CI/CD', level: 92, experience: '5 ans' },
-        { name: 'Prometheus/Grafana', level: 88, experience: '4 ans' },
-        { name: 'Docker', level: 95, experience: '5 ans' },
-        { name: 'Linux Admin', level: 85, experience: '6 ans' }
-      ]
-    },
-    {
       id: 'frontend',
       name: 'Frontend',
       icon: 'web',
-      description: 'React, Vue.js, TypeScript, Tailwind CSS',
-      level: 75,
+      description: 'HTML5/CSS3, JavaScript, Angular, TypeScript, Vue.js',
+      level: 82,
       colorClass: 'text-purple-500',
       bgClass: 'bg-purple-100 dark:bg-purple-500/20',
       borderClass: 'border-purple-500/30 hover:border-purple-500',
+      barClass: 'bg-purple-500',
       skills: [
-        { name: 'React', level: 80, experience: '3 ans' },
-        { name: 'TypeScript', level: 85, experience: '3 ans' },
-        { name: 'Vue.js', level: 70, experience: '2 ans' },
-        { name: 'Tailwind CSS', level: 90, experience: '2 ans' }
+        { name: 'HTML5 / CSS3', level: 90, experience: '4 ans' },
+        { name: 'JavaScript', level: 80, experience: '3 ans' },
+        { name: 'Angular', level: 75, experience: '2 ans' },
+        { name: 'TypeScript', level: 72, experience: '2 ans' },
+        { name: 'Vue.js', level: 65, experience: '1 an' }
+      ]
+    },
+    {
+      id: 'backend',
+      name: 'Backend & APIs',
+      icon: 'database',
+      description: 'Java, Spring Boot, Node.js, Express, REST API',
+      level: 68,
+      colorClass: 'text-blue-500',
+      bgClass: 'bg-blue-100 dark:bg-blue-500/20',
+      borderClass: 'border-blue-500/30 hover:border-blue-500',
+      barClass: 'bg-blue-500',
+      skills: [
+        { name: 'Node.js / Express', level: 72, experience: '2 ans' },
+        { name: 'Java / Spring Boot', level: 65, experience: '2 ans' },
+        { name: 'REST API', level: 72, experience: '2 ans' },
+        { name: 'Python', level: 60, experience: '1 an' }
       ]
     },
     {
       id: 'databases',
       name: 'Bases de données',
       icon: 'storage',
-      description: 'PostgreSQL, MongoDB, Redis, Elasticsearch',
-      level: 85,
+      description: 'SQL, MySQL, MongoDB',
+      level: 65,
       colorClass: 'text-amber-500',
       bgClass: 'bg-amber-100 dark:bg-amber-500/20',
       borderClass: 'border-amber-500/30 hover:border-amber-500',
+      barClass: 'bg-amber-500',
       skills: [
-        { name: 'PostgreSQL', level: 90, experience: '5 ans' },
-        { name: 'MongoDB', level: 80, experience: '3 ans' },
-        { name: 'Redis', level: 85, experience: '4 ans' },
-        { name: 'Elasticsearch', level: 75, experience: '2 ans' }
+        { name: 'SQL / MySQL', level: 70, experience: '2 ans' },
+        { name: 'MongoDB', level: 65, experience: '2 ans' }
       ]
     },
     {
-      id: 'security',
-      name: 'Sécurité',
-      icon: 'security',
-      description: 'Zero-Trust, IAM, Audit, Compliance',
-      level: 82,
-      colorClass: 'text-red-500',
-      bgClass: 'bg-red-100 dark:bg-red-500/20',
-      borderClass: 'border-red-500/30 hover:border-red-500',
+      id: 'tools',
+      name: 'Outils & Workflow',
+      icon: 'build',
+      description: 'Git, GitLab, Méthodes Agiles, Docker, Bash',
+      level: 75,
+      colorClass: 'text-green-500',
+      bgClass: 'bg-green-100 dark:bg-green-500/20',
+      borderClass: 'border-green-500/30 hover:border-green-500',
+      barClass: 'bg-green-500',
       skills: [
-        { name: 'OAuth/OIDC', level: 88, experience: '4 ans' },
-        { name: 'Security Audits', level: 80, experience: '3 ans' },
-        { name: 'Vault', level: 85, experience: '3 ans' },
-        { name: 'SOC2 Compliance', level: 75, experience: '2 ans' }
+        { name: 'Git / GitHub / GitLab', level: 85, experience: '4 ans' },
+        { name: 'Méthodes Agiles / Scrum', level: 78, experience: '3 ans' },
+        { name: 'Docker', level: 60, experience: '1 an' },
+        { name: 'Bash / Linux', level: 60, experience: '1 an' }
+      ]
+    },
+    {
+      id: 'design',
+      name: 'Design & Intégration',
+      icon: 'palette',
+      description: 'Responsive Design, Bootstrap, Tailwind CSS, SEO',
+      level: 78,
+      colorClass: 'text-pink-500',
+      bgClass: 'bg-pink-100 dark:bg-pink-500/20',
+      borderClass: 'border-pink-500/30 hover:border-pink-500',
+      barClass: 'bg-pink-500',
+      skills: [
+        { name: 'Responsive Design', level: 85, experience: '4 ans' },
+        { name: 'Tailwind CSS', level: 78, experience: '1 an' },
+        { name: 'Bootstrap', level: 75, experience: '2 ans' },
+        { name: 'SEO & Accessibilité', level: 70, experience: '2 ans' }
+      ]
+    },
+    {
+      id: 'soft-skills',
+      name: 'Soft Skills',
+      icon: 'psychology',
+      description: 'Communication, empathie, travail en équipe, adaptabilité',
+      level: 90,
+      colorClass: 'text-teal-500',
+      bgClass: 'bg-teal-100 dark:bg-teal-500/20',
+      borderClass: 'border-teal-500/30 hover:border-teal-500',
+      barClass: 'bg-teal-500',
+      skills: [
+        { name: 'Communication', level: 92, experience: '6 ans' },
+        { name: 'Travail en équipe', level: 90, experience: '5 ans' },
+        { name: 'Empathie & écoute', level: 95, experience: '6 ans' },
+        { name: 'Adaptabilité', level: 90, experience: '7 ans' },
+        { name: 'Autonomie', level: 85, experience: '3 ans' },
+        { name: 'Rigueur', level: 85, experience: '5 ans' }
       ]
     }
   ];
@@ -154,57 +162,41 @@ export class SkillsOverviewComponent {
   // Certifications
   certifications: Certification[] = [
     {
-      name: 'AWS Solutions Architect Professional',
-      issuer: 'Amazon Web Services',
-      date: '2023',
-      icon: 'cloud',
-      colorClass: 'text-amber-500',
-      bgClass: 'bg-amber-100 dark:bg-amber-500/20'
-    },
-    {
-      name: 'Certified Kubernetes Administrator',
-      issuer: 'CNCF',
+      name: 'Développeur Web - Titre RNCP Niveau 5',
+      issuer: 'OpenClassrooms',
       date: '2022',
-      icon: 'hub',
-      colorClass: 'text-blue-500',
-      bgClass: 'bg-blue-100 dark:bg-blue-500/20'
-    },
-    {
-      name: 'Google Cloud Professional DevOps',
-      issuer: 'Google Cloud',
-      date: '2023',
-      icon: 'settings',
-      colorClass: 'text-green-500',
-      bgClass: 'bg-green-100 dark:bg-green-500/20'
-    },
-    {
-      name: 'HashiCorp Terraform Associate',
-      issuer: 'HashiCorp',
-      date: '2022',
-      icon: 'grid_view',
+      icon: 'web',
       colorClass: 'text-purple-500',
       bgClass: 'bg-purple-100 dark:bg-purple-500/20'
     },
     {
-      name: 'Site Reliability Engineering',
-      issuer: 'Google',
+      name: 'Bachelor Concepteur Développeur d\'Applications',
+      issuer: 'CESI',
+      date: '2024',
+      icon: 'code',
+      colorClass: 'text-blue-500',
+      bgClass: 'bg-blue-100 dark:bg-blue-500/20'
+    },
+    {
+      name: 'Brevet Professionnel Préparateur en Pharmacie',
+      issuer: 'CFA Pharmacie d\'Orléans',
       date: '2021',
-      icon: 'monitoring',
-      colorClass: 'text-red-500',
-      bgClass: 'bg-red-100 dark:bg-red-500/20'
+      icon: 'medication',
+      colorClass: 'text-green-500',
+      bgClass: 'bg-green-100 dark:bg-green-500/20'
     }
   ];
 
   // Currently Learning
   currentlyLearning: LearningItem[] = [
-    { name: 'Rust Advanced Patterns', progress: 65, status: 'En cours' },
-    { name: 'WebAssembly', progress: 40, status: 'En cours' },
-    { name: 'AI/ML Ops', progress: 30, status: 'Débuté' }
+    { name: 'Java / Spring Boot avancé', progress: 65, status: 'En cours' },
+    { name: 'Angular avancé & RxJS', progress: 55, status: 'En cours' },
+    { name: 'Docker & CI/CD', progress: 40, status: 'Débuté' }
   ];
 
   // Filter state
   activeFilter = 'all';
-  filters = ['all', 'backend', 'cloud-infra', 'devops-sre', 'frontend', 'databases', 'security'];
+  filters = ['all', 'frontend', 'backend', 'databases', 'tools', 'design', 'soft-skills'];
 
   get filteredCategories(): SkillCategory[] {
     if (this.activeFilter === 'all') {
@@ -220,12 +212,12 @@ export class SkillsOverviewComponent {
   getFilterLabel(filter: string): string {
     const labels: Record<string, string> = {
       'all': 'Tout',
-      'backend': 'Backend',
-      'cloud-infra': 'Cloud',
-      'devops-sre': 'DevOps',
       'frontend': 'Frontend',
+      'backend': 'Backend',
       'databases': 'Databases',
-      'security': 'Sécurité'
+      'tools': 'Outils',
+      'design': 'Design',
+      'soft-skills': 'Soft Skills'
     };
     return labels[filter] || filter;
   }
