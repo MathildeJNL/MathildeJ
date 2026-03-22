@@ -180,7 +180,7 @@ export class PortfolioDataService {
   readonly skillStats: Stat[] = [
     { icon: 'code', value: '10+', label: 'Technologies maîtrisées', colorClass: 'text-brand-blue' },
     { icon: 'workspace_premium', value: '5+', label: 'Diplômes obtenus', colorClass: 'text-brand-amber' },
-    { icon: 'trending_up', value: '7 ans', label: 'En alternance (dont 3 en dev)', colorClass: 'text-brand-green' },
+    { icon: 'trending_up', value: '7 ans', label: 'En alternance', colorClass: 'text-brand-green' },
     { icon: 'school', value: 'Bac+5', label: 'Mastère en cours', colorClass: 'text-brand-purple' },
   ];
 
@@ -496,7 +496,7 @@ export class PortfolioDataService {
       icon: 'psychology',
       description: 'Communication, empathie, travail en équipe, adaptabilité',
       longDescription:
-        "Des compétences humaines solides, construites tout au long de parcours atypiques : 3 ans d'alternance en pharmacie (relation patient, conseil, rigueur), 1 an à la réception hôtelière, puis une reconversion complète vers le développement web. Ces expériences ont forgé une vraie capacité à communiquer, écouter et s'adapter à des environnements très différents.",
+        "Des compétences humaines solides, construites tout au long de parcours atypiques : 1 an à la réception hôtelière, puis 3 ans d'alternance en pharmacie (relation patient, conseil, rigueur), avant une reconversion complète vers le développement web. Ces expériences ont forgé une vraie capacité à communiquer, écouter et s'adapter à des environnements très différents.",
       level: 90,
       yearsExperience: 7,
       colorClass: 'text-brand-teal',
@@ -543,7 +543,7 @@ export class PortfolioDataService {
           description: 'Exigée dans la préparation de médicaments, retrouvée dans la qualité du code et les tests',
         },
       ],
-      keyStrengths: ['Relation humaine', 'Écoute active', 'Gestion du stress', 'Pédagogie'],
+      keyStrengths: ['Relation humaine', 'Écoute active', 'Empathie', 'Pédagogie'],
       tools: ['Confluence', 'Slack', 'Microsoft Teams'],
       relatedProjects: [
         {
@@ -596,7 +596,7 @@ export class PortfolioDataService {
 
   readonly currentlyLearning: LearningItem[] = [
     { name: 'Java / Spring Boot avancé', progress: 65, status: 'En cours' },
-    { name: 'Angular avancé & RxJS', progress: 55, status: 'En cours' },
+    { name: 'Angular avancé', progress: 55, status: 'En cours' },
     { name: 'Docker & CI/CD', progress: 40, status: 'Débuté' },
   ];
 
@@ -1247,10 +1247,11 @@ export class PortfolioDataService {
   }
 
   getLevelLabel(level: number): string {
-    if (level >= 90) return 'Expert';
-    if (level >= 75) return 'Avancé';
+    if (level >= 85) return 'Avancé';
+    if (level >= 70) return 'Confirmé';
     if (level >= 50) return 'Intermédiaire';
-    return 'Débutant';
+    if (level >= 30) return 'Bases acquises';
+    return 'Notions';
   }
 
   formatDateRange(event: TimelineEvent): string {

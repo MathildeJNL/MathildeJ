@@ -1,3 +1,18 @@
 :host {
   display: block;
 }
+
+.social-link {
+  @apply text-slate-500 dark:text-brand-muted hover:text-brand-blue dark:hover:text-brand-blue transition-colors duration-200;
+}
+
+.back-to-top {
+  @apply flex items-center justify-center size-10 rounded-full
+    bg-white dark:bg-brand-surface
+    border border-slate-200 dark:border-brand-border
+    text-slate-500 dark:text-brand-muted
+    hover:bg-brand-blue dark:hover:bg-brand-blue
+    hover:text-white dark:hover:text-white
+    hover:border-brand-blue dark:hover:border-brand-blue
+    transition-all duration-300;
+}

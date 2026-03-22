@@ -9,8 +9,7 @@
       <!-- Social Links -->
       <div class="flex gap-4">
         @for (social of socialLinks; track social.name) {
-        <a [href]="social.url" target="_blank" rel="noopener noreferrer"
-          class="text-slate-500 dark:text-brand-muted hover:text-brand-blue transition-colors"
+        <a [href]="social.url" target="_blank" rel="noopener noreferrer" class="social-link"
           [attr.aria-label]="social.name">
           @switch (social.icon) {
           @case ('github') {
@@ -37,9 +36,7 @@
       </div>
 
       <!-- Back to top -->
-      <button
-        class="flex items-center justify-center size-10 rounded-full bg-white dark:bg-brand-surface border border-slate-200 dark:border-brand-border text-slate-500 dark:text-brand-muted hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-all duration-300"
-        (click)="scrollToTop()" aria-label="Retour en haut">
+      <button class="back-to-top" (click)="scrollToTop()" aria-label="Retour en haut">
         <i class="material-symbols-outlined" aria-hidden="true">arrow_upward</i>
       </button>
     </div>

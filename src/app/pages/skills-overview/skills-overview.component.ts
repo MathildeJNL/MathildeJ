@@ -44,4 +44,8 @@ export class SkillsOverviewComponent {
   goToContact(): void {
     this.router.navigate(['/contact']);
   }
+
+  getLevelLabel(level: number): string {
+    return this.data.getLevelLabel(level);
+  }
 }
