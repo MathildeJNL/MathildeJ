@@ -1,0 +1,15 @@
+<section class="px-4 md:px-8" [ngClass]="[paddingClass, altBg ? 'bg-white dark:bg-brand-surface' : '']">
+    <div [class]="'max-w-[' + maxWidth + '] mx-auto'">
+        @if (heading) {
+        <div [ngClass]="centerHeading ? 'text-center mb-12' : 'mb-10'">
+            <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-brand-text mb-4">{{ heading }}</h2>
+            @if (subheading) {
+            <p class="text-slate-500 dark:text-brand-muted max-w-2xl" [class.mx-auto]="centerHeading">
+                {{ subheading }}
+            </p>
+            }
+        </div>
+        }
+        <ng-content></ng-content>
+    </div>
+</section>

@@ -1,21 +1,28 @@
-<!-- Hero Section -->
+﻿<!-- Hero Section -->
 <section class="relative pt-12 pb-16 md:pt-20 md:pb-24 px-4 md:px-8 overflow-hidden">
   <!-- Background -->
-  <div class="absolute top-0 left-0 -ml-40 -mt-40 w-[600px] h-[600px] rounded-full bg-primary/10 blur-3xl -z-10 pointer-events-none"></div>
-  <div class="absolute bottom-0 right-0 -mr-40 -mb-40 w-[500px] h-[500px] rounded-full bg-purple-500/10 blur-3xl -z-10 pointer-events-none"></div>
+  <div
+    class="absolute top-0 left-0 -ml-40 -mt-40 w-[600px] h-[600px] rounded-full bg-brand-blue/10 blur-3xl -z-10 pointer-events-none">
+  </div>
+  <div
+    class="absolute bottom-0 right-0 -mr-40 -mb-40 w-[500px] h-[500px] rounded-full bg-brand-purple/10 blur-3xl -z-10 pointer-events-none">
+  </div>
 
   <div class="max-w-[1200px] mx-auto text-center">
-    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 w-fit mx-auto mb-6">
-      <span class="material-symbols-outlined text-primary text-sm">folder_special</span>
-      <span class="text-primary text-xs font-bold uppercase tracking-wider">Portfolio</span>
+    <div
+      class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-blue/10 border border-brand-blue/20 w-fit mx-auto mb-6">
+      <i class="material-symbols-outlined text-brand-blue text-sm" aria-hidden="true">folder_special</i>
+      <strong class="text-slate-900 dark:text-brand-text text-xs font-bold uppercase tracking-wider">Portfolio</strong>
     </div>
 
     <h1 class="text-4xl md:text-5xl font-black leading-tight tracking-tight mb-6">
-      Galerie de <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500">Projets</span>
+      Galerie de
+      <em class="not-italic text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-teal">Projets</em>
     </h1>
 
-    <p class="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
-      Découvrez une sélection de projets techniques sur lesquels j'ai travaillé, de l'infrastructure cloud aux applications full-stack.
+    <p class="text-lg text-slate-500 dark:text-brand-muted max-w-2xl mx-auto">
+      Découvrez une sélection de projets techniques sur lesquels j'ai travaillé, de l'infrastructure cloud aux
+      applications full-stack.
     </p>
   </div>
 </section>
@@ -26,22 +33,17 @@
     <div class="flex flex-col md:flex-row gap-4 justify-between items-start md:items-center">
       <!-- Search -->
       <div class="relative w-full md:w-80">
-        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">search</span>
-        <input
-          type="text"
-          [(ngModel)]="searchQuery"
-          placeholder="Rechercher un projet..."
-          class="w-full pl-12 pr-4 py-3 rounded-lg border bg-white dark:bg-card-dark border-gray-200 dark:border-border-dark focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"
-        />
+        <i class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 dark:text-brand-muted"
+          aria-hidden="true">search</i>
+        <input type="text" [(ngModel)]="searchQuery" placeholder="Rechercher un projet..."
+          class="w-full pl-12 pr-4 py-3 rounded-lg border bg-white dark:bg-brand-surface border-slate-200 dark:border-brand-border focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 transition-all outline-none" />
       </div>
 
       <!-- Sort -->
       <div class="flex items-center gap-3">
-        <span class="text-sm text-slate-500">Trier par:</span>
-        <select
-          [(ngModel)]="sortBy"
-          class="px-4 py-2 rounded-lg border bg-white dark:bg-card-dark border-gray-200 dark:border-border-dark focus:border-primary outline-none text-sm"
-        >
+        <small class="text-sm text-slate-500 dark:text-brand-muted">Trier par:</small>
+        <select [(ngModel)]="sortBy" aria-label="Trier par"
+          class="px-4 py-2 rounded-lg border bg-white dark:bg-brand-surface border-slate-200 dark:border-brand-border focus:border-brand-blue outline-none text-sm">
           <option value="recent">Plus récent</option>
           <option value="featured">Mis en avant</option>
         </select>
@@ -51,17 +53,15 @@
     <!-- Categories -->
     <div class="flex flex-wrap gap-2 mt-6">
       @for (category of categories; track category.id) {
-        <button
-          (click)="setCategory(category.id)"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all"
-          [ngClass]="{
-            'bg-primary text-white': activeCategory === category.id,
-            'bg-gray-100 dark:bg-card-dark text-slate-600 dark:text-slate-400 hover:bg-gray-200 dark:hover:bg-[#203040]': activeCategory !== category.id
-          }"
-        >
-          <span class="material-symbols-outlined text-lg">{{ category.icon }}</span>
-          {{ category.label }}
-        </button>
+      <button (click)="setCategory(category.id)"
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all" [ngClass]="{
+            'bg-brand-blue text-white': activeCategory === category.id,
+            'bg-white dark:bg-brand-surface text-slate-500 dark:text-brand-muted hover:bg-slate-100 dark:hover:bg-brand-border':
+              activeCategory !== category.id,
+          }">
+        <i class="material-symbols-outlined text-lg" aria-hidden="true">{{ category.icon }}</i>
+        {{ category.label }}
+      </button>
       }
     </div>
   </div>
@@ -69,153 +69,150 @@
 
 <!-- Featured Projects -->
 @if (activeCategory === 'all' && !searchQuery) {
-  <section class="py-8 px-4 md:px-8 bg-white dark:bg-[#151f2b]">
-    <div class="max-w-[1200px] mx-auto">
-      <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
-        <span class="material-symbols-outlined text-amber-500">star</span>
-        Projets mis en avant
-      </h2>
+<section class="py-8 px-4 md:px-8 bg-white dark:bg-brand-surface">
+  <div class="max-w-[1200px] mx-auto">
+    <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+      <i class="material-symbols-outlined text-brand-amber" aria-hidden="true">star</i>
+      Projets mis en avant
+    </h2>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        @for (project of featuredProjects.slice(0, 2); track project.id) {
-          <a
-            [routerLink]="['/projects', project.id]"
-            class="group relative overflow-hidden rounded-2xl bg-gray-50 dark:bg-card-dark border border-gray-100 dark:border-border-dark hover:shadow-2xl transition-all duration-300"
-          >
-            <!-- Image -->
-            <div
-              class="h-64 w-full bg-cover bg-center relative"
-              [style.background-image]="'url(' + project.imageUrl + ')'"
-            >
-              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      @for (project of featuredProjects.slice(0, 2); track project.id) {
+      <a [routerLink]="['/projects', project.id]"
+        class="group relative overflow-hidden rounded-2xl bg-white dark:bg-brand-surface border border-slate-200 dark:border-brand-border hover:shadow-2xl transition-all duration-300">
+        <!-- Image -->
+        <div class="h-64 w-full bg-cover bg-center relative" [style.background-image]="'url(' + project.imageUrl + ')'">
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent dark:from-brand-bg/80 dark:via-brand-bg/40">
+          </div>
 
-              <!-- Featured Badge -->
-              <div class="absolute top-4 right-4">
-                <span class="px-3 py-1 bg-amber-500 text-black text-xs font-bold rounded-full">Featured</span>
-              </div>
+          <!-- Featured Badge -->
+          <div class="absolute top-4 right-4">
+            <small class="px-3 py-1 bg-brand-amber text-white text-xs font-bold rounded-full">Featured</small>
+          </div>
 
-              <!-- Content Overlay -->
-              <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <h3 class="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">{{ project.title }}</h3>
-                <p class="text-sm text-gray-300 line-clamp-2">{{ project.description }}</p>
-              </div>
+          <!-- Content Overlay -->
+          <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+            <h3 class="text-2xl font-bold mb-2 group-hover:text-brand-blue transition-colors">{{ project.title }}</h3>
+            <p class="text-sm text-white/70 line-clamp-2">{{ project.description }}</p>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="p-6">
+          <div class="flex flex-wrap gap-2 mb-4">
+            @for (tag of project.tags.slice(0, 4); track tag) {
+            <small class="px-2 py-1 bg-brand-blue/10 text-slate-900 dark:text-brand-text text-xs rounded font-medium">{{
+              tag }}</small>
+            }
+          </div>
+
+          @if (project.metrics) {
+          <div class="flex gap-6">
+            @for (metric of project.metrics; track metric.label) {
+            <div>
+              <p class="text-xl font-bold text-slate-900 dark:text-brand-text">{{ metric.value }}</p>
+              <p class="text-xs text-slate-500 dark:text-brand-muted">{{ metric.label }}</p>
             </div>
-
-            <!-- Footer -->
-            <div class="p-6">
-              <div class="flex flex-wrap gap-2 mb-4">
-                @for (tag of project.tags.slice(0, 4); track tag) {
-                  <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded font-medium">{{ tag }}</span>
-                }
-              </div>
-
-              @if (project.metrics) {
-                <div class="flex gap-6">
-                  @for (metric of project.metrics; track metric.label) {
-                    <div>
-                      <p class="text-xl font-bold text-slate-900 dark:text-white">{{ metric.value }}</p>
-                      <p class="text-xs text-slate-500">{{ metric.label }}</p>
-                    </div>
-                  }
-                </div>
-              }
-            </div>
-          </a>
-        }
-      </div>
+            }
+          </div>
+          }
+        </div>
+      </a>
+      }
     </div>
-  </section>
+  </div>
+</section>
 }
 
 <!-- All Projects Grid -->
-<section class="py-12 px-4 md:px-8" [ngClass]="{'bg-white dark:bg-[#151f2b]': activeCategory !== 'all' || searchQuery}">
+<section class="py-12 px-4 md:px-8"
+  [ngClass]="{ 'bg-white dark:bg-brand-surface': activeCategory !== 'all' || searchQuery }">
   <div class="max-w-[1200px] mx-auto">
     @if (activeCategory !== 'all' || searchQuery) {
-      <h2 class="text-2xl font-bold mb-6">
-        {{ filteredProjects.length }} projet{{ filteredProjects.length > 1 ? 's' : '' }} trouvé{{ filteredProjects.length > 1 ? 's' : '' }}
-      </h2>
+    <h2 class="text-2xl font-bold mb-6">
+      {{ filteredProjects.length }} projet{{ filteredProjects.length > 1 ? 's' : '' }} trouvé{{
+      filteredProjects.length > 1 ? 's' : ''
+      }}
+    </h2>
     } @else {
-      <h2 class="text-2xl font-bold mb-6">Tous les projets</h2>
+    <h2 class="text-2xl font-bold mb-6">Tous les projets</h2>
     }
 
     @if (filteredProjects.length === 0) {
-      <div class="text-center py-16">
-        <span class="material-symbols-outlined text-6xl text-slate-300 mb-4">search_off</span>
-        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Aucun projet trouvé</h3>
-        <p class="text-slate-500">Essayez de modifier vos critères de recherche.</p>
-      </div>
+    <div class="text-center py-16">
+      <i class="material-symbols-outlined text-6xl text-slate-500 dark:text-brand-muted mb-4"
+        aria-hidden="true">search_off</i>
+      <h3 class="text-xl font-bold text-slate-900 dark:text-brand-text mb-2">Aucun projet trouvé</h3>
+      <p class="text-slate-500 dark:text-brand-muted">Essayez de modifier vos critères de recherche.</p>
+    </div>
     } @else {
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        @for (project of filteredProjects; track project.id) {
-          <a
-            [routerLink]="['/projects', project.id]"
-            class="group rounded-xl overflow-hidden bg-white dark:bg-card-dark border border-gray-100 dark:border-border-dark hover:shadow-xl transition-all duration-300 flex flex-col"
-          >
-            <!-- Image -->
-            <div
-              class="h-48 w-full bg-cover bg-center relative"
-              [style.background-image]="'url(' + project.imageUrl + ')'"
-            >
-              <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <span class="px-4 py-2 bg-white text-black font-bold rounded-full text-sm">Voir le détail</span>
-              </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      @for (project of filteredProjects; track project.id) {
+      <a [routerLink]="['/projects', project.id]"
+        class="group rounded-xl overflow-hidden bg-white dark:bg-brand-surface border border-slate-200 dark:border-brand-border hover:shadow-xl transition-all duration-300 flex flex-col">
+        <!-- Image -->
+        <div class="h-48 w-full bg-cover bg-center relative" [style.background-image]="'url(' + project.imageUrl + ')'">
+          <div
+            class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <small class="px-4 py-2 bg-white text-slate-900 font-bold rounded-full text-sm">Voir le
+              détail</small>
+          </div>
 
-              <!-- Category Badge -->
-              <div class="absolute top-3 left-3">
-                <span class="inline-flex items-center gap-1 px-2 py-1 bg-black/50 backdrop-blur-sm text-white text-xs rounded-full">
-                  <span class="material-symbols-outlined text-sm">{{ getCategoryIcon(project.categories[0]) }}</span>
-                  {{ project.year }}
-                </span>
-              </div>
+          <!-- Category Badge -->
+          <div class="absolute top-3 left-3">
+            <small
+              class="inline-flex items-center gap-1 px-2 py-1 bg-white/50 dark:bg-brand-bg/50 backdrop-blur-sm text-slate-900 dark:text-brand-text text-xs rounded-full">
+              <i class="material-symbols-outlined text-sm" aria-hidden="true">{{ getCategoryIcon(project.categories[0])
+                }}</i>
+              {{ project.year }}
+            </small>
+          </div>
 
-              @if (project.featured) {
-                <div class="absolute top-3 right-3">
-                  <span class="material-symbols-outlined text-amber-400">star</span>
-                </div>
-              }
-            </div>
+          @if (project.featured) {
+          <div class="absolute top-3 right-3">
+            <i class="material-symbols-outlined text-brand-amber" aria-hidden="true">star</i>
+          </div>
+          }
+        </div>
 
-            <!-- Content -->
-            <div class="p-5 flex-1 flex flex-col">
-              <h3 class="text-lg font-bold mb-2 group-hover:text-primary transition-colors">{{ project.title }}</h3>
-              <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 line-clamp-2 flex-1">{{ project.description }}</p>
+        <!-- Content -->
+        <div class="p-5 flex-1 flex flex-col">
+          <h3 class="text-lg font-bold mb-2 group-hover:text-brand-blue transition-colors">{{ project.title }}</h3>
+          <p class="text-sm text-slate-500 dark:text-brand-muted mb-4 line-clamp-2 flex-1">
+            {{ project.description }}
+          </p>
 
-              <div class="flex flex-wrap gap-2">
-                @for (tag of project.tags.slice(0, 3); track tag) {
-                  <span class="px-2 py-1 bg-gray-100 dark:bg-background-dark text-xs rounded text-slate-600 dark:text-slate-400">
-                    {{ tag }}
-                  </span>
-                }
-                @if (project.tags.length > 3) {
-                  <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded font-medium">
-                    +{{ project.tags.length - 3 }}
-                  </span>
-                }
-              </div>
-            </div>
-          </a>
-        }
-      </div>
+          <div class="flex flex-wrap gap-2">
+            @for (tag of project.tags.slice(0, 3); track tag) {
+            <small class="px-2 py-1 bg-slate-50 dark:bg-brand-bg text-xs rounded text-slate-500 dark:text-brand-muted">
+              {{ tag }}
+            </small>
+            }
+            @if (project.tags.length > 3) {
+            <small class="px-2 py-1 bg-brand-blue/10 text-slate-900 dark:text-brand-text text-xs rounded font-medium">
+              +{{ project.tags.length - 3 }}
+            </small>
+            }
+          </div>
+        </div>
+      </a>
+      }
+    </div>
     }
   </div>
 </section>
 
 <!-- CTA Section -->
-<section class="py-16 px-4 md:px-8 bg-white dark:bg-[#151f2b]">
+<section class="py-16 px-4 md:px-8 bg-white dark:bg-brand-surface">
   <div class="max-w-[800px] mx-auto text-center">
-    <div class="p-8 rounded-2xl bg-gradient-to-r from-primary/10 to-purple-500/10 border border-primary/20">
-      <span class="material-symbols-outlined text-4xl text-primary mb-4">rocket_launch</span>
+    <div class="p-8 rounded-2xl bg-gradient-to-r from-brand-blue/10 to-brand-teal/10 border border-brand-blue/20">
+      <i class="material-symbols-outlined text-4xl text-brand-blue mb-4" aria-hidden="true">rocket_launch</i>
       <h2 class="text-2xl font-bold mb-4">Un projet en tête ?</h2>
-      <p class="text-slate-600 dark:text-slate-400 mb-6">
+      <p class="text-slate-500 dark:text-brand-muted mb-6">
         Discutons de vos idées et voyons comment je peux vous aider à les concrétiser.
       </p>
-      <a
-        routerLink="/contact"
-        class="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-blue-600 text-white font-bold rounded-lg transition-colors"
-      >
-        <span class="material-symbols-outlined">mail</span>
-        Me contacter
-      </a>
+      <app-button title="Me contacter" name="Me contacter" svgName="mail" color="primary" (action)="goToContact()" />
     </div>
   </div>
 </section>

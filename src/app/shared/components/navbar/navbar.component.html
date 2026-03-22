@@ -1,150 +1,153 @@
-<nav class="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-border-dark bg-white/80 dark:bg-[#111a22]/80 backdrop-blur-md">
+﻿<nav
+  class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-brand-border bg-white/80 dark:bg-brand-surface/80 backdrop-blur-md">
   <div class="max-w-[1200px] mx-auto px-4 md:px-8">
     <div class="flex h-16 items-center justify-between">
       <!-- Logo / Name -->
       <a routerLink="/" class="flex items-center gap-2 group">
         <img src="assets/images/logo.png" alt="Logo" class="h-6 w-6 rounded" />
-        <span class="text-lg font-bold tracking-tight transition-colors duration-200 group-hover:text-primary">{{ brandName }}</span>
+        <strong class="text-lg font-bold tracking-tight transition-colors duration-200 group-hover:text-brand-blue">
+          {{ brandName }}
+        </strong>
       </a>
 
       <!-- Desktop Menu -->
       <div class="hidden md:flex items-center gap-8">
         @for (item of navItems; track item.path) {
-          @if (item.children && item.children.length > 0) {
-            <!-- Item with dropdown -->
-            <div 
-              class="relative dropdown-container"
-              (mouseenter)="openDropdown = item.label"
-              (mouseleave)="openDropdown = null"
-            >
-              <a
-                [routerLink]="item.path"
-                class="flex items-center gap-1 text-sm font-medium link-hover transition-colors duration-200 hover:text-primary"
-                [class.text-primary]="openDropdown === item.label"
-              >
-                {{ item.label }}
-                <span class="material-symbols-outlined text-sm transition-transform duration-200" [class.rotate-180]="openDropdown === item.label">
-                  expand_more
-                </span>
+        @if (item.children && item.children.length > 0) {
+        <!-- Item with dropdown -->
+        <div class="relative dropdown-container" (mouseenter)="openDropdown = item.label"
+          (mouseleave)="openDropdown = null">
+          <a [routerLink]="item.path"
+            class="flex items-center gap-1 text-sm font-medium text-slate-500 dark:text-brand-muted link-hover transition-colors duration-200 hover:text-slate-900 dark:hover:text-brand-text"
+            [ngClass]="openDropdown === item.label ? 'text-slate-900 dark:text-brand-text' : ''">
+            {{ item.label }}
+            <i class="material-symbols-outlined text-sm transition-transform duration-200" aria-hidden="true"
+              [class.rotate-180]="openDropdown === item.label">
+              expand_more
+            </i>
+          </a>
+
+          <!-- Dropdown Menu -->
+          @if (openDropdown === item.label) {
+          <div class="absolute top-full left-0 pt-2 z-50">
+            <div
+              class="w-56 rounded-xl bg-white dark:bg-brand-surface shadow-lg border border-slate-200 dark:border-brand-border py-2 animate-fadeIn">
+              @for (child of item.children; track child.path) {
+              <a [routerLink]="child.path.split('?')[0]"
+                [queryParams]="child.path.includes('?') ? { category: child.path.split('=')[1] } : null"
+                (click)="closeDropdown()"
+                class="flex items-center gap-3 px-4 py-2.5 text-sm text-slate-500 dark:text-brand-muted hover:bg-slate-100 dark:hover:bg-brand-border hover:text-slate-900 dark:hover:text-brand-text transition-colors">
+                <i class="material-symbols-outlined text-lg text-slate-400 dark:text-brand-muted" aria-hidden="true">
+                  {{ child.icon }}
+                </i>
+                {{ child.label }}
               </a>
-              
-              <!-- Dropdown Menu -->
-              @if (openDropdown === item.label) {
-                <div class="absolute top-full left-0 pt-2 z-50">
-                  <div class="w-56 rounded-xl bg-white dark:bg-[#1a2633] shadow-lg border border-gray-200 dark:border-border-dark py-2 animate-fadeIn">
-                    @for (child of item.children; track child.path) {
-                      <a
-                        [routerLink]="child.path.split('?')[0]"
-                        [queryParams]="child.path.includes('?') ? {category: child.path.split('=')[1]} : null"
-                        (click)="closeDropdown()"
-                        class="flex items-center gap-3 px-4 py-2.5 text-sm text-slate-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-primary transition-colors"
-                      >
-                        <span class="material-symbols-outlined text-lg text-slate-400 dark:text-gray-500">{{ child.icon }}</span>
-                        {{ child.label }}
-                      </a>
-                    }
-                  </div>
-                </div>
               }
             </div>
-          } @else {
-            <!-- Simple item without dropdown -->
-            <a
-              [routerLink]="item.path"
-              routerLinkActive="text-primary font-bold"
-              [routerLinkActiveOptions]="{ exact: item.path === '/' }"
-              class="text-sm font-medium link-hover transition-colors duration-200 hover:text-primary"
-            >
-              {{ item.label }}
-            </a>
+          </div>
           }
+        </div>
+        } @else {
+        <!-- Simple item without dropdown -->
+        <a [routerLink]="item.path" routerLinkActive="text-slate-900 dark:text-brand-text font-bold"
+          [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+          class="text-sm font-medium text-slate-500 dark:text-brand-muted link-hover transition-colors duration-200 hover:text-slate-900 dark:hover:text-brand-text">
+          {{ item.label }}
+        </a>
+        }
         }
       </div>
 
-      <!-- CTA Button -->
-      <div class="hidden md:block">
-        <a
-          routerLink="/contact"
-          class="btn-hover inline-flex items-center justify-center h-10 px-5 rounded-lg bg-primary hover:bg-blue-600 text-white text-sm font-bold"
-        >
+      <!-- Right side: theme toggle + CTA -->
+      <div class="hidden md:flex items-center gap-3">
+        <!-- Theme Toggle -->
+        <button (click)="theme.toggle()"
+          class="p-2 rounded-lg text-slate-500 dark:text-brand-muted hover:bg-slate-100 dark:hover:bg-brand-border transition-colors"
+          [attr.aria-label]="theme.isDark() ? 'Activer le mode clair' : 'Activer le mode sombre'">
+          @if (theme.isDark()) {
+          <i class="material-symbols-outlined text-xl" aria-hidden="true">light_mode</i>
+          } @else {
+          <i class="material-symbols-outlined text-xl" aria-hidden="true">dark_mode</i>
+          }
+        </button>
+        <!-- CTA Button -->
+        <a routerLink="/contact"
+          class="btn-hover inline-flex items-center justify-center h-10 px-5 rounded-lg bg-brand-blue hover:shadow-lg hover:shadow-brand-blue/40 text-white text-sm font-bold">
           Contact
         </a>
       </div>
 
       <!-- Mobile Menu Button -->
-      <button
-        class="md:hidden p-2 text-slate-600 dark:text-gray-300"
-        (click)="toggleMobileMenu()"
-        aria-label="Menu mobile"
-      >
-        <span class="material-symbols-outlined">{{ isMobileMenuOpen ? 'close' : 'menu' }}</span>
-      </button>
+      <div class="md:hidden flex items-center gap-2">
+        <!-- Theme Toggle Mobile -->
+        <button (click)="theme.toggle()" class="p-2 text-slate-500 dark:text-brand-muted"
+          [attr.aria-label]="theme.isDark() ? 'Activer le mode clair' : 'Activer le mode sombre'">
+          @if (theme.isDark()) {
+          <i class="material-symbols-outlined" aria-hidden="true">light_mode</i>
+          } @else {
+          <i class="material-symbols-outlined" aria-hidden="true">dark_mode</i>
+          }
+        </button>
+        <button class="p-2 text-slate-500 dark:text-brand-muted" (click)="toggleMobileMenu()" aria-label="Menu mobile">
+          <i class="material-symbols-outlined" aria-hidden="true">{{ isMobileMenuOpen ? 'close' : 'menu' }}</i>
+        </button>
+      </div>
     </div>
 
     <!-- Mobile Menu -->
     @if (isMobileMenuOpen) {
-      <div class="md:hidden py-4 border-t border-gray-200 dark:border-border-dark">
-        <div class="flex flex-col gap-2">
-          @for (item of navItems; track item.path) {
-            @if (item.children && item.children.length > 0) {
-              <!-- Mobile item with expandable submenu -->
-              <div>
-                <button
-                  (click)="toggleMobileExpand(item.label)"
-                  class="flex items-center justify-between w-full text-sm font-medium hover:text-primary transition-colors py-2"
-                  [class.text-primary]="isMobileExpanded(item.label)"
-                >
-                  {{ item.label }}
-                  <span class="material-symbols-outlined text-base transition-transform duration-200" [class.rotate-180]="isMobileExpanded(item.label)">
-                    expand_more
-                  </span>
-                </button>
-                @if (isMobileExpanded(item.label)) {
-                  <div class="pl-4 flex flex-col gap-1 mt-1 mb-2 border-l-2 border-primary/30">
-                    <a
-                      [routerLink]="item.path"
-                      class="flex items-center gap-2 text-sm font-medium text-primary py-2"
-                      (click)="closeMobileMenu()"
-                    >
-                      <span class="material-symbols-outlined text-base">apps</span>
-                      Voir tout
-                    </a>
-                    @for (child of item.children; track child.path) {
-                      <a
-                        [routerLink]="child.path.split('?')[0]"
-                        [queryParams]="child.path.includes('?') ? {category: child.path.split('=')[1]} : null"
-                        class="flex items-center gap-2 text-sm text-slate-600 dark:text-gray-400 hover:text-primary transition-colors py-2"
-                        (click)="closeMobileMenu()"
-                      >
-                        <span class="material-symbols-outlined text-base">{{ child.icon }}</span>
-                        {{ child.label }}
-                      </a>
-                    }
-                  </div>
-                }
-              </div>
-            } @else {
-              <!-- Simple mobile item -->
-              <a
-                [routerLink]="item.path"
-                routerLinkActive="text-primary font-bold"
-                [routerLinkActiveOptions]="{ exact: item.path === '/' }"
-                class="text-sm font-medium hover:text-primary transition-colors py-2"
-                (click)="closeMobileMenu()"
-              >
-                {{ item.label }}
-              </a>
+    <div class="md:hidden py-4 border-t border-slate-200 dark:border-brand-border">
+      <div class="flex flex-col gap-2">
+        @for (item of navItems; track item.path) {
+        @if (item.children && item.children.length > 0) {
+        <!-- Mobile item with expandable submenu -->
+        <div>
+          <button (click)="toggleMobileExpand(item.label)"
+            class="flex items-center justify-between w-full text-sm font-medium text-slate-500 dark:text-brand-muted hover:text-slate-900 dark:hover:text-brand-text transition-colors py-2"
+            [ngClass]="isMobileExpanded(item.label) ? 'text-slate-900 dark:text-brand-text' : ''">
+            {{ item.label }}
+            <i class="material-symbols-outlined text-base transition-transform duration-200" aria-hidden="true"
+              [class.rotate-180]="isMobileExpanded(item.label)">
+              expand_more
+            </i>
+          </button>
+          @if (isMobileExpanded(item.label)) {
+          <div class="pl-4 flex flex-col gap-1 mt-1 mb-2 border-l-2 border-brand-blue/30">
+            <a [routerLink]="item.path"
+              class="flex items-center gap-2 text-sm font-medium text-slate-900 dark:text-brand-text py-2"
+              (click)="closeMobileMenu()">
+              <i class="material-symbols-outlined text-base" aria-hidden="true">apps</i>
+              Voir tout
+            </a>
+            @for (child of item.children; track child.path) {
+            <a [routerLink]="child.path.split('?')[0]"
+              [queryParams]="child.path.includes('?') ? { category: child.path.split('=')[1] } : null"
+              class="flex items-center gap-2 text-sm text-slate-500 dark:text-brand-muted hover:text-slate-900 dark:hover:text-brand-text transition-colors py-2"
+              (click)="closeMobileMenu()">
+              <i class="material-symbols-outlined text-base" aria-hidden="true">{{ child.icon }}</i>
+              {{ child.label }}
+            </a>
             }
+          </div>
           }
-          <a
-            routerLink="/contact"
-            class="inline-flex items-center justify-center h-10 px-5 rounded-lg bg-primary text-white text-sm font-bold mt-2"
-            (click)="closeMobileMenu()"
-          >
-            Contact
-          </a>
         </div>
+        } @else {
+        <!-- Simple mobile item -->
+        <a [routerLink]="item.path" routerLinkActive="text-slate-900 dark:text-brand-text font-bold"
+          [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+          class="text-sm font-medium text-slate-500 dark:text-brand-muted hover:text-slate-900 dark:hover:text-brand-text transition-colors py-2"
+          (click)="closeMobileMenu()">
+          {{ item.label }}
+        </a>
+        }
+        }
+        <a routerLink="/contact"
+          class="inline-flex items-center justify-center h-10 px-5 rounded-lg bg-brand-blue text-white text-sm font-bold mt-2"
+          (click)="closeMobileMenu()">
+          Contact
+        </a>
       </div>
+    </div>
     }
   </div>
 </nav>

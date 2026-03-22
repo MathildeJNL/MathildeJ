@@ -24,6 +24,6 @@ export const environment = {
     templateId: 'YOUR_TEMPLATE_ID',
 
     // Clé publique (Account → API Keys → Public Key)
-    publicKey: 'YOUR_PUBLIC_KEY'
-  }
+    publicKey: 'YOUR_PUBLIC_KEY',
+  },
 };

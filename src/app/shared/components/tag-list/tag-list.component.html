@@ -1,0 +1,10 @@
+﻿<div class="flex flex-wrap gap-2">
+    @for (tag of displayedTags; track tag) {
+    <small class="px-2 py-1 text-xs rounded" [ngClass]="tagClass">{{ tag }}</small>
+    }
+    @if (tags.length > maxDisplay && maxDisplay > 0) {
+    <small class="px-2 py-1 bg-brand-blue/10 text-xs rounded text-slate-900 dark:text-brand-text font-medium">
+        +{{ tags.length - maxDisplay }}
+    </small>
+    }
+</div>

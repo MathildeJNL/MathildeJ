@@ -7,14 +7,27 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "primary": "#137fec",
-        "background-light": "#f6f7f8",
-        "background-dark": "#101922",
-        "card-dark": "#192633",
-        "border-dark": "#233648",
-        "surface-dark": "#1a2632",
-        "surface-dark-highlight": "#233648",
-        "text-secondary": "#94a3b8",
+        // Legacy aliases (keep for transition)
+        "primary": "#3B82F6",
+        "background-light": "#0B1120",
+        "background-dark": "#0B1120",
+        "card-dark": "#151E32",
+        "border-dark": "#1F2E4A",
+        "surface-dark": "#151E32",
+        "surface-dark-highlight": "#1F2E4A",
+        "text-secondary": "#8A9BBA",
+        // Brand Design System
+        "brand-bg": "#0B1120",
+        "brand-surface": "#151E32",
+        "brand-border": "#1F2E4A",
+        "brand-text": "#F8FAFC",
+        "brand-muted": "#8A9BBA",
+        "brand-purple": "#A855F7",
+        "brand-blue": "#3B82F6",
+        "brand-amber": "#F59E0B",
+        "brand-green": "#22C55E",
+        "brand-pink": "#EC4899",
+        "brand-teal": "#14B8A6",
       },
       fontFamily: {
         "display": ["Manrope", "sans-serif"]

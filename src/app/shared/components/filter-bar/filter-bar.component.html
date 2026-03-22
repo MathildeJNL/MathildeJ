@@ -1,0 +1,20 @@
+﻿<section class="px-4 md:px-8 pb-8">
+    <div [class]="'max-w-[' + maxWidth + '] mx-auto'">
+        <div class="flex flex-wrap justify-center gap-2">
+            @for (filter of filters; track filter.id) {
+            <button (click)="filterChange.emit(filter.id)"
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all"
+                [ngClass]="{
+            'bg-brand-blue text-white': activeFilter === filter.id,
+            'bg-white dark:bg-brand-surface text-slate-500 dark:text-brand-muted hover:bg-slate-100 dark:hover:bg-brand-border':
+              activeFilter !== filter.id,
+          }">
+                @if (filter.icon) {
+                <i class="material-symbols-outlined text-lg" aria-hidden="true">{{ filter.icon }}</i>
+                }
+                {{ filter.label }}
+            </button>
+            }
+        </div>
+    </div>
+</section>

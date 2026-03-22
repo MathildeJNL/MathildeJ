@@ -1,0 +1,19 @@
+﻿<nav class="mb-8">
+    <ol class="flex items-center gap-2 text-sm">
+        @for (crumb of crumbs; track crumb.label; let last = $last) {
+        <li>
+            @if (!last) {
+            <a [routerLink]="crumb.route"
+                class="text-slate-500 dark:text-brand-muted hover:text-brand-blue transition-colors">
+                {{ crumb.label }}
+            </a>
+            } @else {
+            <strong class="text-slate-900 dark:text-brand-text font-medium">{{ crumb.label }}</strong>
+            }
+        </li>
+        @if (!last) {
+        <li><small class="text-slate-400 dark:text-brand-muted">/</small></li>
+        }
+        }
+    </ol>
+</nav>

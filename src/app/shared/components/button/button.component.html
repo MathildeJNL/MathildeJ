@@ -1,0 +1,7 @@
+<button [type]="type" [title]="title" [class]="class ? class : colorClasses" [attr.aria-label]="label"
+    [disabled]="disabled" (click)="click($event)">
+    @if (svgName) {
+    <app-svg [name]="svgName" [size]="svgSize" />
+    }
+    {{ name }}
+</button>

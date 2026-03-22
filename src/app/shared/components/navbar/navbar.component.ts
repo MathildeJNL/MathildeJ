@@ -1,56 +1,26 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-
-interface SubNavItem {
-  label: string;
-  path: string;
-  icon: string;
-}
-
-interface NavItem {
-  label: string;
-  path: string;
-  children?: SubNavItem[];
-}
+import { PortfolioDataService } from '../../services/portfolio-data.service';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
+  private readonly data = inject(PortfolioDataService);
+  readonly theme = inject(ThemeService);
+
   brandName = 'MathildeJ.dev';
   isMobileMenuOpen = false;
   openDropdown: string | null = null;
   expandedMobileItems: Set<string> = new Set();
 
-  navItems: NavItem[] = [
-    { label: 'Accueil', path: '/' },
-    {
-      label: 'Compétences',
-      path: '/skills',
-      children: [
-        { label: 'Frontend', path: '/skills/frontend', icon: 'web' },
-        { label: 'Backend & APIs', path: '/skills/backend', icon: 'database' },
-        { label: 'Bases de données', path: '/skills/databases', icon: 'storage' },
-        { label: 'Outils & Workflow', path: '/skills/tools', icon: 'build' },
-        { label: 'Design & Intégration', path: '/skills/design', icon: 'palette' },
-        { label: 'Soft Skills', path: '/skills/soft-skills', icon: 'psychology' }
-      ]
-    },
-    {
-      label: 'Projets',
-      path: '/projects',
-      children: [
-        { label: 'Backend', path: '/projects?category=backend', icon: 'database' },
-        { label: 'Frontend', path: '/projects?category=frontend', icon: 'web' }
-      ]
-    },
-    { label: 'Parcours', path: '/timeline' }
-  ];
+  readonly navItems = this.data.navItems;
 
   toggleMobileMenu(): void {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;

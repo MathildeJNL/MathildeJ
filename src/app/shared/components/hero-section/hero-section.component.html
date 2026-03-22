@@ -1,0 +1,33 @@
+﻿<section class="relative pt-12 pb-16 md:pt-20 md:pb-24 px-4 md:px-8 overflow-hidden">
+    <!-- Background blur -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 -mt-40 w-[800px] h-[400px] rounded-full blur-3xl -z-10 pointer-events-none"
+        [ngClass]="bgBlurClass || 'bg-gradient-to-r from-brand-blue/10 to-brand-teal/10'"></div>
+
+    <div [class]="'max-w-[' + maxWidth + '] mx-auto text-center'">
+        <!-- Badge -->
+        <div
+            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-blue/10 border border-brand-blue/20 w-fit mx-auto mb-6">
+            <i class="material-symbols-outlined text-brand-blue text-sm" aria-hidden="true">{{ badgeIcon }}</i>
+            <strong class="text-slate-900 dark:text-brand-text text-xs font-bold uppercase tracking-wider">{{ badgeLabel
+                }}</strong>
+        </div>
+
+        <!-- Title -->
+        <h1
+            class="text-4xl md:text-5xl font-black leading-tight tracking-tight text-slate-900 dark:text-brand-text mb-6">
+            {{ title }}
+            <em class="not-italic text-transparent bg-clip-text bg-gradient-to-r"
+                [ngClass]="gradientClass || 'from-brand-blue to-brand-teal'">
+                {{ titleHighlight }}
+            </em>
+        </h1>
+
+        <!-- Description -->
+        <p class="text-lg text-slate-500 dark:text-brand-muted max-w-2xl mx-auto" [class.mb-12]="hasContent">
+            {{ description }}
+        </p>
+
+        <!-- Projected content (stats, etc.) -->
+        <ng-content></ng-content>
+    </div>
+</section>

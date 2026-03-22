@@ -1,4 +1,4 @@
-@if (skill) {
+﻿@if (skill) {
 <!-- Hero Section -->
 <section class="relative pt-12 pb-16 md:pt-20 md:pb-24 px-4 md:px-8 overflow-hidden">
   <!-- Background -->
@@ -10,9 +10,10 @@
     <!-- Breadcrumb -->
     <nav class="mb-8">
       <ol class="flex items-center gap-2 text-sm">
-        <li><a routerLink="/skills" class="text-slate-500 hover:text-primary transition-colors">Compétences</a></li>
-        <li><span class="text-slate-400">/</span></li>
-        <li class="text-slate-900 dark:text-white font-medium">{{ skill.name }}</li>
+        <li><a routerLink="/skills" class="text-slate-500 dark:text-brand-muted hover:text-brand-blue transition-colors">Compétences</a>
+        </li>
+        <li><small class="text-slate-500 dark:text-brand-muted">/</small></li>
+        <li class="text-slate-900 dark:text-brand-text font-medium">{{ skill.name }}</li>
       </ol>
     </nav>
 
@@ -20,7 +21,7 @@
       <!-- Icon -->
       <div class="w-20 h-20 rounded-2xl flex items-center justify-center shrink-0"
         [ngClass]="[skill.bgClass, skill.colorClass]">
-        <span class="material-symbols-outlined text-4xl">{{ skill.icon }}</span>
+        <i class="material-symbols-outlined text-4xl" aria-hidden="true">{{ skill.icon }}</i>
       </div>
 
       <!-- Content -->
@@ -28,25 +29,26 @@
         <h1 class="text-4xl md:text-5xl font-black leading-tight tracking-tight mb-4">
           {{ skill.name }}
         </h1>
-        <p class="text-lg text-slate-600 dark:text-slate-400 mb-6 max-w-2xl">
+        <p class="text-lg text-slate-500 dark:text-brand-muted mb-6 max-w-2xl">
           {{ skill.longDescription }}
         </p>
 
         <!-- Meta Stats -->
         <div class="flex flex-wrap gap-6">
           <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined text-xl" [ngClass]="skill.colorClass">trending_up</span>
-            <span class="font-bold text-slate-900 dark:text-white">{{ skill.level }}%</span>
-            <span class="text-slate-500">maîtrise</span>
+            <i class="material-symbols-outlined text-xl" [ngClass]="skill.colorClass" aria-hidden="true">trending_up</i>
+            <strong class="font-bold text-slate-900 dark:text-brand-text">{{ skill.level }}%</strong>
+            <small class="text-slate-500 dark:text-brand-muted">maîtrise</small>
           </div>
           <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined text-xl" [ngClass]="skill.colorClass">schedule</span>
-            <span class="font-bold text-slate-900 dark:text-white">{{ skill.yearsExperience }}+</span>
-            <span class="text-slate-500">ans d'expérience</span>
+            <i class="material-symbols-outlined text-xl" [ngClass]="skill.colorClass" aria-hidden="true">schedule</i>
+            <strong class="font-bold text-slate-900 dark:text-brand-text">{{ skill.yearsExperience }}+</strong>
+            <small class="text-slate-500 dark:text-brand-muted">ans d'expérience</small>
           </div>
           <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined text-xl" [ngClass]="skill.colorClass">workspace_premium</span>
-            <span class="font-bold text-slate-900 dark:text-white">{{ getLevelLabel(skill.level) }}</span>
+            <i class="material-symbols-outlined text-xl" [ngClass]="skill.colorClass"
+              aria-hidden="true">workspace_premium</i>
+            <strong class="font-bold text-slate-900 dark:text-brand-text">{{ getLevelLabel(skill.level) }}</strong>
           </div>
         </div>
       </div>
@@ -55,15 +57,15 @@
 </section>
 
 <!-- Main Content -->
-<section class="py-12 px-4 md:px-8 bg-white dark:bg-[#151f2b]">
+<section class="py-12 px-4 md:px-8 bg-white dark:bg-brand-surface">
   <div class="max-w-[1000px] mx-auto">
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
       <!-- Left Column: Skills Detail -->
       <div class="lg:col-span-2 space-y-8">
         <!-- Individual Skills -->
-        <div class="bg-gray-50 dark:bg-card-dark rounded-xl border border-gray-100 dark:border-border-dark p-6">
+        <div class="bg-white dark:bg-brand-surface rounded-xl border border-slate-200 dark:border-brand-border p-6">
           <h2 class="text-xl font-bold mb-6 flex items-center gap-3">
-            <span class="material-symbols-outlined" [ngClass]="skill.colorClass">code</span>
+            <i class="material-symbols-outlined" [ngClass]="skill.colorClass" aria-hidden="true">code</i>
             Technologies
           </h2>
 
@@ -72,17 +74,17 @@
             <div class="space-y-2">
               <div class="flex justify-between items-center">
                 <div>
-                  <span class="font-bold text-slate-900 dark:text-white">{{ tech.name }}</span>
-                  <span class="text-sm text-slate-500 ml-2">{{ tech.experience }}</span>
+                  <strong class="font-bold text-slate-900 dark:text-brand-text">{{ tech.name }}</strong>
+                  <small class="text-sm text-slate-500 dark:text-brand-muted ml-2">{{ tech.experience }}</small>
                 </div>
-                <span class="text-sm font-medium" [ngClass]="skill.colorClass">{{ tech.level }}%</span>
+                <small class="text-sm font-medium" [ngClass]="skill.colorClass">{{ tech.level }}%</small>
               </div>
-              <div class="w-full h-2 bg-gray-200 dark:bg-background-dark rounded-full overflow-hidden">
+              <div class="w-full h-2 bg-slate-200 dark:bg-brand-bg rounded-full overflow-hidden">
                 <div class="h-full rounded-full transition-all duration-700 bg-gradient-to-r"
                   [ngClass]="skill.gradientClass" [style.width.%]="tech.level"></div>
               </div>
               @if (tech.description) {
-              <p class="text-sm text-slate-500">{{ tech.description }}</p>
+              <p class="text-sm text-slate-500 dark:text-brand-muted">{{ tech.description }}</p>
               }
             </div>
             }
@@ -90,35 +92,36 @@
         </div>
 
         <!-- Key Strengths -->
-        <div class="bg-gray-50 dark:bg-card-dark rounded-xl border border-gray-100 dark:border-border-dark p-6">
+        <div class="bg-white dark:bg-brand-surface rounded-xl border border-slate-200 dark:border-brand-border p-6">
           <h2 class="text-xl font-bold mb-6 flex items-center gap-3">
-            <span class="material-symbols-outlined" [ngClass]="skill.colorClass">star</span>
+            <i class="material-symbols-outlined" [ngClass]="skill.colorClass" aria-hidden="true">star</i>
             Points forts
           </h2>
 
           <div class="grid grid-cols-2 gap-4">
             @for (strength of skill.keyStrengths; track strength) {
-            <div class="flex items-center gap-3 p-3 rounded-lg bg-white dark:bg-background-dark">
-              <span class="material-symbols-outlined text-lg" [ngClass]="skill.colorClass">check_circle</span>
-              <span class="text-sm font-medium text-slate-700 dark:text-slate-300">{{ strength }}</span>
+            <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-brand-bg">
+              <i class="material-symbols-outlined text-lg" [ngClass]="skill.colorClass"
+                aria-hidden="true">check_circle</i>
+              <small class="text-sm font-medium text-slate-500 dark:text-brand-muted">{{ strength }}</small>
             </div>
             }
           </div>
         </div>
 
         <!-- Tools -->
-        <div class="bg-gray-50 dark:bg-card-dark rounded-xl border border-gray-100 dark:border-border-dark p-6">
+        <div class="bg-white dark:bg-brand-surface rounded-xl border border-slate-200 dark:border-brand-border p-6">
           <h2 class="text-xl font-bold mb-6 flex items-center gap-3">
-            <span class="material-symbols-outlined" [ngClass]="skill.colorClass">build</span>
+            <i class="material-symbols-outlined" [ngClass]="skill.colorClass" aria-hidden="true">build</i>
             Outils & Technologies
           </h2>
 
           <div class="flex flex-wrap gap-2">
             @for (tool of skill.tools; track tool) {
-            <span
-              class="px-3 py-2 rounded-lg bg-white dark:bg-background-dark border border-gray-200 dark:border-border-dark text-sm font-medium text-slate-700 dark:text-slate-300">
+            <small
+              class="px-3 py-2 rounded-lg bg-slate-50 dark:bg-brand-bg border border-slate-200 dark:border-brand-border text-sm font-medium text-slate-500 dark:text-brand-muted">
               {{ tool }}
-            </span>
+            </small>
             }
           </div>
         </div>
@@ -127,55 +130,62 @@
       <!-- Right Column: Projects & Resources -->
       <div class="space-y-8">
         <!-- Related Projects -->
-        <div class="bg-gray-50 dark:bg-card-dark rounded-xl border border-gray-100 dark:border-border-dark p-6">
+        <div class="bg-white dark:bg-brand-surface rounded-xl border border-slate-200 dark:border-brand-border p-6">
           <h2 class="text-xl font-bold mb-6 flex items-center gap-3">
-            <span class="material-symbols-outlined" [ngClass]="skill.colorClass">folder_open</span>
+            <i class="material-symbols-outlined" [ngClass]="skill.colorClass" aria-hidden="true">folder_open</i>
             Projets liés
           </h2>
 
           <div class="space-y-4">
             @for (project of skill.relatedProjects; track project.id) {
             <a [routerLink]="['/projects', project.id]"
-              class="block p-4 rounded-lg bg-white dark:bg-background-dark border border-gray-200 dark:border-border-dark hover:border-primary/50 transition-colors group">
-              <h3 class="font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors mb-1">
+              class="block p-4 rounded-lg bg-slate-50 dark:bg-brand-bg border border-slate-200 dark:border-brand-border hover:border-brand-blue/50 transition-colors group">
+              <h3 class="font-bold text-slate-900 dark:text-brand-text group-hover:text-brand-blue transition-colors mb-1">
                 {{ project.title }}
               </h3>
-              <p class="text-sm text-slate-500">{{ project.description }}</p>
+              <p class="text-sm text-slate-500 dark:text-brand-muted">{{ project.description }}</p>
             </a>
             }
           </div>
 
-          <a routerLink="/projects"
-            class="inline-flex items-center gap-1 text-primary font-medium text-sm mt-4 hover:underline">
+          <a routerLink="/projects" class="inline-flex items-center gap-1 text-brand-blue font-medium text-sm mt-4">
             Voir tous les projets
-            <span class="material-symbols-outlined text-lg">arrow_forward</span>
+            <i class="material-symbols-outlined text-lg" aria-hidden="true">arrow_forward</i>
           </a>
         </div>
 
         <!-- Resources -->
-        <div class="bg-gray-50 dark:bg-card-dark rounded-xl border border-gray-100 dark:border-border-dark p-6">
+        <div class="bg-white dark:bg-brand-surface rounded-xl border border-slate-200 dark:border-brand-border p-6">
           <h2 class="text-xl font-bold mb-6 flex items-center gap-3">
-            <span class="material-symbols-outlined" [ngClass]="skill.colorClass">menu_book</span>
+            <i class="material-symbols-outlined" [ngClass]="skill.colorClass" aria-hidden="true">menu_book</i>
             Ressources
           </h2>
 
           <div class="space-y-3">
             @for (resource of skill.resources; track resource.title) {
             <a [href]="resource.url"
-              class="flex items-center gap-3 p-3 rounded-lg bg-white dark:bg-background-dark hover:bg-gray-100 dark:hover:bg-[#203040] transition-colors">
-              <span class="material-symbols-outlined text-slate-400">
+              class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-brand-bg hover:bg-slate-100 dark:hover:bg-brand-border transition-colors">
+              <i class="material-symbols-outlined text-slate-500 dark:text-brand-muted" aria-hidden="true">
                 @switch (resource.type) {
-                @case ('Livre') { book }
-                @case ('Cours') { school }
-                @case ('Certification') { workspace_premium }
-                @default { link }
+                @case ('Livre') {
+                book
                 }
-              </span>
+                @case ('Cours') {
+                school
+                }
+                @case ('Certification') {
+                workspace_premium
+                }
+                @default {
+                link
+                }
+                }
+              </i>
               <div class="flex-1 min-w-0">
-                <p class="font-medium text-slate-900 dark:text-white text-sm truncate">{{ resource.title }}</p>
-                <p class="text-xs text-slate-500">{{ resource.type }}</p>
+                <p class="font-medium text-slate-900 dark:text-brand-text text-sm truncate">{{ resource.title }}</p>
+                <p class="text-xs text-slate-500 dark:text-brand-muted">{{ resource.type }}</p>
               </div>
-              <span class="material-symbols-outlined text-slate-400 text-lg">open_in_new</span>
+              <i class="material-symbols-outlined text-slate-500 dark:text-brand-muted text-lg" aria-hidden="true">open_in_new</i>
             </a>
             }
           </div>
@@ -189,8 +199,8 @@
 <section class="py-12 px-4 md:px-8">
   <div class="max-w-[1000px] mx-auto">
     <a routerLink="/skills"
-      class="inline-flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">
-      <span class="material-symbols-outlined">arrow_back</span>
+      class="inline-flex items-center gap-2 text-slate-500 dark:text-brand-muted hover:text-brand-blue transition-colors">
+      <i class="material-symbols-outlined" aria-hidden="true">arrow_back</i>
       Retour aux compétences
     </a>
   </div>
@@ -199,12 +209,12 @@
 <!-- Not Found -->
 <section class="py-32 px-4 text-center">
   <div class="max-w-md mx-auto">
-    <span class="material-symbols-outlined text-6xl text-slate-300 mb-4">search_off</span>
-    <h1 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Compétence non trouvée</h1>
-    <p class="text-slate-500 mb-6">La compétence demandée n'existe pas.</p>
+    <i class="material-symbols-outlined text-6xl text-slate-500 dark:text-brand-muted mb-4" aria-hidden="true">search_off</i>
+    <h1 class="text-2xl font-bold text-slate-900 dark:text-brand-text mb-2">Compétence non trouvée</h1>
+    <p class="text-slate-500 dark:text-brand-muted mb-6">La compétence demandée n'existe pas.</p>
     <a routerLink="/skills"
-      class="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-blue-600 text-white font-bold rounded-lg transition-colors">
-      <span class="material-symbols-outlined">arrow_back</span>
+      class="inline-flex items-center gap-2 px-6 py-3 bg-brand-blue text-white font-bold rounded-lg hover:shadow-lg hover:shadow-brand-blue/40 transition-all">
+      <i class="material-symbols-outlined" aria-hidden="true">arrow_back</i>
       Retour aux compétences
     </a>
   </div>

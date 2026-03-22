@@ -1,22 +1,23 @@
-<!-- Hero Section -->
+﻿<!-- Hero Section -->
 <section class="relative pt-12 pb-16 md:pt-20 md:pb-24 px-4 md:px-8 overflow-hidden">
   <!-- Background -->
   <div
-    class="absolute top-0 left-1/2 -translate-x-1/2 -mt-40 w-[800px] h-[400px] rounded-full bg-gradient-to-r from-primary/10 to-purple-500/10 blur-3xl -z-10 pointer-events-none">
+    class="absolute top-0 left-1/2 -translate-x-1/2 -mt-40 w-[800px] h-[400px] rounded-full bg-gradient-to-r from-brand-blue/10 to-brand-teal/10 blur-3xl -z-10 pointer-events-none">
   </div>
 
   <div class="max-w-[1000px] mx-auto text-center">
     <div
-      class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 w-fit mx-auto mb-6">
-      <span class="material-symbols-outlined text-primary text-sm">timeline</span>
-      <span class="text-primary text-xs font-bold uppercase tracking-wider">Parcours</span>
+      class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-blue/10 border border-brand-blue/20 w-fit mx-auto mb-6">
+      <i class="material-symbols-outlined text-brand-blue text-sm" aria-hidden="true">timeline</i>
+      <strong class="text-brand-blue text-xs font-bold uppercase tracking-wider">Parcours</strong>
     </div>
 
     <h1 class="text-4xl md:text-5xl font-black leading-tight tracking-tight mb-6">
-      Timeline <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500">Carrière</span>
+      Timeline
+      <em class="not-italic text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-teal">Carrière</em>
     </h1>
 
-    <p class="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
+    <p class="text-lg text-slate-500 dark:text-brand-muted max-w-2xl mx-auto">
       Retracez mon parcours professionnel, de ma formation initiale à mon rôle actuel d'apprentie développeuse Web.
       Chaque étape a contribué à façonner mon savoir-faire.
     </p>
@@ -27,15 +28,17 @@
 <section class="px-4 md:px-8 pb-8">
   <div class="max-w-[600px] mx-auto">
     <div class="grid grid-cols-2 gap-4">
-      <div class="p-5 rounded-xl bg-white dark:bg-card-dark border border-gray-100 dark:border-border-dark text-center">
-        <span class="material-symbols-outlined text-3xl text-primary mb-2">work</span>
-        <p class="text-2xl font-black text-slate-900 dark:text-white">3+</p>
-        <p class="text-sm text-slate-500">Années d'expérience en alternance</p>
+      <div
+        class="p-5 rounded-xl bg-white dark:bg-brand-surface border border-slate-200 dark:border-brand-border text-center">
+        <i class="material-symbols-outlined text-3xl text-brand-blue mb-2" aria-hidden="true">work</i>
+        <p class="text-2xl font-black text-slate-900 dark:text-brand-text">3+</p>
+        <p class="text-sm text-slate-500 dark:text-brand-muted">Années d'expérience en alternance</p>
       </div>
-      <div class="p-5 rounded-xl bg-white dark:bg-card-dark border border-gray-100 dark:border-border-dark text-center">
-        <span class="material-symbols-outlined text-3xl text-green-500 mb-2">school</span>
-        <p class="text-2xl font-black text-slate-900 dark:text-white">Bac+5</p>
-        <p class="text-sm text-slate-500">Niveau d'études</p>
+      <div
+        class="p-5 rounded-xl bg-white dark:bg-brand-surface border border-slate-200 dark:border-brand-border text-center">
+        <i class="material-symbols-outlined text-3xl text-brand-green mb-2" aria-hidden="true">school</i>
+        <p class="text-2xl font-black text-slate-900 dark:text-brand-text">Bac+5</p>
+        <p class="text-sm text-slate-500 dark:text-brand-muted">Niveau d'études</p>
       </div>
     </div>
   </div>
@@ -48,10 +51,11 @@
       @for (filter of filters; track filter.id) {
       <button (click)="setFilter(filter.id)"
         class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all" [ngClass]="{
-            'bg-primary text-white': activeFilter === filter.id,
-            'bg-gray-100 dark:bg-card-dark text-slate-600 dark:text-slate-400 hover:bg-gray-200 dark:hover:bg-[#203040]': activeFilter !== filter.id
+            'bg-brand-blue text-white': activeFilter === filter.id,
+            'bg-white dark:bg-brand-surface text-slate-500 dark:text-brand-muted hover:bg-slate-100 dark:hover:bg-brand-border':
+              activeFilter !== filter.id,
           }">
-        <span class="material-symbols-outlined text-lg">{{ filter.icon }}</span>
+        <i class="material-symbols-outlined text-lg" aria-hidden="true">{{ filter.icon }}</i>
         {{ filter.label }}
       </button>
       }
@@ -60,11 +64,11 @@
 </section>
 
 <!-- Timeline -->
-<section class="py-12 px-4 md:px-8 bg-white dark:bg-[#151f2b]">
+<section class="py-12 px-4 md:px-8 bg-white dark:bg-brand-surface">
   <div class="max-w-[900px] mx-auto">
     <div class="relative">
       <!-- Vertical Line -->
-      <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-border-dark"></div>
+      <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-slate-200 dark:bg-brand-border"></div>
 
       <div class="space-y-10">
         @for (item of groupedTimelineItems; track item.id) {
@@ -73,51 +77,53 @@
         <div class="relative">
           <!-- Timeline Dot avec icône alternance -->
           <div
-            class="absolute left-6 -translate-x-1/2 w-12 h-12 rounded-full flex items-center justify-center border-4 border-white dark:border-[#151f2b] z-10 bg-blue-100 dark:bg-blue-900">
-            <span class="material-symbols-outlined text-xl text-primary">sync_alt</span>
+            class="absolute left-6 -translate-x-1/2 w-12 h-12 rounded-full flex items-center justify-center border-4 border-white dark:border-brand-bg z-10 bg-white dark:bg-brand-surface">
+            <i class="material-symbols-outlined text-xl text-brand-blue" aria-hidden="true">sync_alt</i>
           </div>
 
           <!-- Content Card Alternance -->
           <div
-            class="ml-20 bg-gray-50 dark:bg-card-dark rounded-xl border border-gray-100 dark:border-border-dark overflow-hidden hover:shadow-lg transition-shadow">
+            class="ml-20 bg-white dark:bg-brand-surface rounded-xl border border-slate-200 dark:border-brand-border overflow-hidden hover:shadow-lg transition-shadow">
             <!-- Header Alternance -->
-            <div class="px-6 py-4 border-b border-gray-200 dark:border-border-dark">
+            <div class="px-6 py-4 border-b border-slate-200 dark:border-brand-border">
               <div class="flex flex-wrap items-center justify-between gap-2">
                 <div class="flex items-center gap-2">
-                  <span class="px-2 py-0.5 rounded bg-blue-100 dark:bg-primary/20 text-primary text-xs font-bold">
+                  <small class="px-2 py-0.5 rounded bg-brand-blue/20 text-brand-blue text-xs font-bold">
                     Alternance
-                  </span>
+                  </small>
                   @if (item.current) {
-                  <span
-                    class="px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-medium">
+                  <small class="px-2 py-0.5 rounded bg-brand-amber/20 text-brand-amber text-xs font-medium">
                     En cours
-                  </span>
+                  </small>
                   }
                 </div>
-                <span class="text-sm text-slate-500">{{ formatDateRange(item.education) }}</span>
+                <small class="text-sm text-slate-500 dark:text-brand-muted">{{ formatDateRange(item.education)
+                  }}</small>
               </div>
             </div>
 
             <!-- Deux colonnes : Formation + Entreprise -->
             <div class="grid grid-cols-1 lg:grid-cols-2">
               <!-- Formation -->
-              <div class="p-5 border-b lg:border-b-0 lg:border-r border-gray-200 dark:border-border-dark">
+              <div class="p-5 border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-brand-border">
                 <div class="flex items-center gap-2 mb-3">
-                  <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-green-100 dark:bg-green-500/20">
-                    <span class="material-symbols-outlined text-lg text-green-500">school</span>
+                  <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-brand-green/20">
+                    <i class="material-symbols-outlined text-lg text-brand-green" aria-hidden="true">school</i>
                   </div>
-                  <span
-                    class="text-xs font-bold uppercase tracking-wider text-green-600 dark:text-green-400">Formation</span>
+                  <strong class="text-xs font-bold uppercase tracking-wider text-brand-green">
+                    Formation
+                  </strong>
                 </div>
-                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">{{ item.education.title }}</h3>
-                <p class="text-green-600 dark:text-green-400 font-medium text-sm mb-2">{{ item.education.organization }}
+                <h3 class="text-lg font-bold text-slate-900 dark:text-brand-text mb-1">{{ item.education.title }}</h3>
+                <p class="text-brand-green font-medium text-sm mb-2">
+                  {{ item.education.organization }}
                 </p>
-                <p class="text-slate-600 dark:text-slate-400 text-sm mb-3">{{ item.education.description }}</p>
+                <p class="text-slate-500 dark:text-brand-muted text-sm mb-3">{{ item.education.description }}</p>
                 <div class="space-y-1.5">
                   @for (highlight of item.education.highlights.slice(0, 3); track highlight) {
                   <div class="flex items-start gap-2">
-                    <span class="material-symbols-outlined text-xs mt-0.5 text-green-500">check</span>
-                    <span class="text-xs text-slate-600 dark:text-slate-400">{{ highlight }}</span>
+                    <i class="material-symbols-outlined text-xs mt-0.5 text-brand-green" aria-hidden="true">check</i>
+                    <small class="text-xs text-slate-500 dark:text-brand-muted">{{ highlight }}</small>
                   </div>
                   }
                 </div>
@@ -126,19 +132,19 @@
               <!-- Entreprise -->
               <div class="p-5">
                 <div class="flex items-center gap-2 mb-3">
-                  <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-blue-100 dark:bg-primary/20">
-                    <span class="material-symbols-outlined text-lg text-primary">work</span>
+                  <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-brand-blue/20">
+                    <i class="material-symbols-outlined text-lg text-brand-blue" aria-hidden="true">work</i>
                   </div>
-                  <span class="text-xs font-bold uppercase tracking-wider text-primary">Entreprise</span>
+                  <strong class="text-xs font-bold uppercase tracking-wider text-brand-blue">Entreprise</strong>
                 </div>
-                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">{{ item.job.title }}</h3>
-                <p class="text-primary font-medium text-sm mb-2">{{ item.job.organization }}</p>
-                <p class="text-slate-600 dark:text-slate-400 text-sm mb-3">{{ item.job.description }}</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-brand-text mb-1">{{ item.job.title }}</h3>
+                <p class="text-brand-blue font-medium text-sm mb-2">{{ item.job.organization }}</p>
+                <p class="text-slate-500 dark:text-brand-muted text-sm mb-3">{{ item.job.description }}</p>
                 <div class="space-y-1.5">
                   @for (highlight of item.job.highlights.slice(0, 3); track highlight) {
                   <div class="flex items-start gap-2">
-                    <span class="material-symbols-outlined text-xs mt-0.5 text-primary">check</span>
-                    <span class="text-xs text-slate-600 dark:text-slate-400">{{ highlight }}</span>
+                    <i class="material-symbols-outlined text-xs mt-0.5 text-brand-blue" aria-hidden="true">check</i>
+                    <small class="text-xs text-slate-500 dark:text-brand-muted">{{ highlight }}</small>
                   </div>
                   }
                 </div>
@@ -147,14 +153,13 @@
 
             <!-- Technologies (combinées) -->
             @if (item.job.technologies && item.job.technologies.length > 0) {
-            <div
-              class="px-5 py-4 border-t border-gray-200 dark:border-border-dark bg-gray-100/50 dark:bg-background-dark/50">
+            <div class="px-5 py-4 border-t border-slate-200 dark:border-brand-border bg-white/50 dark:bg-brand-bg/50">
               <div class="flex flex-wrap gap-2">
                 @for (tech of item.job.technologies; track tech) {
-                <span
-                  class="px-2 py-1 bg-white dark:bg-card-dark text-xs rounded border border-gray-200 dark:border-border-dark text-slate-600 dark:text-slate-400">
+                <small
+                  class="px-2 py-1 bg-white dark:bg-brand-surface text-xs rounded border border-slate-200 dark:border-brand-border text-slate-500 dark:text-brand-muted">
                   {{ tech }}
-                </span>
+                </small>
                 }
               </div>
             </div>
@@ -166,52 +171,54 @@
         <div class="relative">
           <!-- Timeline Dot -->
           <div
-            class="absolute left-6 -translate-x-1/2 w-12 h-12 rounded-full flex items-center justify-center border-4 border-white dark:border-[#151f2b] z-10"
-            [ngClass]="item.event.bgClass">
-            <span class="material-symbols-outlined text-xl" [ngClass]="item.event.colorClass">{{ item.event.icon
-              }}</span>
+            class="absolute left-6 -translate-x-1/2 w-12 h-12 rounded-full flex items-center justify-center border-4 border-white dark:border-brand-bg z-10 bg-white dark:bg-brand-surface">
+            <i class="material-symbols-outlined text-xl" [ngClass]="item.event.colorClass" aria-hidden="true">
+              {{ item.event.icon }}
+            </i>
           </div>
 
           <!-- Content Card -->
           <div
-            class="ml-20 bg-gray-50 dark:bg-card-dark rounded-xl border border-gray-100 dark:border-border-dark overflow-hidden hover:shadow-lg transition-shadow">
+            class="ml-20 bg-white dark:bg-brand-surface rounded-xl border border-slate-200 dark:border-brand-border overflow-hidden hover:shadow-lg transition-shadow">
             <!-- Header -->
-            <div class="px-6 py-4 border-b border-gray-200 dark:border-border-dark">
+            <div class="px-6 py-4 border-b border-slate-200 dark:border-brand-border">
               <div class="flex flex-wrap items-center justify-between gap-2">
                 <div class="flex items-center gap-2">
-                  <span class="px-2 py-0.5 rounded text-xs font-medium"
+                  <small class="px-2 py-0.5 rounded text-xs font-medium"
                     [ngClass]="item.event.bgClass + ' ' + item.event.colorClass">
                     {{ getTypeLabel(item.event.type) }}
-                  </span>
+                  </small>
                   @if (item.current) {
-                  <span
-                    class="px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-medium">
+                  <small class="px-2 py-0.5 rounded bg-brand-amber/20 text-brand-amber text-xs font-medium">
                     Actuel
-                  </span>
+                  </small>
                   }
                 </div>
-                <span class="text-sm text-slate-500">{{ formatDateRange(item.event) }}</span>
+                <small class="text-sm text-slate-500 dark:text-brand-muted">{{ formatDateRange(item.event) }}</small>
               </div>
             </div>
 
             <!-- Content -->
             <div class="p-6">
-              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-1">{{ item.event.title }}</h3>
-              <p class="text-primary font-medium mb-2">{{ item.event.organization }}</p>
-              <p class="text-sm text-slate-500 mb-4 flex items-center gap-1">
-                <span class="material-symbols-outlined text-sm">location_on</span>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-brand-text mb-1">{{ item.event.title }}</h3>
+              <p class="text-brand-blue font-medium mb-2">{{ item.event.organization }}</p>
+              <p class="text-sm text-slate-500 dark:text-brand-muted mb-4 flex items-center gap-1">
+                <i class="material-symbols-outlined text-sm" aria-hidden="true">location_on</i>
                 {{ item.event.location }}
               </p>
 
               <!-- Description -->
-              <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">{{ item.event.description }}</p>
+              <p class="text-slate-500 dark:text-brand-muted text-sm mb-4">{{ item.event.description }}</p>
 
               <!-- Highlights -->
               <div class="space-y-2 mb-4">
                 @for (highlight of item.event.highlights; track highlight) {
                 <div class="flex items-start gap-2">
-                  <span class="material-symbols-outlined text-sm mt-0.5" [ngClass]="item.event.colorClass">check</span>
-                  <span class="text-sm text-slate-700 dark:text-slate-300">{{ highlight }}</span>
+                  <i class="material-symbols-outlined text-sm mt-0.5" [ngClass]="item.event.colorClass"
+                    aria-hidden="true">
+                    check
+                  </i>
+                  <small class="text-sm text-slate-500 dark:text-brand-muted">{{ highlight }}</small>
                 </div>
                 }
               </div>
@@ -219,14 +226,13 @@
               <!-- Technologies -->
             </div>
             @if (item.event.technologies && item.event.technologies.length > 0) {
-            <div
-              class="px-5 py-4 border-t border-gray-200 dark:border-border-dark bg-gray-100/50 dark:bg-background-dark/50">
+            <div class="px-5 py-4 border-t border-slate-200 dark:border-brand-border bg-white/50 dark:bg-brand-bg/50">
               <div class="flex flex-wrap gap-2">
                 @for (tech of item.event.technologies; track tech) {
-                <span
-                  class="px-2 py-1 bg-white dark:bg-card-dark text-xs rounded border border-gray-200 dark:border-border-dark text-slate-600 dark:text-slate-400">
+                <small
+                  class="px-2 py-1 bg-white dark:bg-brand-surface text-xs rounded border border-slate-200 dark:border-brand-border text-slate-500 dark:text-brand-muted">
                   {{ tech }}
-                </span>
+                </small>
                 }
               </div>
             </div>
@@ -239,7 +245,7 @@
 
       <!-- Timeline End -->
       <div
-        class="absolute left-6 -translate-x-1/2 bottom-0 w-4 h-4 rounded-full bg-primary border-4 border-white dark:border-[#151f2b]">
+        class="absolute left-6 -translate-x-1/2 bottom-0 w-4 h-4 rounded-full bg-brand-blue border-4 border-white dark:border-brand-bg">
       </div>
     </div>
   </div>
@@ -248,22 +254,16 @@
 <!-- CTA Section -->
 <section class="py-16 px-4 md:px-8">
   <div class="max-w-[800px] mx-auto text-center">
-    <div class="p-8 rounded-2xl bg-gradient-to-r from-primary/10 to-purple-500/10 border border-primary/20">
+    <div class="p-8 rounded-2xl bg-gradient-to-r from-brand-blue/10 to-brand-teal/10 border border-brand-blue/20">
       <h2 class="text-2xl font-bold mb-4">Intéressé par mon profil ?</h2>
-      <p class="text-slate-600 dark:text-slate-400 mb-6">
+      <p class="text-slate-500 dark:text-brand-muted mb-6">
         Découvrez mes compétences en détail ou contactez-moi pour discuter d'opportunités.
       </p>
       <div class="flex flex-wrap justify-center gap-4">
-        <a routerLink="/skills"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-blue-600 text-white font-bold rounded-lg transition-colors">
-          <span class="material-symbols-outlined">insights</span>
-          Voir mes compétences
-        </a>
-        <a routerLink="/contact"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-card-dark border border-gray-200 dark:border-border-dark hover:bg-gray-50 dark:hover:bg-[#203040] text-slate-900 dark:text-white font-bold rounded-lg transition-colors">
-          <span class="material-symbols-outlined">mail</span>
-          Me contacter
-        </a>
+        <app-button title="Voir mes compétences" name="Voir mes compétences" svgName="insights" [svgSize]="20"
+          color="primary" label="Voir mes compétences" (action)="goToSkills()"></app-button>
+        <app-button title="Me contacter" name="Me contacter" svgName="mail" [svgSize]="20" color="secondary"
+          label="Me contacter" (action)="goToContact()"></app-button>
       </div>
     </div>
   </div>

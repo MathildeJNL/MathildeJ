@@ -1,39 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import emailjs from '@emailjs/browser';
 import { environment } from '../../../environments/environment';
-
-interface ContactMethod {
-  icon: string;
-  title: string;
-  value: string;
-  link?: string;
-  colorClass: string;
-  bgClass: string;
-}
-
-interface SocialLink {
-  icon: string;
-  name: string;
-  url: string;
-  colorClass: string;
-}
-
-interface FaqItem {
-  question: string;
-  answer: string;
-  isOpen: boolean;
-}
+import { PortfolioDataService } from '../../shared/services/portfolio-data.service';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+  styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent {
+  private readonly fb = inject(FormBuilder);
+  private readonly data = inject(PortfolioDataService);
+
+  readonly contactMethods = this.data.contactMethods;
+  readonly socialLinks = this.data.contactSocialLinks;
+  readonly faqItems = structuredClone(this.data.faqItems);
+  readonly subjectOptions = this.data.subjectOptions;
+
   contactForm: FormGroup;
   isSubmitting = false;
   submitSuccess = false;
@@ -42,88 +29,17 @@ export class ContactComponent {
 
   // Anti-spam configuration
   private readonly MAX_SUBMISSIONS_PER_HOUR = 3;
-  private readonly MIN_FILL_TIME_MS = 3000; // 3 secondes minimum pour remplir
+  private readonly MIN_FILL_TIME_MS = 3000;
   private readonly STORAGE_KEY = 'contact_submissions';
   private formLoadTime: number = Date.now();
 
-  // Contact Methods
-  contactMethods: ContactMethod[] = [
-    {
-      icon: 'mail',
-      title: 'Email',
-      value: 'mathilde.dev.web@gmail.com',
-      link: 'mailto:mathilde.dev.web@gmail.com',
-      colorClass: 'text-primary',
-      bgClass: 'bg-blue-100 dark:bg-primary/20'
-    },
-    {
-      icon: 'location_on',
-      title: 'Localisation',
-      value: 'Centre-Val de Loire, France',
-      colorClass: 'text-red-500',
-      bgClass: 'bg-red-100 dark:bg-red-500/20'
-    },
-    {
-      icon: 'schedule',
-      title: 'Disponibilité',
-      value: 'Lun - Ven, 9h - 17h (CET)',
-      colorClass: 'text-green-500',
-      bgClass: 'bg-green-100 dark:bg-green-500/20'
-    }
-  ];
-
-  // Social Links
-  socialLinks: SocialLink[] = [
-    {
-      icon: 'github',
-      name: 'GitHub',
-      url: 'https://github.com/MathildeJNL',
-      colorClass: 'hover:text-gray-900 dark:hover:text-white'
-    },
-    {
-      icon: 'linkedin',
-      name: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/mathilde-jnl/',
-      colorClass: 'hover:text-blue-600'
-    }
-  ];
-
-  // FAQ
-  faqItems: FaqItem[] = [
-    {
-      question: 'Comment continuez-vous à apprendre ?',
-      answer: 'Je me forme en continu grâce à des projets personnels, des ressources en ligne (documentation, cours, articles techniques) et des challenges pour renforcer mes bases. L\'apprentissage fait partie intégrante de ma pratique quotidienne.',
-      isOpen: false
-    },
-    {
-      question: 'Pouvez-vous travailler en remote ou en hybride ?',
-      answer: 'Oui, je suis tout à fait à l\'aise en remote. Je peux également travailler en hybride selon la localisation et l\'organisation de l\'équipe.',
-      isOpen: false
-    },
-    {
-      question: 'Quels sont vos horaires de travail habituels ?',
-      answer: 'Je travaille principalement en journée, du lundi au vendredi, généralement entre 9h et 17h. Je privilégie un rythme stable tout en restant flexible selon les besoins du projet, tant que cela est anticipé.',
-      isOpen: false
-    }
-  ];
-
-  // Subject options
-  subjectOptions: string[] = [
-    'Opportunité professionnelle',
-    'Projet freelance',
-    'Collaboration',
-    'Question technique',
-    'Autre'
-  ];
-
-  constructor(private fb: FormBuilder) {
+  constructor() {
     this.contactForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
       subject: ['', Validators.required],
       message: ['', [Validators.required, Validators.minLength(10)]],
-      // Honeypot field - doit rester vide
-      website: ['']
+      website: [''],
     });
     this.formLoadTime = Date.now();
   }
@@ -153,14 +69,14 @@ export class ContactComponent {
    */
   private isRateLimited(): boolean {
     const now = Date.now();
-    const oneHourAgo = now - (60 * 60 * 1000);
+    const oneHourAgo = now - 60 * 60 * 1000;
 
     // Récupérer les soumissions précédentes
     const storedData = localStorage.getItem(this.STORAGE_KEY);
     let submissions: number[] = storedData ? JSON.parse(storedData) : [];
 
     // Filtrer pour ne garder que les soumissions de la dernière heure
-    submissions = submissions.filter(timestamp => timestamp > oneHourAgo);
+    submissions = submissions.filter((timestamp) => timestamp > oneHourAgo);
 
     return submissions.length >= this.MAX_SUBMISSIONS_PER_HOUR;
   }
@@ -170,13 +86,13 @@ export class ContactComponent {
    */
   private recordSubmission(): void {
     const now = Date.now();
-    const oneHourAgo = now - (60 * 60 * 1000);
+    const oneHourAgo = now - 60 * 60 * 1000;
 
     const storedData = localStorage.getItem(this.STORAGE_KEY);
     let submissions: number[] = storedData ? JSON.parse(storedData) : [];
 
     // Nettoyer les anciennes entrées et ajouter la nouvelle
-    submissions = submissions.filter(timestamp => timestamp > oneHourAgo);
+    submissions = submissions.filter((timestamp) => timestamp > oneHourAgo);
     submissions.push(now);
 
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(submissions));
@@ -218,9 +134,9 @@ export class ContactComponent {
           name: this.contactForm.value.name,
           email: this.contactForm.value.email,
           subject: this.contactForm.value.subject,
-          message: this.contactForm.value.message
+          message: this.contactForm.value.message,
         },
-        environment.emailjs.publicKey
+        environment.emailjs.publicKey,
       );
 
       this.submitSuccess = true;

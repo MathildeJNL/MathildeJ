@@ -15,16 +15,24 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #101922;
+  background: #F1F5F9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #233648;
+  background: #CBD5E1;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #137fec;
+  background: #A855F7;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #0B1120;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #1F2E4A;
 }
 
 /* ==========================================
@@ -33,21 +41,38 @@ html {
 
 /* Animated gradient background for hero */
 @keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .bg-gradient-animate {
-  background: linear-gradient(-45deg, #101922, #192633, rgba(19, 127, 236, 0.1), #101922);
+  background: linear-gradient(-45deg, #F8FAFC, #F1F5F9, rgba(59, 130, 246, 0.08), #F8FAFC);
+  background-size: 400% 400%;
+  animation: gradient-shift 20s ease infinite;
+}
+
+.dark .bg-gradient-animate {
+  background: linear-gradient(-45deg, #0B1120, #151E32, rgba(168, 85, 247, 0.1), #0B1120);
   background-size: 400% 400%;
   animation: gradient-shift 20s ease infinite;
 }
 
 /* Pulse for availability badge */
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 .animate-pulse {
@@ -60,7 +85,9 @@ html {
 
 /* Card hover - légère élévation */
 .card-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .card-hover:hover {
@@ -70,19 +97,23 @@ html {
 
 /* Icon hover - léger scale et couleur */
 .icon-hover {
-  transition: transform 0.2s ease, color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
 }
 
 .icon-hover:hover {
   transform: scale(1.15);
-  color: #137fec;
+  color: #3B82F6;
 }
 
 /* Button hover - shine effect discret */
 .btn-hover {
   position: relative;
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .btn-hover::after {
@@ -102,7 +133,7 @@ html {
 
 .btn-hover:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(19, 127, 236, 0.3);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
 }
 
 /* Link hover - underline animé */
@@ -117,7 +148,7 @@ html {
   left: 0;
   width: 0;
   height: 2px;
-  background: #137fec;
+  background: #3B82F6;
   transition: width 0.3s ease;
 }
 
@@ -127,11 +158,14 @@ html {
 
 /* Tag hover */
 .tag-hover {
-  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .tag-hover:hover {
-  background-color: #137fec;
+  background-color: #3B82F6;
   color: white;
   transform: scale(1.05);
 }
@@ -153,12 +187,18 @@ html {
 
 /* Material Icons adjustment */
 .material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
 }
 
 /* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
