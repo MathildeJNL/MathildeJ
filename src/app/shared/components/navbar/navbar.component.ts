@@ -15,7 +15,7 @@ export class NavbarComponent {
   private readonly data = inject(PortfolioDataService);
   readonly theme = inject(ThemeService);
 
-  brandName = 'MathildeJ.dev';
+  brandName = 'Mathilde Jeannolle';
   isMobileMenuOpen = false;
   openDropdown: string | null = null;
   expandedMobileItems: Set<string> = new Set();

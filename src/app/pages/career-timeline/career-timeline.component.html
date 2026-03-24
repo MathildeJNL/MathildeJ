@@ -116,7 +116,16 @@
                 </div>
                 <h3 class="text-lg font-bold text-slate-900 dark:text-brand-text mb-1">{{ item.education.title }}</h3>
                 <p class="text-brand-green font-medium text-sm mb-2">
+                  @if (item.education.organizationUrl) {
+                  <a [href]="item.education.organizationUrl" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1 hover:underline">
+                    <i class="material-symbols-outlined text-sm" aria-hidden="true">school</i>
+                    {{ item.education.organization }}
+                    <i class="material-symbols-outlined text-xs" aria-hidden="true">open_in_new</i>
+                  </a>
+                  } @else {
                   {{ item.education.organization }}
+                  }
                 </p>
                 <p class="text-slate-500 dark:text-brand-muted text-sm mb-3">{{ item.education.description }}</p>
                 <div class="space-y-1.5">
@@ -138,7 +147,18 @@
                   <strong class="text-xs font-bold uppercase tracking-wider text-brand-blue">Entreprise</strong>
                 </div>
                 <h3 class="text-lg font-bold text-slate-900 dark:text-brand-text mb-1">{{ item.job.title }}</h3>
-                <p class="text-brand-blue font-medium text-sm mb-2">{{ item.job.organization }}</p>
+                <p class="text-brand-blue font-medium text-sm mb-2">
+                  @if (item.job.organizationUrl) {
+                  <a [href]="item.job.organizationUrl" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1 hover:underline">
+                    <i class="material-symbols-outlined text-sm" aria-hidden="true">apartment</i>
+                    {{ item.job.organization }}
+                    <i class="material-symbols-outlined text-xs" aria-hidden="true">open_in_new</i>
+                  </a>
+                  } @else {
+                  {{ item.job.organization }}
+                  }
+                </p>
                 <p class="text-slate-500 dark:text-brand-muted text-sm mb-3">{{ item.job.description }}</p>
                 <div class="space-y-1.5">
                   @for (highlight of item.job.highlights.slice(0, 3); track highlight) {
@@ -160,6 +180,40 @@
                   class="px-2 py-1 bg-white dark:bg-brand-surface text-xs rounded border border-slate-200 dark:border-brand-border text-slate-500 dark:text-brand-muted">
                   {{ tech }}
                 </small>
+                }
+              </div>
+            </div>
+            }
+
+            <!-- Réalisations rattachées -->
+            @if (item.education?.relatedProjects && item.education!.relatedProjects!.length > 0) {
+            <div class="px-5 py-4 border-t border-slate-200 dark:border-brand-border">
+              <strong
+                class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-brand-muted mb-2 block">Réalisations</strong>
+              <div class="flex flex-wrap gap-2">
+                @for (project of item.education!.relatedProjects!; track project.id) {
+                <a [routerLink]="['/projects', project.id]"
+                  class="inline-flex items-center gap-1 px-2 py-1 bg-brand-blue/10 text-brand-blue text-xs rounded-md font-medium hover:bg-brand-blue/20 transition-colors">
+                  <i class="material-symbols-outlined text-xs" aria-hidden="true">folder_open</i>
+                  {{ project.title }}
+                </a>
+                }
+              </div>
+            </div>
+            }
+
+            <!-- Compétences rattachées -->
+            @if (item.education?.relatedSkillCategories && item.education!.relatedSkillCategories!.length > 0) {
+            <div class="px-5 py-4 border-t border-slate-200 dark:border-brand-border">
+              <strong
+                class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-brand-muted mb-2 block">Compétences</strong>
+              <div class="flex flex-wrap gap-2">
+                @for (skill of item.education!.relatedSkillCategories!; track skill.id) {
+                <a [routerLink]="['/skills', skill.id]"
+                  class="inline-flex items-center gap-1 px-2 py-1 bg-brand-green/10 text-brand-green text-xs rounded-md font-medium hover:bg-brand-green/20 transition-colors">
+                  <i class="material-symbols-outlined text-xs" aria-hidden="true">insights</i>
+                  {{ skill.name }}
+                </a>
                 }
               </div>
             </div>
@@ -201,7 +255,19 @@
             <!-- Content -->
             <div class="p-6">
               <h3 class="text-xl font-bold text-slate-900 dark:text-brand-text mb-1">{{ item.event.title }}</h3>
-              <p class="text-brand-blue font-medium mb-2">{{ item.event.organization }}</p>
+              <p class="font-medium mb-2" [ngClass]="item.event.colorClass">
+                @if (item.event.organizationUrl) {
+                <a [href]="item.event.organizationUrl" target="_blank" rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 hover:underline">
+                  <i class="material-symbols-outlined text-sm" aria-hidden="true">{{ item.event.type === 'education' ?
+                    'school' : 'apartment' }}</i>
+                  {{ item.event.organization }}
+                  <i class="material-symbols-outlined text-xs" aria-hidden="true">open_in_new</i>
+                </a>
+                } @else {
+                {{ item.event.organization }}
+                }
+              </p>
               <p class="text-sm text-slate-500 dark:text-brand-muted mb-4 flex items-center gap-1">
                 <i class="material-symbols-outlined text-sm" aria-hidden="true">location_on</i>
                 {{ item.event.location }}
@@ -233,6 +299,40 @@
                   class="px-2 py-1 bg-white dark:bg-brand-surface text-xs rounded border border-slate-200 dark:border-brand-border text-slate-500 dark:text-brand-muted">
                   {{ tech }}
                 </small>
+                }
+              </div>
+            </div>
+            }
+
+            <!-- Réalisations rattachées -->
+            @if (item.event.relatedProjects && item.event.relatedProjects.length > 0) {
+            <div class="px-5 py-4 border-t border-slate-200 dark:border-brand-border">
+              <strong
+                class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-brand-muted mb-2 block">Réalisations</strong>
+              <div class="flex flex-wrap gap-2">
+                @for (project of item.event.relatedProjects; track project.id) {
+                <a [routerLink]="['/projects', project.id]"
+                  class="inline-flex items-center gap-1 px-2 py-1 bg-brand-blue/10 text-brand-blue text-xs rounded-md font-medium hover:bg-brand-blue/20 transition-colors">
+                  <i class="material-symbols-outlined text-xs" aria-hidden="true">folder_open</i>
+                  {{ project.title }}
+                </a>
+                }
+              </div>
+            </div>
+            }
+
+            <!-- Compétences rattachées -->
+            @if (item.event.relatedSkillCategories && item.event.relatedSkillCategories.length > 0) {
+            <div class="px-5 py-4 border-t border-slate-200 dark:border-brand-border">
+              <strong
+                class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-brand-muted mb-2 block">Compétences</strong>
+              <div class="flex flex-wrap gap-2">
+                @for (skill of item.event.relatedSkillCategories; track skill.id) {
+                <a [routerLink]="['/skills', skill.id]"
+                  class="inline-flex items-center gap-1 px-2 py-1 bg-brand-green/10 text-brand-green text-xs rounded-md font-medium hover:bg-brand-green/20 transition-colors">
+                  <i class="material-symbols-outlined text-xs" aria-hidden="true">insights</i>
+                  {{ skill.name }}
+                </a>
                 }
               </div>
             </div>

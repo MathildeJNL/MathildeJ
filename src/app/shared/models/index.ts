@@ -136,6 +136,7 @@ export interface TimelineEvent {
   type: 'job' | 'education';
   title: string;
   organization: string;
+  organizationUrl?: string;
   location: string;
   startDate: string;
   endDate: string | null;
@@ -147,6 +148,8 @@ export interface TimelineEvent {
   colorClass: string;
   bgClass: string;
   linkedTo?: string;
+  relatedProjects?: ProjectRef[];
+  relatedSkillCategories?: { id: string; name: string }[];
 }
 
 export interface TimelineItem {

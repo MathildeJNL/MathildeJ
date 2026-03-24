@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { PortfolioDataService } from '../../shared/services/portfolio-data.service';
 import { ButtonComponent } from '../../shared';
 import { TimelineEvent } from '../../shared/models';
@@ -19,7 +19,7 @@ interface TimelineItem {
 @Component({
   selector: 'app-career-timeline',
   standalone: true,
-  imports: [CommonModule, ButtonComponent],
+  imports: [CommonModule, ButtonComponent, RouterLink],
   templateUrl: './career-timeline.component.html',
   styleUrls: ['./career-timeline.component.scss'],
 })

@@ -14,7 +14,7 @@ export class FooterComponent {
   private readonly data = inject(PortfolioDataService);
 
   brandName = 'MathildeJ.dev';
-  tagline = 'Développeuse passionnée depuis 2020.';
+  tagline = 'Développeuse passionnée depuis 2021.';
   currentYear = new Date().getFullYear();
 
   readonly socialLinks = this.data.footerSocialLinks;

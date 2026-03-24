@@ -72,6 +72,7 @@ export interface ProjectDetail {
   milestones: Milestone[];
   links: { github?: string; live?: string; documentation?: string };
   testimonial?: { quote: string; author: string; role: string };
+  relatedSkillCategories?: { id: string; name: string }[];
 }
 
 @Injectable({ providedIn: 'root' })
@@ -711,6 +712,10 @@ export class PortfolioDataService {
       ],
       milestones: [{ date: 'Décembre 2021', title: 'Réalisation', description: 'Création et mise en ligne du projet' }],
       links: { github: 'https://github.com/MathildeJNL/MathildeJeannolle_2_07122021' },
+      relatedSkillCategories: [
+        { id: 'frontend', name: 'Frontend' },
+        { id: 'design', name: 'Design & Intégration' },
+      ],
     },
     {
       id: 'openclassrooms-3',
@@ -749,6 +754,11 @@ export class PortfolioDataService {
         { date: 'Janvier 2022', title: 'Réalisation', description: 'Intégration HTML/SCSS et configuration Git' },
       ],
       links: { github: 'https://github.com/MathildeJNL/MathildeJeannolle_3_08012022' },
+      relatedSkillCategories: [
+        { id: 'frontend', name: 'Frontend' },
+        { id: 'design', name: 'Design & Intégration' },
+        { id: 'tools', name: 'Outils & Workflow' },
+      ],
     },
     {
       id: 'openclassrooms-4',
@@ -784,6 +794,10 @@ export class PortfolioDataService {
       ],
       milestones: [{ date: 'Février 2022', title: 'Réalisation', description: 'Audit et implémentation SEO' }],
       links: { github: 'https://github.com/MathildeJNL/MathildeJeannolle_4_120222' },
+      relatedSkillCategories: [
+        { id: 'design', name: 'Design & Intégration' },
+        { id: 'frontend', name: 'Frontend' },
+      ],
     },
     {
       id: 'openclassrooms-5',
@@ -820,6 +834,10 @@ export class PortfolioDataService {
         { date: 'Mars 2022', title: 'Réalisation', description: 'Développement complet de la boutique et du panier' },
       ],
       links: { github: 'https://github.com/MathildeJNL/MathildeJeannolle_5_14032022' },
+      relatedSkillCategories: [
+        { id: 'frontend', name: 'Frontend' },
+        { id: 'backend', name: 'Backend & APIs' },
+      ],
     },
     {
       id: 'openclassrooms-6',
@@ -868,6 +886,10 @@ export class PortfolioDataService {
         },
       ],
       links: { github: 'https://github.com/MathildeJNL/MathildeJeannolle_6_01072022' },
+      relatedSkillCategories: [
+        { id: 'backend', name: 'Backend & APIs' },
+        { id: 'databases', name: 'Bases de données' },
+      ],
     },
     {
       id: 'openclassrooms-7',
@@ -909,6 +931,12 @@ export class PortfolioDataService {
         { date: 'Juillet 2022', title: 'Réalisation', description: 'Livrable Fullstack du projet Groupomania' },
       ],
       links: { github: 'https://github.com/MathildeJNL/MathildeJeannolle_7_22072022' },
+      relatedSkillCategories: [
+        { id: 'frontend', name: 'Frontend' },
+        { id: 'backend', name: 'Backend & APIs' },
+        { id: 'databases', name: 'Bases de données' },
+        { id: 'tools', name: 'Outils & Workflow' },
+      ],
     },
   ];
 
@@ -931,6 +959,7 @@ export class PortfolioDataService {
       type: 'job',
       title: 'Développeuse Web en alternance',
       organization: 'Worldline',
+      organizationUrl: 'https://worldline.com',
       location: 'Blois, Centre-Val de Loire',
       startDate: '2024-10',
       endDate: null,
@@ -948,12 +977,18 @@ export class PortfolioDataService {
       colorClass: 'text-brand-blue',
       bgClass: 'bg-brand-blue/20',
       linkedTo: '2',
+      relatedSkillCategories: [
+        { id: 'frontend', name: 'Frontend' },
+        { id: 'backend', name: 'Backend & APIs' },
+        { id: 'tools', name: 'Outils & Workflow' },
+      ],
     },
     {
       id: '2',
       type: 'education',
       title: 'Mastère Expert en Ingénierie du Logiciel',
       organization: 'ISCOD',
+      organizationUrl: 'https://www.iscod.fr',
       location: 'France',
       startDate: '2024-10',
       endDate: '2026-09',
@@ -970,12 +1005,18 @@ export class PortfolioDataService {
       colorClass: 'text-brand-green',
       bgClass: 'bg-brand-green/20',
       linkedTo: '1',
+      relatedSkillCategories: [
+        { id: 'frontend', name: 'Frontend' },
+        { id: 'backend', name: 'Backend & APIs' },
+        { id: 'tools', name: 'Outils & Workflow' },
+      ],
     },
     {
       id: '3',
       type: 'job',
       title: 'Apprentie Ingénieur SRE',
       organization: 'Worldline',
+      organizationUrl: 'https://worldline.com',
       location: 'Blois, Centre-Val de Loire',
       startDate: '2023-09',
       endDate: '2024-09',
@@ -992,12 +1033,18 @@ export class PortfolioDataService {
       colorClass: 'text-brand-blue',
       bgClass: 'bg-brand-blue/20',
       linkedTo: '4',
+      relatedSkillCategories: [
+        { id: 'backend', name: 'Backend & APIs' },
+        { id: 'tools', name: 'Outils & Workflow' },
+        { id: 'frontend', name: 'Frontend' },
+      ],
     },
     {
       id: '4',
       type: 'education',
       title: "Bachelor Concepteur Développeur d'Applications",
       organization: 'CESI',
+      organizationUrl: 'https://www.cesi.fr',
       location: 'Orléans, Centre-Val de Loire',
       startDate: '2023-09',
       endDate: '2024-09',
@@ -1013,12 +1060,17 @@ export class PortfolioDataService {
       colorClass: 'text-brand-green',
       bgClass: 'bg-brand-green/20',
       linkedTo: '3',
+      relatedSkillCategories: [
+        { id: 'backend', name: 'Backend & APIs' },
+        { id: 'tools', name: 'Outils & Workflow' },
+      ],
     },
     {
       id: '5',
       type: 'education',
       title: 'Formation Développeur Java',
       organization: 'Wild Code School',
+      organizationUrl: 'https://www.wildcodeschool.com',
       location: 'France',
       startDate: '2023-05',
       endDate: '2023-07',
@@ -1034,12 +1086,18 @@ export class PortfolioDataService {
       icon: 'school',
       colorClass: 'text-brand-green',
       bgClass: 'bg-brand-green/20',
+      relatedSkillCategories: [
+        { id: 'frontend', name: 'Frontend' },
+        { id: 'backend', name: 'Backend & APIs' },
+        { id: 'databases', name: 'Bases de données' },
+      ],
     },
     {
       id: '6',
       type: 'education',
       title: 'Développeur Web - Titre RNCP Niveau 5',
       organization: 'OpenClassrooms',
+      organizationUrl: 'https://openclassrooms.com',
       location: 'France',
       startDate: '2021-11',
       endDate: '2022-08',
@@ -1053,6 +1111,20 @@ export class PortfolioDataService {
       icon: 'school',
       colorClass: 'text-brand-green',
       bgClass: 'bg-brand-green/20',
+      relatedProjects: [
+        { id: 'openclassrooms-2', title: 'Booki - Maquette HTML/CSS', description: '' },
+        { id: 'openclassrooms-3', title: 'Ohmyfood - Animations CSS', description: '' },
+        { id: 'openclassrooms-4', title: 'Chouette Agence - SEO', description: '' },
+        { id: 'openclassrooms-5', title: 'Kanap - E-commerce JS', description: '' },
+        { id: 'openclassrooms-6', title: 'Piiquante - API sécurisée', description: '' },
+        { id: 'openclassrooms-7', title: 'Groupomania - Réseau social', description: '' },
+      ],
+      relatedSkillCategories: [
+        { id: 'frontend', name: 'Frontend' },
+        { id: 'backend', name: 'Backend & APIs' },
+        { id: 'databases', name: 'Bases de données' },
+        { id: 'design', name: 'Design & Intégration' },
+      ],
     },
     {
       id: '7',
@@ -1073,6 +1145,9 @@ export class PortfolioDataService {
       colorClass: 'text-brand-blue',
       bgClass: 'bg-brand-blue/20',
       linkedTo: '8',
+      relatedSkillCategories: [
+        { id: 'soft-skills', name: 'Soft Skills' },
+      ],
     },
     {
       id: '8',
@@ -1089,6 +1164,9 @@ export class PortfolioDataService {
       colorClass: 'text-brand-green',
       bgClass: 'bg-brand-green/20',
       linkedTo: '7',
+      relatedSkillCategories: [
+        { id: 'soft-skills', name: 'Soft Skills' },
+      ],
     },
     {
       id: '9',
@@ -1105,6 +1183,9 @@ export class PortfolioDataService {
       colorClass: 'text-brand-blue',
       bgClass: 'bg-brand-blue/20',
       linkedTo: '10',
+      relatedSkillCategories: [
+        { id: 'soft-skills', name: 'Soft Skills' },
+      ],
     },
     {
       id: '10',
@@ -1121,6 +1202,9 @@ export class PortfolioDataService {
       colorClass: 'text-brand-green',
       bgClass: 'bg-brand-green/20',
       linkedTo: '9',
+      relatedSkillCategories: [
+        { id: 'soft-skills', name: 'Soft Skills' },
+      ],
     },
     {
       id: '11',
@@ -1136,6 +1220,9 @@ export class PortfolioDataService {
       icon: 'school',
       colorClass: 'text-brand-green',
       bgClass: 'bg-brand-green/20',
+      relatedSkillCategories: [
+        { id: 'soft-skills', name: 'Soft Skills' },
+      ],
     },
   ];
 
@@ -1208,6 +1295,7 @@ export class PortfolioDataService {
 
   readonly navItems = [
     { label: 'Accueil', path: '/' },
+    { label: 'À propos', path: '/about' },
     {
       label: 'Compétences',
       path: '/skills',
@@ -1223,10 +1311,11 @@ export class PortfolioDataService {
     {
       label: 'Projets',
       path: '/projects',
-      children: [
-        { label: 'Backend', path: '/projects?category=backend', icon: 'database' },
-        { label: 'Frontend', path: '/projects?category=frontend', icon: 'web' },
-      ],
+      children: this.projects.map((p) => ({
+        label: p.title,
+        path: `/projects/${p.id}`,
+        icon: 'folder_open',
+      })),
     },
     { label: 'Parcours', path: '/timeline' },
   ];
@@ -1234,6 +1323,111 @@ export class PortfolioDataService {
   readonly footerSocialLinks = [
     { name: 'GitHub', url: 'https://github.com/MathildeJNL', icon: 'github' },
     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/mathilde-jnl/', icon: 'linkedin' },
+  ];
+
+  // ─────────────────────────── ABOUT ───────────────────────────
+
+  readonly aboutIntroParagraphs = [
+    "Je suis Mathilde, développeuse web junior animée par un parcours atypique qui m'a menée de l'hôtellerie à la pharmacie, puis au développement logiciel. Ce chemin, loin d'être linéaire, m'a permis de développer des compétences humaines solides et une capacité d'adaptation qui enrichissent chaque jour ma pratique de développeuse.",
+    "Actuellement en alternance chez Worldline dans le cadre d'un Mastère Expert en Ingénierie du Logiciel (ISCOD), je travaille sur des applications web en Angular et Java/Spring Boot. Mon ambition est de devenir une développeuse polyvalente, capable de contribuer à toutes les étapes du développement logiciel.",
+  ];
+
+  readonly aboutValues = [
+    {
+      icon: 'favorite',
+      title: 'Bienveillance & Empathie',
+      colorClass: 'text-brand-pink',
+      bgClass: 'bg-brand-pink/20',
+      paragraphs: [
+        "La bienveillance est au cœur de ma pratique. Guidée par l'empathie et l'écoute, je place l'humain au centre de mes échanges et projets. Mon expérience en pharmacie m'a appris à écouter, rassurer et conseiller avec patience.",
+        "En tant que future experte en ingénierie logicielle, je suis convaincue que les meilleurs logiciels sont construits en comprenant d'abord les personnes qui les utilisent. L'accessibilité, l'inclusion et le respect des utilisateurs guident mes choix techniques.",
+      ],
+    },
+    {
+      icon: 'eco',
+      title: 'Responsabilité & Conscience',
+      colorClass: 'text-brand-green',
+      bgClass: 'bg-brand-green/20',
+      paragraphs: [
+        "Je crois profondément en un développement responsable et conscient. Chaque ligne de code a un impact : sur l'utilisateur, sur l'équipe, sur l'environnement. J'apporte un soin particulier à la qualité, la maintenabilité et la durabilité de mes réalisations.",
+        "Mon parcours en pharmacie m'a inculqué la rigueur et l'exigence dans le moindre détail — des qualités que j'applique au quotidien dans le développement : tests, revues de code et documentation.",
+      ],
+    },
+    {
+      icon: 'groups',
+      title: "Esprit d'équipe & Collaboration",
+      colorClass: 'text-brand-blue',
+      bgClass: 'bg-brand-blue/20',
+      paragraphs: [
+        "Collaborative et communicante, j'aime construire ensemble. Chez Worldline, je participe activement aux cérémonies agiles (sprints, stand-ups, rétrospectives) et aux revues de code. Le partage de connaissances est un moteur essentiel de ma progression.",
+        "Mon expérience dans l'hôtellerie et la pharmacie m'a formée à travailler avec des profils très variés, à m'adapter aux différentes personnalités et à gérer les situations délicates avec diplomatie.",
+      ],
+    },
+  ];
+
+  readonly aboutProfessionalProject = {
+    title: 'Mon projet professionnel',
+    paragraphs: [
+      "Mon objectif à court terme est d'obtenir mon Mastère Expert en Ingénierie du Logiciel et de consolider mes compétences full-stack (Angular, Java/Spring Boot) au sein de Worldline. Je souhaite maîtriser l'ensemble de la chaîne de développement, du frontend au déploiement.",
+      "À moyen terme, j'aspire à évoluer vers un rôle de développeuse senior polyvalente, capable de prendre en charge des projets de bout en bout et de contribuer à l'architecture technique des solutions. L'accompagnement des profils juniors fait aussi partie de mes ambitions.",
+      "Mon projet personnel actuel est \"Valkea\", une application de suivi de santé pour animaux de compagnie. Ce projet me permet d'explorer de nouvelles technologies et de mettre en pratique les bonnes pratiques d'architecture apprises en formation.",
+    ],
+  };
+
+  readonly aboutQualities = [
+    {
+      title: 'Empathique & à l\'écoute',
+      icon: 'hearing',
+      description: "Développée au contact des patients et clients : comprendre les besoins, rassurer, conseiller. J'applique cette qualité dans la compréhension des besoins utilisateurs et la collaboration d'équipe.",
+    },
+    {
+      title: 'Rigoureuse & fiable',
+      icon: 'verified',
+      description: "La rigueur acquise en pharmacie (préparation de médicaments, gestion des stocks) se retrouve dans ma pratique de développeuse : code propre, tests, documentation et respect des délais.",
+    },
+    {
+      title: 'Adaptable & curieuse',
+      icon: 'auto_awesome',
+      description: "Mon parcours de reconversion professionnelle témoigne de ma capacité à sortir de ma zone de confort. Je m'adapte rapidement aux nouveaux outils, frameworks et environnements de travail.",
+    },
+    {
+      title: 'Communicante & pédagogue',
+      icon: 'forum',
+      description: "Je sais vulgariser des concepts techniques, que ce soit pour un client, un collègue non-technique ou lors de présentations. La communication claire est le socle d'une bonne collaboration.",
+    },
+    {
+      title: 'Autonome & proactive',
+      icon: 'rocket_launch',
+      description: "Capable de prendre des initiatives et de mener des tâches en autonomie, tout en sachant demander de l'aide quand nécessaire. Ma formation OpenClassrooms, entièrement en autonomie, en est la preuve.",
+    },
+    {
+      title: 'Persévérante',
+      icon: 'trending_up',
+      description: "Chaque difficulté est une occasion d'apprendre. Ma reconversion, qui a demandé du courage et de la détermination, a renforcé ma capacité à persévérer face aux défis techniques.",
+    },
+  ];
+
+  readonly aboutInterests = [
+    {
+      icon: 'pool',
+      title: 'Natation',
+      description: "La natation m'apporte calme et régularité. C'est un sport qui développe l'endurance et la discipline, des qualités précieuses en développement.",
+    },
+    {
+      icon: 'fitness_center',
+      title: 'Crossfit',
+      description: "Le crossfit m'enseigne le dépassement de soi et la gestion de l'effort. Chaque WOD est un petit défi, comme chaque sprint en développement.",
+    },
+    {
+      icon: 'piano',
+      title: 'Piano',
+      description: "Le piano développe la patience, la concentration et la créativité. Apprendre un morceau demande la même persévérance que résoudre un bug complexe.",
+    },
+    {
+      icon: 'pets',
+      title: 'Animaux',
+      description: "Fière humaine d'un husky têtu mais adorable, je développe actuellement \"Valkea\", une application de suivi de santé pour animaux, un projet qui allie ma passion pour les animaux et le développement.",
+    },
   ];
 
   // ─────────────────────────── HELPERS ───────────────────────────

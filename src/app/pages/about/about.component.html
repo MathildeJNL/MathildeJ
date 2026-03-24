@@ -1,0 +1,206 @@
+<!-- Hero Section -->
+<section class="relative pt-12 pb-16 md:pt-20 md:pb-24 px-4 md:px-8 overflow-hidden">
+    <!-- Background -->
+    <div
+        class="absolute top-0 right-0 -mr-40 -mt-40 w-[600px] h-[600px] rounded-full bg-brand-blue/10 blur-3xl -z-10 pointer-events-none">
+    </div>
+    <div
+        class="absolute bottom-0 left-0 -ml-20 -mb-20 w-[400px] h-[400px] rounded-full bg-brand-teal/10 blur-3xl -z-10 pointer-events-none">
+    </div>
+
+    <div class="max-w-[1000px] mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+            <!-- Text -->
+            <div class="md:col-span-2">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-blue/10 border border-brand-blue/20 w-fit mb-6">
+                    <i class="material-symbols-outlined text-brand-blue text-sm" aria-hidden="true">person</i>
+                    <strong class="text-brand-blue text-xs font-bold uppercase tracking-wider">À propos</strong>
+                </div>
+
+                <h1 class="text-4xl md:text-5xl font-black leading-tight tracking-tight mb-6">
+                    Qui suis-je
+                    <em
+                        class="not-italic text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-teal">?</em>
+                </h1>
+
+                @for (paragraph of introParagraphs; track $index) {
+                <p class="text-lg text-slate-500 dark:text-brand-muted max-w-2xl mb-4 leading-relaxed">{{ paragraph }}
+                </p>
+                }
+            </div>
+
+            <!-- Photo -->
+            <div class="flex justify-center md:justify-end">
+                <div class="relative w-48 h-48 md:w-56 md:h-56">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-tr from-brand-blue to-brand-teal rounded-full blur-2xl opacity-30">
+                    </div>
+                    <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-brand-surface shadow-2xl bg-cover bg-center grayscale"
+                        [style.background-image]="'url(' + profileImageUrl + ')'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mes Valeurs -->
+<section class="py-20 bg-white dark:bg-brand-surface" id="values">
+    <div class="max-w-[1000px] mx-auto px-4 md:px-8">
+        <div class="mb-12">
+            <h2
+                class="text-3xl font-bold tracking-tight text-slate-900 dark:text-brand-text mb-4 flex items-center gap-3">
+                <i class="w-8 h-1 bg-brand-pink rounded-full" aria-hidden="true"></i>
+                Mes Valeurs
+            </h2>
+            <p class="text-slate-500 dark:text-brand-muted max-w-2xl">
+                En tant que future experte en ingénierie logicielle, je place l'humain, la conscience et la
+                responsabilité au
+                cœur de ma pratique. Voici les valeurs qui guident mon travail.
+            </p>
+        </div>
+
+        <div class="space-y-8">
+            @for (value of values; track value.title) {
+            <div
+                class="card-hover p-8 rounded-xl bg-slate-50 dark:bg-brand-bg border border-slate-200 dark:border-brand-border">
+                <div class="flex items-start gap-5">
+                    <div class="w-12 h-12 rounded-lg flex items-center justify-center shrink-0"
+                        [ngClass]="[value.bgClass, value.colorClass]">
+                        <i class="material-symbols-outlined text-3xl" aria-hidden="true">{{ value.icon }}</i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-brand-text mb-3">{{ value.title }}</h3>
+                        @for (paragraph of value.paragraphs; track $index) {
+                        <p class="text-sm text-slate-500 dark:text-brand-muted leading-relaxed mb-2">{{ paragraph }}</p>
+                        }
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Mon Projet Professionnel et Personnel -->
+<section class="py-20 px-4 md:px-8" id="project">
+    <div class="max-w-[1000px] mx-auto">
+        <div class="mb-12">
+            <h2
+                class="text-3xl font-bold tracking-tight text-slate-900 dark:text-brand-text mb-4 flex items-center gap-3">
+                <i class="w-8 h-1 bg-brand-blue rounded-full" aria-hidden="true"></i>
+                {{ professionalProject.title }}
+            </h2>
+        </div>
+
+        <div
+            class="bg-white dark:bg-brand-surface rounded-xl border border-slate-200 dark:border-brand-border p-8 space-y-6">
+            @for (paragraph of professionalProject.paragraphs; track $index) {
+            <p class="text-slate-500 dark:text-brand-muted leading-relaxed">{{ paragraph }}</p>
+            }
+
+            <div class="flex flex-wrap gap-4 pt-4">
+                <app-button title="Voir mes compétences" name="Voir mes compétences" svgName="insights" [svgSize]="20"
+                    color="primary" label="Voir mes compétences" (action)="goToSkills()"></app-button>
+                <app-button title="Voir mes projets" name="Voir mes projets" svgName="folder_open" [svgSize]="20"
+                    color="secondary" label="Voir mes projets" routerLink="/projects"></app-button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mes Qualités Humaines -->
+<section class="py-20 bg-white dark:bg-brand-surface" id="qualities">
+    <div class="max-w-[1000px] mx-auto px-4 md:px-8">
+        <div class="mb-12">
+            <h2
+                class="text-3xl font-bold tracking-tight text-slate-900 dark:text-brand-text mb-4 flex items-center gap-3">
+                <i class="w-8 h-1 bg-brand-purple rounded-full" aria-hidden="true"></i>
+                Mes principales qualités humaines
+            </h2>
+            <p class="text-slate-500 dark:text-brand-muted max-w-2xl">
+                Des compétences forgées au fil de parcours variés : hôtellerie, pharmacie et développement web.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            @for (quality of qualities; track quality.title) {
+            <div
+                class="card-hover p-6 rounded-xl bg-slate-50 dark:bg-brand-bg border border-slate-200 dark:border-brand-border group hover:border-brand-purple/50">
+                <div
+                    class="w-10 h-10 rounded-lg bg-brand-purple/20 text-brand-purple flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110">
+                    <i class="material-symbols-outlined text-2xl" aria-hidden="true">{{ quality.icon }}</i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-brand-text mb-2">{{ quality.title }}</h3>
+                <p class="text-sm text-slate-500 dark:text-brand-muted leading-relaxed">{{ quality.description }}</p>
+            </div>
+            }
+        </div>
+
+        <!-- Soft skills tags -->
+        <div class="mt-10">
+            <h3 class="text-lg font-bold mb-4 text-slate-900 dark:text-brand-text">En résumé</h3>
+            <div class="flex flex-wrap gap-2">
+                @for (skill of softSkills; track skill) {
+                <small
+                    class="tag-hover px-3 py-1.5 rounded-md bg-slate-200 dark:bg-brand-border text-slate-500 dark:text-brand-muted text-sm font-medium cursor-default">
+                    {{ skill }}
+                </small>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mes Centres d'Intérêt -->
+<section class="py-20 px-4 md:px-8" id="interests">
+    <div class="max-w-[1000px] mx-auto">
+        <div class="mb-12">
+            <h2
+                class="text-3xl font-bold tracking-tight text-slate-900 dark:text-brand-text mb-4 flex items-center gap-3">
+                <i class="w-8 h-1 bg-brand-teal rounded-full" aria-hidden="true"></i>
+                Mes centres d'intérêt
+            </h2>
+            <p class="text-slate-500 dark:text-brand-muted max-w-2xl">
+                En dehors du code, mes passions contribuent à mon équilibre et nourrissent ma créativité.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            @for (interest of interests; track interest.title) {
+            <div
+                class="card-hover p-6 rounded-xl bg-white dark:bg-brand-surface border border-slate-200 dark:border-brand-border group hover:border-brand-teal/50">
+                <div class="flex items-start gap-4">
+                    <div
+                        class="w-12 h-12 rounded-lg bg-brand-teal/20 text-brand-teal flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110">
+                        <i class="material-symbols-outlined text-3xl" aria-hidden="true">{{ interest.icon }}</i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-brand-text mb-2">{{ interest.title }}</h3>
+                        <p class="text-sm text-slate-500 dark:text-brand-muted leading-relaxed">{{ interest.description
+                            }}</p>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-16 px-4 md:px-8">
+    <div class="max-w-[800px] mx-auto text-center">
+        <div class="p-8 rounded-2xl bg-gradient-to-r from-brand-blue/10 to-brand-teal/10 border border-brand-blue/20">
+            <h2 class="text-2xl font-bold mb-4">Envie d'en savoir plus ?</h2>
+            <p class="text-slate-500 dark:text-brand-muted mb-6">
+                Découvrez mon parcours professionnel en détail ou contactez-moi pour échanger.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <app-button title="Mon parcours" name="Mon parcours" svgName="timeline" [svgSize]="20" color="primary"
+                    label="Mon parcours" routerLink="/timeline"></app-button>
+                <app-button title="Me contacter" name="Me contacter" svgName="mail" [svgSize]="20" color="secondary"
+                    label="Me contacter" (action)="goToContact()"></app-button>
+            </div>
+        </div>
+    </div>
+</section>

@@ -196,6 +196,27 @@
 
       <!-- Sidebar -->
       <div class="space-y-6">
+        <!-- Compétences associées -->
+        @if (project.relatedSkillCategories && project.relatedSkillCategories.length > 0) {
+        <div class="bg-white dark:bg-brand-surface rounded-xl border border-slate-200 dark:border-brand-border p-6">
+          <h3 class="font-bold mb-4 flex items-center gap-2">
+            <i class="material-symbols-outlined text-brand-blue" aria-hidden="true">insights</i>
+            Compétences associées
+          </h3>
+          <div class="space-y-2">
+            @for (skill of project.relatedSkillCategories; track skill.id) {
+            <a [routerLink]="['/skills', skill.id]"
+              class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-brand-bg border border-slate-200 dark:border-brand-border hover:border-brand-blue hover:bg-brand-blue/5 transition-all group">
+              <i class="material-symbols-outlined text-brand-blue text-lg" aria-hidden="true">chevron_right</i>
+              <span
+                class="text-sm font-medium text-slate-500 dark:text-brand-muted group-hover:text-brand-blue transition-colors">{{
+                skill.name }}</span>
+            </a>
+            }
+          </div>
+        </div>
+        }
+
         <!-- Testimonial -->
         @if (project.testimonial) {
         <div class="bg-gradient-to-br from-brand-blue/10 to-brand-teal/10 rounded-xl border border-brand-blue/20 p-6">
